@@ -1,7 +1,5 @@
-const express = require('express');
-const app = express();
-const hpp=require("hpp");
-const helmet=require("helmet");
-const express=require("ex")
-
-
+const app=require('./app')
+const port=process.env.PORT || 9090
+app.listen((port,function (){
+    console.log(`Server is Running & Port No-${port}`)
+}))
