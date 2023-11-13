@@ -6,7 +6,7 @@ const register = (req, res) => {
         return res.status(400).json({ error: "Please give require data" });
     }
 
-    if (users.some(user => user.UserName === UserName)) {
+    if (users.same(user => user.UserName === UserName)) {
         return res.status(400).json({ error: "name is already taken" });
     }
     //Create new user
@@ -36,27 +36,27 @@ const login = (req, res) => {
 
     const token = createToken(newUser)
     return res.status(201).send({
-        massage: "name is already taken",
+        massage: "Succesfullly login",
         newUser: newUser,
         tokenis: token
     });
 }
 
-// const logout =(req,res)=>{
-//     // const {token}=req.body;
-//     // if(!token){
-//     //     return res.status(400).send({massage:"Give  token"}) ;
-//     // }
-//     // const user =verifyToken(token);
+const logout =(req,res)=>{
+    // const {token}=req.body;
+    // if(!token){
+    //     return res.status(400).send({massage:"Give  token"}) ;
+    // }
+    // const user =verifyToken(token);
 
-//     // if(!user){
-//     //     return res.status(401).send({error:"Invalid userName or Password"});
-//     // }
-//     // const index =activetokens.
+    // if(!user){
+    //     return res.status(401).send({error:"Invalid userName or Password"});
+    // }
+    // const index =activetokens.
 
 
 
-//     // we wil do it in frontend
-//     return res.status(201).send({massage:"Logout succesfully"});
-// }
+    // we wil do it in frontend
+    return res.status(201).send({massage:"Logout succesfully"});
+}
 
