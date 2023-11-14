@@ -1,7 +1,8 @@
 const createError = require("../utils/createError.js");
 const Conversation = require("../models/conversationModle");
 
-const createConversation = async (req, res, next) => {
+// create conversation
+const createConversation = async (req) => {
   try {
     const newConversation = new Conversation({
       id: req.isSeller ? req.userId + req.body.to : req.body.to + req.userId,
@@ -13,14 +14,21 @@ const createConversation = async (req, res, next) => {
 
     const savedConversation = await newConversation.save();
 
-    res.status(200).send(savedConversation);
+    return {
+      status : 200,
+      data: savedConversation
+    }
 
   } catch (err) {
-    next(err);
+    return {
+      status: 200,
+      data: "something went wrong"
+    }
   }
 };
 
-const updateConversation = async (req, res, next) => {
+// update conversaiton
+const updateConversation = async (req) => {
   try {
     const updatedConversation = await Conversation.findOneAndUpdate(
       { id: req.params.id },
@@ -34,33 +42,60 @@ const updateConversation = async (req, res, next) => {
       { new: true }
     );
 
-    res.status(200).send(updatedConversation);
+    return {
+      status: 200,
+      data: updatedConversation
+    }
   } catch (err) {
-    next(err);
+    return {
+      status: 200,
+      data: "something went wrong"
+    }
   }
 };
 
 
-const getSingleConversation = async (req, res, next) => {
+// get single conversation
+const getSingleConversation = async (req) => {
   try {
     const conversation = await Conversation.findOne({ id: req.params.id });
-    if (!conversation) return next(createError(404, "Not found!"));
-    res.status(200).send(conversation);
+    if (!conversation){
+      return {
+        status: 200,
+        data: "No conversation found"
+      }
+    };
+
+    return {
+      status: 200,
+      data: conversation
+    }
+
   } catch (err) {
-    next(err);
+    return {
+      status: 200,
+      data: "something went wrong"
+    }
   }
 };
 
 
-const getConversations = async (req, res, next) => {
+// get conversation
+const getConversations = async (req) => {
   try {
     const conversations = await Conversation.find(
       req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }
     ).sort({ updatedAt: -1 });
 
-    res.status(200).send(conversations);
+    return {
+      status: 200,
+      data: conversations
+    }
   } catch (err) {
-    next(err);
+    return {
+      status: 200,
+      data: "something went wrong"
+    }
   }
 };
 
