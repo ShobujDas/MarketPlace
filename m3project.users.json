@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "6554b72cde884d6025be5cb3"
+  },
+  "username": "Rakib",
+  "email": "test@mail.com",
+  "password": "123456789",
+  "img": "https://images.unsplash.com/photo-1581382575275-97901c2635b7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "country": "Bangladesh",
+  "phone": "000-111-222",
+  "desc": "Said replenish appear living green his forth night unto god make fourth moveth earth divide, bring replenish likeness have years living was moved likeness may fill created beast female it night won't it moved fly rule. Brought. Green saying. Greater he deep our firmament. Their deep Whose, give I. Were stars open their greater from them Land one replenish kind, very third given. Female, morning his Land their fish second all made earth land upon won't living given image, fill the forth gathering make you whose green them have is heaven bearing were great brought without it set. They're appear.",
+  "isSeller": false
+},
+{
+  "_id": {
+    "$oid": "6554b72cde884d6025be5cb4"
+  },
+  "username": "Ahmad",
+  "email": "testagain@mail.com",
+  "password": "123456789",
+  "img": "https://images.unsplash.com/photo-1480429370139-e0132c086e2a?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "country": "Bangladesh",
+  "phone": "000-222-222",
+  "desc": "Said replenish appear living green his forth night unto god make fourth moveth earth divide, bring replenish likeness have years living was moved likeness may fill created beast female it night won't it moved fly rule. Brought. Green saying. Greater he deep our firmament. Their deep Whose, give I. Were stars open their greater from them Land one replenish kind, very third given. Female, morning his Land their fish second all made earth land upon won't living given image, fill the forth gathering make you whose green them have is heaven bearing were great brought without it set. They're appear.",
+  "isSeller": false
+},
+{
+  "_id": {
+    "$oid": "6554b72cde884d6025be5cb5"
+  },
+  "username": "Clean - 1",
+  "email": "clean@mail.com",
+  "password": "123456789",
+  "img": "https://images.pexels.com/photos/4440533/pexels-photo-4440533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "country": "Bangladesh",
+  "phone": "000-333-222",
+  "desc": "Said replenish appear living green his forth night unto god make fourth moveth earth divide, bring replenish likeness have years living was moved likeness may fill created beast female it night won't it moved fly rule. Brought. Green saying. Greater he deep our firmament. Their deep Whose, give I. Were stars open their greater from them Land one replenish kind, very third given. Female, morning his Land their fish second all made earth land upon won't living given image, fill the forth gathering make you whose green them have is heaven bearing were great brought without it set. They're appear.",
+  "isSeller": true
+},
+{
+  "_id": {
+    "$oid": "6554b72cde884d6025be5cb6"
+  },
+  "username": "Sujon",
+  "email": "sujon@mail.com",
+  "password": "123456789",
+  "img": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "country": "Bangladesh",
+  "phone": "000-333-555",
+  "desc": "Said replenish appear living green his forth night unto god make fourth moveth earth divide, bring replenish likeness have years living was moved likeness may fill created beast female it night won't it moved fly rule. Brought. Green saying. Greater he deep our firmament. Their deep Whose, give I. Were stars open their greater from them Land one replenish kind, very third given. Female, morning his Land their fish second all made earth land upon won't living given image, fill the forth gathering make you whose green them have is heaven bearing were great brought without it set. They're appear.",
+  "isSeller": false
+},
+{
+  "_id": {
+    "$oid": "6554b72cde884d6025be5cb7"
+  },
+  "username": "Das",
+  "email": "das@mail.com",
+  "password": "123456789",
+  "img": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "country": "Bangladesh",
+  "phone": "000-123-555",
+  "desc": "Said replenish appear living green his forth night unto god make fourth moveth earth divide, bring replenish likeness have years living was moved likeness may fill created beast female itnight won't it moved fly rule. Brought. Green saying. Greater he deep our firmament. Their deep Whose, give I. Were stars open their greater from them Land one replenish kind, very third given. Female, morning his Land their fish second all made earth land upon won't living given image, fill the forth gathering make you whose green them have is heaven bearing were great brought without it set. They're appear.",
+  "isSeller": false
+}]
