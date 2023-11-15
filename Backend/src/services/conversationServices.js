@@ -15,7 +15,7 @@ const createConversation = async (req) => {
     const savedConversation = await newConversation.save();
 
     return {
-      status : 200,
+      status: 200,
       data: savedConversation
     }
 
@@ -59,7 +59,7 @@ const updateConversation = async (req) => {
 const getSingleConversation = async (req) => {
   try {
     const conversation = await Conversation.findOne({ id: req.params.id });
-    if (!conversation){
+    if (!conversation) {
       return {
         status: 200,
         data: "No conversation found"
