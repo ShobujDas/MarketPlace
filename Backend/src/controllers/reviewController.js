@@ -72,7 +72,7 @@ exports.updateReviews = async (req, res) => {
     }
 
     const reviews = await ReviewModel.findByIdAndUpdate(
-      req.params.pid,
+      req.params.id,
       { ...req.body },
       { new: true }
     ).save();
