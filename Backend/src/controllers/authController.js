@@ -37,11 +37,16 @@ const login = (req, res) => {
     const newUser = { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller };
     users.push(newUser);
 
+    let cookieOption = {
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        httpOnly: false
+    }
+
     const token = createToken(newUser)
-    return res.status(201).send({
+    res.cookie("token", token, cookieOption)
+    return res.status(201).cookie({
         massage: "Succesfullly login",
-        newUser: newUser,
-        tokenis: token
+        data: newUser,
     });
 }
 
