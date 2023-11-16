@@ -1,50 +1,46 @@
-const Gig = require("../models/userModel");
+const { userRegister, userLogin } = require("../services/userServices");
 
 const { createToken, verifyToken } = require("../util/jwt");
 
-
-const register = (req, res) => {
-    const { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller } = req.body;
-    if (!UserName || !Email || !Password) {
-        return res.status(400).json({ error: "Please give require data" });
-    }
-
-    if (users.same(user => user.UserName === UserName)) {
-        return res.status(400).json({ error: "name is already taken" });
-    }
-    //Create new user
-    const newUser = { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller };
-    users.push(newUser);
-
-    return res.status(201).send({
-        massage: "name is already taken",
-        newUser: newUser
-    });
+// registration controller
+const register = async (req, res) => {
+    let result = await userRegister(req)
+    res.status(200).json(result);
 }
 
-const login = (req, res) => {
-    const { UserName, Email, Password } = req.body;
-    if (!UserName || !Email || !Password) {
-        return res.status(400).json({ error: "Please give require data" });
+// login controller
+const login = async (req, res) => {
+   
+    let result = await userLogin(req)
+
+    if(result['status'] == 1){
+
+        let cookieOption = {
+            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+            httpOnly: false
+        }
+
+        let tokenPayload = {
+            email: result.data.email,
+            id: result.data._id
+        }
+
+        const token = createToken(tokenPayload)
+        res.cookie("token", token, cookieOption)
+
+        res.status(200).json({
+            status: result.status,
+            code: result.code,
+            data: result.data
+        })
+
+        return
     }
 
-    const user = users.find(user => user.UserName === UserName && user.Password === Password)
+    res.status(200).json(result)
 
-    if (!user) {
-        return res.status(401).json({ error: "Invalid userName or Password" });
-    }
-    //Create new user
-    const newUser = { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller };
-    users.push(newUser);
-
-    let cookieOption = {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-        httpOnly: false
-    }
-
-    const token = createToken(newUser)
-    res.cookie("token", token, cookieOption)
-    return res.status(201).cookie({
+    
+    return res.status(201).json({
         massage: "Succesfullly login",
         data: newUser,
     });
@@ -94,6 +90,7 @@ const getUser = async (req, res, next) => {
         res.status(500).send(e);
     }
 }
+
 module.exports = {
     deleteUser, getUser,register,login,logout
 }

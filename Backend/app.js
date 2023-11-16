@@ -15,8 +15,12 @@ app.use(cors());
 app.use(cookieParser());
 app.use(expressMongoSanitize());
 app.use(express.json({limit:'50mb'}));
+app.use(express.urlencoded({ limit: '50mb' }));
 
-//app.use("/api/v1",router)
+const router = require('./src/routes/conversationRoute')
+app.use("/api/v1", router)
+const userRoute = require('./src/routes/userRoute')
+app.use("/api/v1", userRoute)
 
 //mongoDB Connection Here
 mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)
