@@ -23,8 +23,9 @@ const userRoute = require('./src/routes/userRoute')
 app.use("/api/v1", userRoute)
 
 //mongoDB Connection Here
+console.log(process.env.dbUrl+"/"+process.env.dbName)
 mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)
-    .then(res => console.log("Database Connected"))
+    .then(()=> console.log("Database Connected"))
     .catch(err => console.log(err))
 
 
