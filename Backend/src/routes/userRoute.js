@@ -1,5 +1,5 @@
 const express = require('express')
-const { login, register, deleteUser, getUser } = require('../controllers/authController')
+const { login, register, deleteUser, getUser, userLogout } = require('../controllers/authController')
 const authVerification = require('../middlewares/authVerification')
 const router = express.Router()
 
@@ -9,6 +9,7 @@ router.get('/login', login)
 router.post('/register', register)
 router.post('/delete/:id', authVerification, deleteUser)
 router.get('/user/:id', authVerification, getUser)
+router.post('/logout', authVerification, userLogout)
 
 
 module.exports = router

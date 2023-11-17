@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
 }
 
 // user logout
-exports.logout = async (req, res) => {
+exports.userLogout = async (req, res) => {
 
     let cookieOption = {
         expires: new Date(Date.now() - 24 * 60 * 60 * 1000),
