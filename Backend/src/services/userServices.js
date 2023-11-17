@@ -36,3 +36,32 @@ exports.userLogin = async (req) => {
     return {status: 0, code: 200, data: "something went wrong"}
   }
 }
+
+// user delete
+exports.userDelete = async (req) => {
+  try {
+    const userId = req.params.id;
+    let deleteUser = await users.deleteOne({_id: userId})
+
+    return { status: 1, code: 200, data: "Account deleted" }
+
+    
+  } catch (error) {
+    return { status: 0, code: 200, data: "something went wrong" }
+  }
+}
+
+// get user by id
+exports.getUserById = async (req) => {
+  try {
+    const user = await users.findOne({_id: req.params.id})
+    if (!user) {
+      return { status: 0, code: 200, data: "user not found" }
+    }
+
+    return { status: 1, code: 200, data: user }
+    
+  } catch (error) {
+    return { status: 0, code: 200, data: "something went wrong" }
+  }
+}

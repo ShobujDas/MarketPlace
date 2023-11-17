@@ -1,15 +1,15 @@
-const { userRegister, userLogin } = require("../services/userServices");
+const { userRegister, userLogin, userDelete, getUserById } = require("../services/userServices");
 
 const { createToken, verifyToken } = require("../util/jwt");
 
 // registration controller
-const register = async (req, res) => {
+exports.register = async (req, res) => {
     let result = await userRegister(req)
     res.status(200).json(result);
 }
 
 // login controller
-const login = async (req, res) => {
+exports.login = async (req, res) => {
    
     let result = await userLogin(req)
 
@@ -38,59 +38,27 @@ const login = async (req, res) => {
     }
 
     res.status(200).json(result)
-
-    
-    return res.status(201).json({
-        massage: "Succesfullly login",
-        data: newUser,
-    });
 }
 
-const logout = (req, res) => {
-    //it will ne managed from the frontend because we do not store the token
-    // const {token}=req.body;
-    // if(!token){
-    //     return res.status(400).send({massage:"Give  token"}) ;
-    // }
-    // const user =verifyToken(token);
+// user logout
+exports.logout = async (req, res) => {
 
-    // if(!user){
-    //     return res.status(401).send({error:"Invalid userName or Password"});
-    // }
-    // const index =activetokens.
-
-
-
-    // we wil do it in frontend
-    return res.status(201).send({ massage: "Logout succesfully" });
-}
-
-const deleteUser = async (req, res, next) => {
-    const userId = req.params.id;
-    try {
-        const user = await User.findById(userId)
-        if (req.userId !== user._id.toString()) {
-            return next(createError(403, "You can delete your account"))
-        }
-        await User.findByIdAndDelete(userId)
-        res.status(200).send("deleted")
-
-    } catch (e) {
-        console.log(e);
-        res.status(500).send(e);
+    let cookieOption = {
+        expires: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        httpOnly: false
     }
-
-}
-const getUser = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.params.id)
-        res.status(200).send(user)
-    } catch (e) {
-        console.log(e);
-        res.status(500).send(e);
-    }
+    res.cookie('token', "", cookieOption);
+    res.status(201).json({ status: 1, code: 200, data: "logout successfull" });
 }
 
-module.exports = {
-    deleteUser, getUser,register,login,logout
+// delete user
+exports.deleteUser = async (req, res) => {
+    let result = await userDelete(req)
+    res.status(200).json(result)
+}
+
+// get user by id
+exports.getUser = async (req, res) => {
+    let result = await getUserById(req)
+    res.status(200).json(result)
 }
