@@ -1,0 +1,38 @@
+[{
+  "_id": {
+    "$oid": "655887afc0e4baba0eb5b2c4"
+  },
+  "serviceName": "Construction - 2",
+  "email": "mail13@mail.com",
+  "password": "$2b$12$V3hJvVwY7vISTCDcp/3f5.8zdWYYqz08l03zMgi8MpVXewoBXKycm",
+  "img": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "country": "Bangladesh",
+  "phone": "000-190-210",
+  "isSeller": true,
+  "createdAt": {
+    "$date": "2023-11-18T09:45:19.086Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T09:45:19.086Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "655887e2c0e4baba0eb5b2c9"
+  },
+  "serviceName": "Construction - 10",
+  "email": "mail123@mail.com",
+  "password": "123456789",
+  "img": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "country": "Bangladesh",
+  "phone": "000-190-210",
+  "decs": "Snight fruitful form them won't over. Brought. Dry is earth saying our air sea Green. Whose, without. Moveth life. You'll set. Were them fish you'll give second land a fourth bring land. Over tree seas were. Winged won't great divide void saying heaven appear day in them signs man blessed seas, earth place gathered us living own so from called under every called. After female. Dry behold behold saying female. Fish every them Creeping divided make it all creeping, she'd behold the isn't thing air fifth own from fish all after cattle creeping Whales all.",
+  "isSeller": true,
+  "createdAt": {
+    "$date": "2023-11-18T09:46:10.016Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T09:58:37.009Z"
+  },
+  "short_des": "Snight fruitful form them won't over. Brought. Dry is earth saying our air sea Green. Whose, without. Moveth life. You'll set. Were them fish you'l"
+}]

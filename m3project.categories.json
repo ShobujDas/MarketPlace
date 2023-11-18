@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "655894534f1c35a1ed03ed14"
+  },
+  "categoryName": "Gardening",
+  "categoryDesc": "Find all the best Gardening services",
+  "categoryImg": "https://plus.unsplash.com/premium_photo-1679765934200-d1cb3153c631?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "createdAt": {
+    "$date": "2023-11-18T10:39:15.471Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T10:39:15.471Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "655894954f1c35a1ed03ed17"
+  },
+  "categoryName": "Cleaning",
+  "categoryDesc": "Find all the best Cleaning services",
+  "categoryImg": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "createdAt": {
+    "$date": "2023-11-18T10:40:21.358Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T10:40:21.358Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "655895008ab50421e3c29f8f"
+  },
+  "categoryName": "Home Renovation",
+  "categoryDesc": "Find all the best Home Renovation services",
+  "categoryImg": "https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "createdAt": {
+    "$date": "2023-11-18T10:42:08.325Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T10:42:08.325Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "655895638ab50421e3c29f91"
+  },
+  "categoryName": "Plumbing",
+  "categoryDesc": "Find all the best Plumbing services",
+  "categoryImg": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "createdAt": {
+    "$date": "2023-11-18T10:43:47.876Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T10:43:47.876Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6558b3feb08d16a678a8da22"
+  },
+  "categoryName": "Window Cleaning",
+  "categoryDesc": "Find all the best window cleaning services",
+  "categoryImg": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "createdAt": {
+    "$date": "2023-11-18T12:54:22.324Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-18T12:54:22.324Z"
+  }
+}]
