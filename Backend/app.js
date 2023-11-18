@@ -17,10 +17,11 @@ app.use(expressMongoSanitize());
 app.use(express.json({limit:'50mb'}));
 app.use(express.urlencoded({ limit: '50mb' }));
 
-const router = require('./src/routes/conversationRoute')
-app.use("/api/v1", router)
 const userRoute = require('./src/routes/userRoute')
 app.use("/api/v1", userRoute)
+
+const categoryRoutes = require('./src/routes/routes')
+app.use("/api/v1", categoryRoutes)
 
 //mongoDB Connection Here
 mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)
@@ -29,7 +30,7 @@ mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)
 
 
 app.use("*",(req,res)=>{
-    res.status(404).json({status:'Fail',data:"Not Found"})
+    res.status(404).json({status: 0, data:"Not Found"})
 })
 
 module.exports=app

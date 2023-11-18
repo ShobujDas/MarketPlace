@@ -29,7 +29,7 @@ exports.userLogin = async (req) => {
 
     let query = { email: req.body.email, isSeller: false }
 
-    const user = await users.findOne(query).select("password")
+    const user = await users.findOne(query).select("_id password")
     if (!user) {
       return { status: 0, code: 200, data: "No user with this email" }
     }
@@ -38,7 +38,7 @@ exports.userLogin = async (req) => {
       return { status: 0, code: 200, data: "Invalid login" }
     }
 
-    return { status: 1, code: 200, data: "login successfull" }
+    return { status: 1, code: 200, data: user }
     
   } catch (error) {
     return {status: 0, code: 200, data: "something went wrong"}

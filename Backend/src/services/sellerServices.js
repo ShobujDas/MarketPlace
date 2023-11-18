@@ -29,7 +29,7 @@ exports.sellerLogin = async (req) => {
 
     let query = { email: req.body.email, isSeller: true }
 
-    const user = await sellers.findOne(query).select("password")
+    const user = await sellers.findOne(query).select("_id password")
     if(!user){
       return { status: 0, code: 200, data: "No user with this email" }
     }

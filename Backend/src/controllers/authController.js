@@ -1,17 +1,6 @@
+const { cookieMaker } = require("../helper/helper");
 const { sellerRegister, sellerDelete, getSellerById, sellerUpdate, sellerLogin } = require("../services/sellerServices");
 const { userRegister, userLogin, userDelete, getUserById, userUpdate } = require("../services/userServices");
-
-const { createToken, verifyToken } = require("../util/jwt");
-
-
-let cookieMaker = (tokenPayload) => {
-    let cookieOption = {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-        httpOnly: false
-    }
-
-    return { token: createToken(tokenPayload), cookieOption }
-}
 
 // registration controller
 exports.user_register = async (req, res) => {
@@ -26,7 +15,7 @@ exports.user_login = async (req, res) => {
 
     if(result['status'] == 1){
 
-        let createdCookie = cookieMaker({email: result.data.email, id: result.data._id})
+        let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id})
 
         res.cookie("token", createdCookie.token, createdCookie.cookieOption)
 
@@ -84,7 +73,7 @@ exports.seller_login = async (req, res) => {
 
     if(result['status'] == 1){
 
-        let createdCookie = cookieMaker({email: result.data.email, id: result.data._id})
+        let createdCookie = cookieMaker({email: req.body.email, id: result.data._id})
 
         res.cookie("token", createdCookie.token, createdCookie.cookieOption)
 
