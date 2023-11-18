@@ -1,4 +1,5 @@
 const users = require("../models/userModel");
+const sellers = require("../models/sellerModel");
 const { encryptPass, comparePass } = require("../util/passSecurity");
 
 // user registration service
@@ -9,6 +10,12 @@ exports.userRegister = async (req) => {
     
     if(user != 0){
       return { status: 0, code: 200, data: "Email already exists" }
+    }
+
+    const seller = await sellers.findOne(query).count('total')
+
+    if (seller != 0) {
+      return { status: 0, code: 200, data: "service name or email already exists" }
     }
 
     let pass = await encryptPass(req.body.password)
@@ -29,7 +36,7 @@ exports.userLogin = async (req) => {
 
     let query = { email: req.body.email, isSeller: false }
 
-    const user = await users.findOne(query).select("_id password")
+    const user = await users.findOne(query).select("_id password isSeller")
     if (!user) {
       return { status: 0, code: 200, data: "No user with this email" }
     }

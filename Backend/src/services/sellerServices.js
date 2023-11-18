@@ -1,12 +1,17 @@
 const sellers = require("../models/sellerModel");
+const users = require("../models/userModel");
 const { encryptPass, comparePass } = require("../util/passSecurity");
 
 // user registration service
 exports.sellerRegister = async (req) => {
   try {
     let query = { $or: [{ email: req.body.email }, { serviceName: req.body.serviceName }] }
-    const user = await sellers.findOne(query).count('total')
+    const seller = await sellers.findOne(query).count('total')
 
+    if (seller != 0) {
+      return { status: 0, code: 200, data: "service name or email already exists" }
+    }
+    const user = await users.findOne(query).count('total')
     if (user != 0) {
       return { status: 0, code: 200, data: "service name or email already exists" }
     }
@@ -29,7 +34,7 @@ exports.sellerLogin = async (req) => {
 
     let query = { email: req.body.email, isSeller: true }
 
-    const user = await sellers.findOne(query).select("_id password")
+    const user = await sellers.findOne(query).select("_id password isSeller")
     if(!user){
       return { status: 0, code: 200, data: "No user with this email" }
     }

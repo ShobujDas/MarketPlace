@@ -23,6 +23,9 @@ app.use("/api/v1", userRoute)
 const categoryRoutes = require('./src/routes/routes')
 app.use("/api/v1", categoryRoutes)
 
+const gigRoutes = require('./src/routes/gigRoute')
+app.use("/api/v1", gigRoutes)
+
 //mongoDB Connection Here
 mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)
     .then(()=> console.log("Database Connected"))
