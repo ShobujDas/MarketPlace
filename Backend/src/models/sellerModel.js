@@ -30,15 +30,13 @@ const providerSchema = new Schema({
   },
   decs: {
     type: String,
-    required: true
   },
   short_des: {
-    type: String,
-    required: true
+    type: String
   },
   isSeller: {
     type: Boolean,
-    required: false
+    default: true
   },
   city: {
     type: String,

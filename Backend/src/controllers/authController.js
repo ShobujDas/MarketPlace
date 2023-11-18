@@ -1,32 +1,34 @@
-const { userRegister, userLogin, userDelete, getUserById } = require("../services/userServices");
+const { sellerRegister, sellerDelete, getSellerById, sellerUpdate, sellerLogin } = require("../services/sellerServices");
+const { userRegister, userLogin, userDelete, getUserById, userUpdate } = require("../services/userServices");
 
 const { createToken, verifyToken } = require("../util/jwt");
 
+
+let cookieMaker = (tokenPayload) => {
+    let cookieOption = {
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        httpOnly: false
+    }
+
+    return { token: createToken(tokenPayload), cookieOption }
+}
+
 // registration controller
-exports.register = async (req, res) => {
+exports.user_register = async (req, res) => {
     let result = await userRegister(req)
     res.status(200).json(result);
 }
 
 // login controller
-exports.login = async (req, res) => {
+exports.user_login = async (req, res) => {
    
     let result = await userLogin(req)
 
     if(result['status'] == 1){
 
-        let cookieOption = {
-            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-            httpOnly: false
-        }
+        let createdCookie = cookieMaker({email: result.data.email, id: result.data._id})
 
-        let tokenPayload = {
-            email: result.data.email,
-            id: result.data._id
-        }
-
-        const token = createToken(tokenPayload)
-        res.cookie("token", token, cookieOption)
+        res.cookie("token", createdCookie.token, createdCookie.cookieOption)
 
         res.status(200).json({
             status: result.status,
@@ -41,7 +43,7 @@ exports.login = async (req, res) => {
 }
 
 // user logout
-exports.userLogout = async (req, res) => {
+exports.logout = async (req, res) => {
 
     let cookieOption = {
         expires: new Date(Date.now() - 24 * 60 * 60 * 1000),
@@ -57,8 +59,61 @@ exports.deleteUser = async (req, res) => {
     res.status(200).json(result)
 }
 
+// delete user
+exports.updateUser = async (req, res) => {
+    let result = await userUpdate(req)
+    res.status(200).json(result)
+}
+
 // get user by id
 exports.getUser = async (req, res) => {
     let result = await getUserById(req)
+    res.status(200).json(result)
+}
+
+
+// seller register
+exports.seller_register = async (req, res) => {
+    let result = await sellerRegister(req)
+    res.status(200).json(result);
+}
+
+// seller login
+exports.seller_login = async (req, res) => {
+    let result = await sellerLogin(req)
+
+    if(result['status'] == 1){
+
+        let createdCookie = cookieMaker({email: result.data.email, id: result.data._id})
+
+        res.cookie("token", createdCookie.token, createdCookie.cookieOption)
+
+        res.status(200).json({
+            status: result.status,
+            code: result.code,
+            data: result.data
+        })
+
+        return
+    }
+
+    res.status(200).json(result)
+}
+
+// delete seller
+exports.deleteSeller = async (req, res) => {
+    let result = await sellerDelete(req)
+    res.status(200).json(result)
+}
+
+// delete user
+exports.updateSeller = async (req, res) => {
+    let result = await sellerUpdate(req)
+    res.status(200).json(result)
+}
+
+// get seller by id
+exports.getSeller = async (req, res) => {
+    let result = await getSellerById(req)
     res.status(200).json(result)
 }

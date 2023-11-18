@@ -36,7 +36,7 @@ const userSchema = new Schema({
         },
     isSeller:{
             type:Boolean,
-            required:false
+            default: false
         },
     city: {
         type: String,
