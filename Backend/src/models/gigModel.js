@@ -16,6 +16,10 @@ const GigSchema = new Schema(
       type: String,
       required: true,
     },
+    short_desc: {
+      type: String,
+      required: true,
+    },
     totalStars: {
       type: Number,
       default: 0,
