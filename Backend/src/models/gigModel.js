@@ -25,7 +25,7 @@ const GigSchema = new Schema(
       default: 0,
     },
     cat: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     price: {
@@ -67,6 +67,7 @@ const GigSchema = new Schema(
   },
   {
     timestamps: true,
+    versionKey: false
   }
 );
 
