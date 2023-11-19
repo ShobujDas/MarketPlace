@@ -1,29 +1,19 @@
 const orderServices=require("../services/orderServices")
 const createError=require("../util/createError")
-const gigModel=require('../models/gigModel')
-const paymentIntent=async (req,res)=>{
+const paymentIntCont=async (req,res)=>{
     try{
-        const id=req.params.id;
-        const gigId=await gigModel.findOne(id)
-
-    }catch (err){
-
+        const newOrders=await orderServices.paymentIntentS(req,res)
+    }catch (error){
+        res.status(200).json({
+            status:"Fail",
+            data:error
+        })
     }
 }
 
-
-
-
-
-
-
-
-
 const getOrders=async (req,res)=>{
     try{
-        const userId=req.userId;
-        const isSeller=req.isSeller;
-        const order=await orderServices.getorderService(userId,isSeller);
+        const order=await orderServices.getorderService(req);
         return res.status(200).json({
             status:"success",
             data:order
@@ -33,5 +23,5 @@ const getOrders=async (req,res)=>{
     }
 }
 module.exports={
-    getOrders
+    getOrders,paymentIntCont
 }
