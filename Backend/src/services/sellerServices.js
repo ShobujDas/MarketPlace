@@ -58,7 +58,6 @@ exports.sellerDelete = async (req) => {
 
     return { status: 1, code: 200, data: "Account deleted" }
 
-
   } catch (error) {
     return { status: 0, code: 200, data: "something went wrong" }
   }

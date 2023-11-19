@@ -10,15 +10,10 @@ exports.user_register = async (req, res) => {
 
 // login controller
 exports.user_login = async (req, res) => {
-   
-    let result = await userLogin(req)
-
-    if(result['status'] == 1){
-
+    let result = await userLogin(req);
+    if(result['status'] === 1){
         let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id})
-
         res.cookie("token", createdCookie.token, createdCookie.cookieOption)
-
         res.status(200).json({
             status: result.status,
             code: result.code,

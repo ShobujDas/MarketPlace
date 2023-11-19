@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 
 exports.encryptPass = async (pass) => {
-  let password = await bcrypt.hash(pass, 12)
+  let password = await bcrypt.hashSync(pass, 12)
   return password
 }
 

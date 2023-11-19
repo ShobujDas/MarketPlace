@@ -17,12 +17,9 @@ exports.userRegister = async (req) => {
     if (seller != 0) {
       return { status: 0, code: 200, data: "service name or email already exists" }
     }
-
     let pass = await encryptPass(req.body.password)
     req.body.password = pass
-    
     const userCreate = await users.create(req.body)
-
     return { status: 1, code: 200, data: userCreate }
 
   } catch (error) {
@@ -33,18 +30,15 @@ exports.userRegister = async (req) => {
 // user login service
 exports.userLogin = async (req) => {
   try {
-
     let query = { email: req.body.email, isSeller: false }
-
     const user = await users.findOne(query).select("_id password isSeller")
     if (!user) {
-      return { status: 0, code: 200, data: "No user with this email" }
+      return { status: 0, code: 200, data: "No user with this email"}
     }
     const passCompare = await comparePass(user.password, req.body.password)
     if (!passCompare) {
       return { status: 0, code: 200, data: "Invalid login" }
     }
-
     return { status: 1, code: 200, data: user }
     
   } catch (error) {
@@ -57,10 +51,8 @@ exports.userDelete = async (req) => {
   try {
     const userId = req.params.id;
     let deleteUser = await users.deleteOne({_id: userId})
-
     return { status: 1, code: 200, data: "Account deleted" }
 
-    
   } catch (error) {
     return { status: 0, code: 200, data: "something went wrong" }
   }
