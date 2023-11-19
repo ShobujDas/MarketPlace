@@ -15,7 +15,7 @@ exports.userRegister = async (req) => {
     const seller = await sellers.findOne(query).count('total')
 
     if (seller != 0) {
-      return { status: 0, code: 200, data: "service name or email already exists" }
+      return { status: 0, code: 200, data: "email already exists" }
     }
 
     let pass = await encryptPass(req.body.password)
