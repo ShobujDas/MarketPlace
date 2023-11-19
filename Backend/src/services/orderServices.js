@@ -21,23 +21,21 @@ const paymentIntentS = async (req, res, next) => {
             payment_intent: "temporary",
         });
         await newOrder.save();
-
-        res.status(200).send("Successfully");
+        return { status: 0, code: 200, data: "Successfully Payment" }
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: true, message: "Unsuccessfully", detail: err.message });
+        return {status: 0, code: 200, data: "Unsuccessfully payment"}
     }
 };
 const getorderService=async (req)=>{
     try{
         const userId=req.userId;
         const isSeller=req.isSeller;
-        const orders=await orderModel.find({
-            $and:[
-                {$or:[{sellerID:userId},{buyerID:userId}]},{isCompleted:true}
+        return await orderModel.find({
+            $and: [
+                {$or: [{sellerID: userId}, {buyerID: userId}]}, {isCompleted: true}
             ]
-        }).populate(isSeller?'buyerID':'sellerID','username email image country')
-        return orders;
+        }).populate(isSeller ? 'buyerID' : 'sellerID', 'username email image country');
     }catch (err){
         throw {error:true,message:err.message}
     }

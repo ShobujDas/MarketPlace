@@ -35,6 +35,7 @@ const orderSchema=mongoose.Schema({
         required:true
     }
 
-},{"timeStamp":true,"verSionKey":false})
+},{timestamps:true,versionKey:false}
+);
 const OrderModel=mongoose.model("orders",orderSchema)
 module.exports=OrderModel;
