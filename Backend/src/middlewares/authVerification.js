@@ -12,14 +12,18 @@ module.exports = (req, res, next) => {
   if (decoded === null) {
     return res.status(401).json({
       success: false,
-      message: "Unauthorized"
+      status: 0,
+      code: 401,
+      data: "Unauthorized"
     })
   }
   else {
     let email = decoded['user']['email'];
     let id = decoded['user']['id'];
+    let isSeller = decoded['user']['isSeller'];
     req.headers.email = email;
     req.headers.id = id;
+    req.headers.isSeller = isSeller;
     next();
   }
 }

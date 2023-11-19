@@ -12,7 +12,7 @@ exports.user_register = async (req, res) => {
 exports.user_login = async (req, res) => {
     let result = await userLogin(req);
     if(result['status'] === 1){
-        let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id})
+        let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id, isSeller: result.data.isSeller})
         res.cookie("token", createdCookie.token, createdCookie.cookieOption)
         res.status(200).json({
             status: result.status,
@@ -68,7 +68,7 @@ exports.seller_login = async (req, res) => {
 
     if(result['status'] == 1){
 
-        let createdCookie = cookieMaker({email: req.body.email, id: result.data._id})
+        let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id, isSeller: result.data.isSeller })
 
         res.cookie("token", createdCookie.token, createdCookie.cookieOption)
 

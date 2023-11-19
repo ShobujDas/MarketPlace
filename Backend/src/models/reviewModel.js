@@ -21,5 +21,5 @@ const reviewSchema=mongoose.Schema({
 
 },{timestamps:true,versionKey:false})
 
-const ReviewModel=mongoose.model("orders",reviewSchema)
+const ReviewModel=mongoose.model("reviews",reviewSchema)
 module.exports=ReviewModel;
