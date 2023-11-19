@@ -18,7 +18,6 @@ exports.sellerRegister = async (req) => {
 
     let pass = await encryptPass(req.body.password)
     req.body.password = pass
-    console.log(req.body)
     const userCreate = await sellers.create(req.body)
 
     return { status: 1, code: 200, data: userCreate }

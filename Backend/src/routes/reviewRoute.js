@@ -1,13 +1,12 @@
 const express = require("express");
-const verifyToken = require('../middlewares/jwt');
-
+const authVerification = require('../middlewares/authVerification')
 const { createReview, getReviews, deleteReviews, updateReviews } = require("../controllers/reviewController");
 
 const router = express.Router();
 
-router.post("/createreview" ,verifyToken, createReview);
-router.get("/getreview/:gitId", getReviews);
-router.delete("/deletereview/:id", deleteReviews);
-router.put("/updatereview/:id", updateReviews);
+router.post("/create-review", authVerification, createReview);
+// router.get("/get-review/:id/:isSeller", getReviews);
+// router.delete("/delete-review/:id/:isSeller", deleteReviews);
+router.post("/update-review/:id/:isSeller/:reviewId", authVerification, updateReviews);
 
 module.exports = router;
