@@ -3,26 +3,31 @@ const gigModel=require('../models/gigModel')
 const createError=require("../util/createError")
 
 
-const paymentIntentS=async (req,res,next)=>{
-    try{
-        const gig= await gigModel.findById(req.params.gigId)
-        console.log("req.userId:", req.buyerId);
-        console.log("gig.userId:", gig.sellerId);
-        const newOrder=new orderModel({
-            gigId:gig._id,
-            img:gig.cover,
-            title:gig.title,
-            buyerId:req.buyerId,
-            sellerId:gig.sellerId,
-            price:gig.price,
-            payment_intent:"temporary",
+const paymentIntentS = async (req, res, next) => {
+    try {
+        const buyerId = req.headers.id;
+        const gig = await gigModel.findById(req.params.gigId);
+
+        if (!gig) {
+            return res.status(404).send("Gig not found");
+        }
+        const newOrder = new orderModel({
+            gigId: gig._id,
+            img: gig.cover,
+            title: gig.title,
+            buyerId: buyerId,
+            sellerId: gig.sellerId,
+            price: gig.price,
+            payment_intent: "temporary",
         });
         await newOrder.save();
-         res.status(200).send("successfully");
-    }catch (err){
-        res.status(200).send("Unsuccessfully");
+
+        res.status(200).send("Successfully");
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: true, message: "Unsuccessfully", detail: err.message });
     }
-}
+};
 const getorderService=async (req)=>{
     try{
         const userId=req.userId;
