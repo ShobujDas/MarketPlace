@@ -1,4 +1,4 @@
-const { createGig, deleteGig, updateGig, getGigById, getAllGigs } = require("../services/gigServices")
+const { createGig, deleteGig, updateGig, getGigById, getAllGigs, getGigByCategory } = require("../services/gigServices")
 
 // create gig
 exports.gigCreate = async (req, res) => {
@@ -27,5 +27,11 @@ exports.gigById = async (req, res) => {
 // get all gigs
 exports.AllGig = async (req, res) => {
     let result = await getAllGigs()
+    res.status(200).json(result)
+}
+
+// gig by category
+exports.gigByCategory = async (req, res) => {
+    let result = await getGigByCategory(req)
     res.status(200).json(result)
 }

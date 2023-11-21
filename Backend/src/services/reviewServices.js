@@ -71,7 +71,7 @@ exports.reviewDelete = async (req) => {
       return { status: 1, code: 200, data: "review deleted" }
     }
 
-    return { status: 1, code: 200, data: "could not delete review" }
+    return { status: 0, code: 200, data: "could not delete review" }
 
     
   } catch (error) {
