@@ -1,0 +1,12 @@
+/* custom design for the theme */
+
+:root{
+  --primary: #ff5454;
+  --alt-color: #ffffff;
+
+  --font-color: #0F2027;
+  --font-color-alt: #fff;
+
+  --header-font: "ROBOTO", sans-serif;
+  --paragraph-font: "cabin", sans-serif;
+}

@@ -1,32 +1,115 @@
-/*  */
-#loginIcon{
-    width: 10px;
-}
-#navbarSEction{
+/* navbar design */
+.navbar-section{
     width: 100%;
-    height: 70px;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    height: 65px;
+    display: block;
+    position: sticky;
+    top: 0;
+    background: var(--alt-color);
+    border-bottom: 2px solid #cecece;
+    border-bottom-style: dashed;
+    z-index: 100;
 }
-#loginSection:hover{
+
+.navbar-section .container{
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* logo */
+.navbar-section .logo a{
+    text-decoration: none;
+    color: var(--font-color);
+    font-weight: bold;
+    font-size: 32px;
+}
+.navbar-section .logo a span{
+    color: var(--primary);
+}
+
+/* menu */
+.navbar-section .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* links */
+.navbar-section .links ul{
+    list-style: none;
+}
+.navbar-section .links ul li{
+    display: inline-block;
+    padding: 0 20px;
+}
+.navbar-section .links ul li a{
+    text-decoration: none;
+    color: var(--font-color);
+    font-weight: bold;
+}
+.navbar-section .links ul li a:hover{
+    color: var(--primary);
+}
+
+/* controls */
+.navbar-section .controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-section .profile-btn{
+    position: relative;
+}
+.navbar-section .profile-btn .profile-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--primary);
+}
+
+.navbar-section .profile-options.open{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s ease;
+}
+.navbar-section .profile-options{
+    width: 150px;
+    height: auto;
+    border: 2px solid #cecece;
     border-radius: 5px;
-    color: red;
-    cursor: pointer;
-    transition: ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bs-gray-100);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: calc(100% + 10px);
+    left: calc(-100% - 20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
 }
-#loginMain{
-    margin-left: 50px;
+.profile-options a{
+    width: 100%;
+    text-decoration: none;
+    padding: 10px 0;
+    color: var(--font-color);
+    text-align: center;
+    font-weight: 500;
+}
+.profile-options a:not(:last-child){
+    border-bottom: 2px solid #cecece;
+}
+.profile-options a:hover{
+    color: var(--primary);
 }
 
-.slash{
-    font-size: 10px;
-    color: #d1d1d1;
-    padding:13px 0 0 0;
-}
 
-.nav-item #navLink{
-    color: rgb(37, 37, 37);
-}
-.nav-item #navLink:hover{
-    color: red;
+/* control button */
+.control-btn{
+    display: none;
 }
