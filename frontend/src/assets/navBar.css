@@ -1,0 +1,32 @@
+/*  */
+#loginIcon{
+    width: 10px;
+}
+#navbarSEction{
+    width: 100%;
+    height: 70px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+#loginSection:hover{
+    border-radius: 5px;
+    color: red;
+    cursor: pointer;
+    transition: ease-in;
+}
+#loginMain{
+    margin-left: 50px;
+}
+
+.slash{
+    font-size: 10px;
+    color: #d1d1d1;
+    padding:13px 0 0 0;
+}
+
+.nav-item #navLink{
+    color: rgb(37, 37, 37);
+}
+.nav-item #navLink:hover{
+    color: red;
+}
