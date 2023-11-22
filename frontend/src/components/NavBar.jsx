@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faUser } from '@fortawesome/free-regular-svg-icons';
 import "../assets/navBar.css";
 const NavBar = () => {
   return (
-      <div>
+      <div className="fromnavbar">
         <nav id="navbarSEction" className="navbar navbar-expand-lg fixed-top shadow-lg">
           <div className="container">
             <a className="navbar-brand" href="/">TrustHome</a>
@@ -41,7 +41,9 @@ const NavBar = () => {
             </div>
             <ul id="loginMain " className="hidden navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" id="loginSection" href="/login"><FontAwesomeIcon id="loginIcon" className="me-2 rounded" icon={faUser}/>Login</a>
+                <a className="nav-link" id="loginSection" href="/login">
+                {/* <FontAwesomeIcon id="loginIcon" className="me-2 rounded" icon={faUser}/> */}
+                  Login</a>
               </li>
               <li className="nav-item d-flex">
                 <span className="slash"> | </span>

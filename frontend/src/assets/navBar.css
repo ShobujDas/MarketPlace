@@ -1,4 +1,7 @@
-/*  */
+.fromnavbar{
+    min-height:80px ;
+}
+
 #loginIcon{
     width: 10px;
 }
