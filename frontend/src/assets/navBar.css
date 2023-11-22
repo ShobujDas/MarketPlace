@@ -1,5 +1,8 @@
-/* navbar design */
-.navbar-section{
+/*  */
+#loginIcon{
+    width: 10px;
+}
+#navbarSEction{
     width: 100%;
     height: 65px;
     display: block;
