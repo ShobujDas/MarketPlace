@@ -1,0 +1,25 @@
+/* design for gig cards */
+.gig-box{
+  border: 2px solid #cecece;
+  border-radius: 5px;
+  box-shadow: 2px 5px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.gig-box .gig-cover{
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.gig-box .text-content{
+  padding: 20px;
+  border-bottom: 2px solid #cecece;
+}
+.gig-box .text-content h4{
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+.gig-box .text-content .gig-cost{
+  color: var(--primary);
+}

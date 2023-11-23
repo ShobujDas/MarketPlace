@@ -26,7 +26,7 @@ exports.gigById = async (req, res) => {
 
 // get all gigs
 exports.AllGig = async (req, res) => {
-    let result = await getAllGigs()
+    let result = await getAllGigs(req)
     res.status(200).json(result)
 }
 
