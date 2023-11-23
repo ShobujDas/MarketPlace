@@ -7,10 +7,12 @@ const GigCards = ({data}) => {
     <div className="col-lg-4 col-md-6 col-sm-2 mt-3">
       <div className="gig-box">
 
+        {/* gig cover */}
         <div className="gig-cover">
           <img src={data['cover']} alt="" />
         </div>
 
+        {/* gig text content */}
         <div className="text-content">
           <NavLink to={`/services/${data['category']}/${data['_id']}`} className="gig-title">{data['title']}</NavLink>
           <p>{data['short_desc']}</p>
@@ -22,6 +24,7 @@ const GigCards = ({data}) => {
           </p>
         </div>
 
+        {/* gig provider */}
         <div className="provider-box">
           <div className="provider-detail">
             <div className="provider-img">

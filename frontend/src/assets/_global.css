@@ -70,7 +70,7 @@ p,a,button{
 
 /* buttons */
 .btn{
-  padding: 3px 10px;
+  padding: 5px 10px;
   background: transparent;
   color: var(--font-color);
   border: 2px solid #cecece;
@@ -83,11 +83,12 @@ p,a,button{
 .btn:hover{
   background: var(--primary);
   color: var(--font-color-alt);
+  border-color: var(--primary);
   transition: 0.3s;
 }
 
 .bg-btns{
-  padding: 5px 10px;
+  padding: 5px 15px;
   background: var(--primary);
   color: var(--font-color-alt);
   border: 2px solid var(--primary);
@@ -99,7 +100,7 @@ p,a,button{
 
 /* large butt0ns */
 .btn-lg{
-  padding: 10px 15px;
+  padding: 10px 25px;
 }
 
 button{

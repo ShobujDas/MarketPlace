@@ -2,5 +2,6 @@
 
 @import './assets/_variables.css';
 @import './assets/_global.css';
-@import './assets/HomePage.css';
 @import './assets/gigCards.css';
+@import './assets/categoryCards.css';
+@import './assets/HomePage.css';

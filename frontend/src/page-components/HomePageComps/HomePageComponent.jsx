@@ -5,19 +5,25 @@ import slider1 from "/slider-1.jpg"
 import slider2 from "/slider-2.jpg"
 import slider3 from "/slider-3.jpg"
 import { useEffect, useState } from "react";
-import { getAllGigs } from "../../helpers/api";
+import CatagoriesListReq, { getAllGigs } from "../../helpers/api";
 import GigCards from "../../components/cards/GigCards";
 import Catagories from "../../components/Catagories";
+import { NavLink } from 'react-router-dom';
+import CategoryCards from './../../components/cards/CategoryCards';
 
 const HomePageComponent = () => {
 
   const [gigs, setGigs] = useState([])
+  const [category, setCategory] = useState([])
 
   useEffect(() => {
 
     (async () => {
       let getGig = await getAllGigs(1, 10)
       setGigs(getGig.gigs)
+
+      let getCategory = await CatagoriesListReq()
+      setCategory(getCategory)
     })()
 
   }, [0])
@@ -113,6 +119,7 @@ const HomePageComponent = () => {
         </div>
       </section>
 
+      {/* gigs */}
       <section className="gigs my-section bg-body-tertiary" id="gigs">
         <div className="container">
           <div className="section-title">
@@ -127,10 +134,31 @@ const HomePageComponent = () => {
               )) : <h5 className="py-5 text-center">No services found</h5>
             }
           </div>
+
+          <div className="text-center mt-5">
+            <NavLink className="btn btn-lg">all services</NavLink>
+          </div>
         </div>
       </section>
 
-      <Catagories />
+      {/* category */}
+      <section className="category my-section" id="category">
+        <div className="container">
+          <div className="section-title">
+            <h3>Our service <span>categories</span></h3>
+            <p>Best services loved by our users</p>
+          </div>
+
+          <div className="row">
+            {
+              category.length != 0 ? category.map((e, index) => (
+                <CategoryCards data={e} key={index} />
+              )) : <h5 className="py-5 text-center">No categories found</h5>
+            }
+          </div>
+        </div>
+      </section>
+
     </>
   );
 };

@@ -1,0 +1,60 @@
+/* category cards */
+.category .category-box{
+  width: 100%;
+  height: 250px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.category-box .overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0;
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  transition: 0.4s;
+}
+
+.category-box .overlay .category-title{
+  color: var(--font-color-alt);
+  font-weight: 600;
+  font-size: 20px;
+}
+.category-box .overlay .category-desc{
+  color: var(--font-color-alt);
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.category-box .overlay .icon{
+  position: absolute;
+  top: calc(100% - 20px);
+  left: calc(100% - 20px);
+  transform: translate(-100%, -100%);
+  width: 30px;
+  height: 30px;
+  background: var(--alt-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--font-color);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+/* hover states */
+.category-box:hover .overlay{
+  background: rgba(0,0,0,0.6);
+  transition: 0.4s;
+}
+.category-box:hover .icon{
+  opacity: 1;
+  transition: 0.3s;
+}
