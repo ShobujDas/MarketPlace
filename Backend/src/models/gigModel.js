@@ -3,9 +3,8 @@ const { Schema } = mongoose;
 
 const GigSchema = new Schema(
   {
-    userId: {
+    sellerId: {
       type:  mongoose.Schema.Types.ObjectId,
-      ref: 'User',
       required: true,
     },
     title: {
@@ -13,6 +12,10 @@ const GigSchema = new Schema(
       required: true,
     },
     desc: {
+      type: String,
+      required: true,
+    },
+    short_desc: {
       type: String,
       required: true,
     },
@@ -24,8 +27,8 @@ const GigSchema = new Schema(
       type: Number,
       default: 0,
     },
-    cat: {
-      type: String,
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     price: {
@@ -42,11 +45,7 @@ const GigSchema = new Schema(
     },
     shortTitle: {
       type: String,
-      required: true,
-    },
-    shortDesc: {
-      type: String,
-      required: true,
+      required: false,
     },
     deliveryTime: {
       type: Number,
@@ -64,9 +63,14 @@ const GigSchema = new Schema(
       type: Number,
       default: 0,
     },
+    isActive: {
+      type: Boolean,
+      default: true
+    }
   },
   {
     timestamps: true,
+    versionKey: false
   }
 );
 

@@ -9,7 +9,7 @@ const orderSchema=mongoose.Schema({
         type:String,
         required: true
     },
-    gigID:{
+    gigId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Gig",
         required:true
@@ -18,11 +18,11 @@ const orderSchema=mongoose.Schema({
         type:Number,
         required:true,
     },
-    sellerID:{
+    sellerId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
-    buyerID:{
+    buyerId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
@@ -35,6 +35,7 @@ const orderSchema=mongoose.Schema({
         required:true
     }
 
-},{"timeStamp":true,"verSionKey":false})
+},{timestamps:true,versionKey:false}
+);
 const OrderModel=mongoose.model("orders",orderSchema)
 module.exports=OrderModel;

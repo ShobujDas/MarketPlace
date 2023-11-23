@@ -1,99 +1,103 @@
-const Gig = require("../models/userModel");
+const { cookieMaker } = require("../helper/helper");
+const { sellerRegister, sellerDelete, getSellerById, sellerUpdate, sellerLogin } = require("../services/sellerServices");
+const { userRegister, userLogin, userDelete, getUserById, userUpdate } = require("../services/userServices");
 
-const { createToken, verifyToken } = require("../util/jwt");
-
-
-const register = (req, res) => {
-    const { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller } = req.body;
-    if (!UserName || !Email || !Password) {
-        return res.status(400).json({ error: "Please give require data" });
-    }
-
-    if (users.same(user => user.UserName === UserName)) {
-        return res.status(400).json({ error: "name is already taken" });
-    }
-    //Create new user
-    const newUser = { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller };
-    users.push(newUser);
-
-    return res.status(201).send({
-        massage: "name is already taken",
-        newUser: newUser
-    });
+// registration controller
+exports.user_register = async (req, res) => {
+    let result = await userRegister(req)
+    res.status(200).json(result);
 }
 
-const login = (req, res) => {
-    const { UserName, Email, Password } = req.body;
-    if (!UserName || !Email || !Password) {
-        return res.status(400).json({ error: "Please give require data" });
+// login controller
+exports.user_login = async (req, res) => {
+    let result = await userLogin(req);
+    if(result['status'] === 1){
+        let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id, isSeller: result.data.isSeller})
+        res.cookie("token", createdCookie.token, createdCookie.cookieOption)
+        res.status(200).json({
+            status: result.status,
+            code: result.code,
+            data: result.data
+        })
+
+        return
     }
 
-    const user = users.find(user => user.UserName === UserName && user.Password === Password)
+    res.status(200).json(result)
+}
 
-    if (!user) {
-        return res.status(401).json({ error: "Invalid userName or Password" });
-    }
-    //Create new user
-    const newUser = { UserName, Email, Password, Img, Country, Phone, Desc, IsSeller };
-    users.push(newUser);
+// user logout
+exports.logout = async (req, res) => {
 
     let cookieOption = {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() - 24 * 60 * 60 * 1000),
         httpOnly: false
     }
-
-    const token = createToken(newUser)
-    res.cookie("token", token, cookieOption)
-    return res.status(201).cookie({
-        massage: "Succesfullly login",
-        data: newUser,
-    });
+    res.cookie('token', "", cookieOption);
+    res.status(201).json({ status: 1, code: 200, data: "logout successfull" });
 }
 
-const logout = (req, res) => {
-    //it will ne managed from the frontend because we do not store the token
-    // const {token}=req.body;
-    // if(!token){
-    //     return res.status(400).send({massage:"Give  token"}) ;
-    // }
-    // const user =verifyToken(token);
-
-    // if(!user){
-    //     return res.status(401).send({error:"Invalid userName or Password"});
-    // }
-    // const index =activetokens.
-
-
-
-    // we wil do it in frontend
-    return res.status(201).send({ massage: "Logout succesfully" });
+// delete user
+exports.deleteUser = async (req, res) => {
+    let result = await userDelete(req)
+    res.status(200).json(result)
 }
 
-const deleteUser = async (req, res, next) => {
-    const userId = req.params.id;
-    try {
-        const user = await User.findById(userId)
-        if (req.userId !== user._id.toString()) {
-            return next(createError(403, "You can delete your account"))
-        }
-        await User.findByIdAndDelete(userId)
-        res.status(200).send("deleted")
+// delete user
+exports.updateUser = async (req, res) => {
+    let result = await userUpdate(req)
+    res.status(200).json(result)
+}
 
-    } catch (e) {
-        console.log(e);
-        res.status(500).send(e);
+// get user by id
+exports.getUser = async (req, res) => {
+    let result = await getUserById(req)
+    res.status(200).json(result)
+}
+
+
+// seller register
+exports.seller_register = async (req, res) => {
+    let result = await sellerRegister(req)
+    res.status(200).json(result);
+}
+
+// seller login
+exports.seller_login = async (req, res) => {
+    let result = await sellerLogin(req)
+
+    if(result['status'] == 1){
+
+        let createdCookie = cookieMaker({ email: req.body.email, id: result.data._id, isSeller: result.data.isSeller })
+
+        res.cookie("token", createdCookie.token, createdCookie.cookieOption)
+
+        res.status(200).json({
+            status: result.status,
+            code: result.code,
+            data: result.data
+        })
+
+        return
     }
 
+    res.status(200).json(result)
 }
-const getUser = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.params.id)
-        res.status(200).send(user)
-    } catch (e) {
-        console.log(e);
-        res.status(500).send(e);
-    }
+
+// delete seller
+exports.deleteSeller = async (req, res) => {
+    let result = await sellerDelete(req)
+    res.status(200).json(result)
 }
-module.exports = {
-    deleteUser, getUser,register,login,logout
+
+// delete user
+exports.updateSeller = async (req, res) => {
+    let result = await sellerUpdate(req)
+    res.status(200).json(result)
+}
+
+// get seller by id
+exports.getSeller = async (req, res) => {
+    let result = await getSellerById(req)
+    res.status(200).json(result)
 }

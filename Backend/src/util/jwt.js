@@ -11,7 +11,7 @@ const createToken =(user)=>{
 const verifyToken =(token)=>{
     try {
         const decoded = jwt.verify(token,secretkey);
-        return jwt.decode.user;
+        return decoded;
     } catch (error) {
         return null;
     }

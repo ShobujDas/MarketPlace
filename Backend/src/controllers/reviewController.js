@@ -1,30 +1,10 @@
-const ReviewModel = require("../models/reviewModel");
+const { reviewCreate, reviewUpdate } = require("../services/reviewServices");
+
 
 //Create Review
 exports.createReview = async (req, res) => {
-  try {
-    const { GigId, UserId, Star, Desc } = req.body;
-
-    if (!GigId || !UserId || !Star || !Desc) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
-
-    const newReview = new ReviewModel({
-      GigId,
-      UserId,
-      Star,
-      Desc,
-    });
-
-    const savedReview = await newReview.save();
-    res.status(201).send({
-      success: true,
-      message: "Create Review Succefull",
-      savedReview,
-    });
-  } catch (error) {
-    res.status(500).json({ error: "Could not create the review" });
-  }
+  let result = await reviewCreate(req)
+  res.status(200).json(result)
 };
 
 //get single review
@@ -64,29 +44,6 @@ exports.deleteReviews = async (req, res) => {
 
 //update Review
 exports.updateReviews = async (req, res) => {
-  try {
-    const { GigId, UserId, Star, Desc } = req.body;
-
-    if (!GigId || !UserId || !Star || !Desc) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
-
-    const reviews = await ReviewModel.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body },
-      { new: true }
-    ).save();
-
-    res.status(200).send({
-      success: true,
-      message: "Update review Successfully",
-      reviews
-    });
-  } catch (error) {
-    res.status(500).send({
-      success: false,
-      error: error.message,
-      message: "Error in deleteing Single Review",
-    });
-  }
+  let result = await reviewUpdate(req)
+  res.status(200).json(result)
 };

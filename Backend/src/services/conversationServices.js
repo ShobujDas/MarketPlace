@@ -1,5 +1,5 @@
-const createError = require("../utils/createError.js");
-const Conversation = require("../models/conversationModle");
+const createError = require("../util/createError.js");
+const Conversation = require("../models/conversationModel");
 
 // create conversation
 const createConversation = async (req) => {
@@ -15,13 +15,15 @@ const createConversation = async (req) => {
     const savedConversation = await newConversation.save();
 
     return {
-      status: 200,
+      status: 1,
+      code: 200,
       data: savedConversation
     }
 
   } catch (err) {
     return {
-      status: 200,
+      status: 0,
+      code: 200,
       data: "something went wrong"
     }
   }
@@ -43,12 +45,14 @@ const updateConversation = async (req) => {
     );
 
     return {
-      status: 200,
+      status: 1,
+      code: 200,
       data: updatedConversation
     }
   } catch (err) {
     return {
-      status: 200,
+      status: 0,
+      code: 200,
       data: "something went wrong"
     }
   }
@@ -61,19 +65,22 @@ const getSingleConversation = async (req) => {
     const conversation = await Conversation.findOne({ id: req.params.id });
     if (!conversation) {
       return {
-        status: 200,
+        status: 0,
+        code: 200,
         data: "No conversation found"
       }
     };
 
     return {
-      status: 200,
+      status: 1,
+      code: 200,
       data: conversation
     }
 
   } catch (err) {
     return {
-      status: 200,
+      status: 0,
+      code: 200,
       data: "something went wrong"
     }
   }
@@ -88,12 +95,14 @@ const getConversations = async (req) => {
     ).sort({ updatedAt: -1 });
 
     return {
-      status: 200,
+      status: 1,
+      code: 200,
       data: conversations
     }
   } catch (err) {
     return {
-      status: 200,
+      status: 0,
+      code: 200,
       data: "something went wrong"
     }
   }

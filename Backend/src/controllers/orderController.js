@@ -1,18 +1,16 @@
 const orderServices=require("../services/orderServices")
-const getOrders=async (req,res)=>{
-    try{
-        const userId=req.userId;
-        const isSeller=req.isSeller;
-        const order=await orderServices.getorderService(userId,isSeller);
-        return res.status(200).json({
-            status:"success",
-            data:order
-        })
-    }catch (err){
-        res.status(400).json({status:"Fail",data:err})
-    }
+const createError=require("../util/createError")
+const paymentIntCont=async (req,res)=>{
+
+        const newOrders=await orderServices.paymentIntentS(req,res)
+        res.status(200).json(newOrders)
+
 }
 
+const getOrderController=async (req,res)=>{
+        const order=await orderServices.getorderService(req);
+        res.status(200).json(order)
+}
 module.exports={
-    getOrders
+    getOrderController,paymentIntCont
 }
