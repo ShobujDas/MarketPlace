@@ -41,7 +41,7 @@ ul {
   position: absolute;
   left: 0;
   bottom: -10px;
-  background-color: #e91e63;
+  background-color: var(--primary);
   height: 2px;
   box-sizing: border-box;
   width: 50px;
@@ -76,8 +76,8 @@ ul {
   transition: all 0.5s ease;
 }
 .footer-col .social-links a:hover {
-  color: #24262b;
-  background-color: #ffffff;
+  color: var(--font-color-alt);
+  background-color: var(--primary);
 }
 
 /*responsive*/
