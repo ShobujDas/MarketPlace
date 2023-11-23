@@ -1,0 +1,11 @@
+.iconsImage {
+    width: 100px;
+    height: auto;
+    margin: 0;
+    position: relative;
+    left: 33%;
+}
+#catagorySection{
+    width: 300px;
+    margin: 5px;
+}

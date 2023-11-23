@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import "../assets/navBar.css";
+import homePage from "../pages/HomePage.jsx";
+import UserLoginPage from "../pages/UserLoginPage.jsx";
 const NavBar = () => {
   return (
       <div>
@@ -22,30 +24,30 @@ const NavBar = () => {
               <div className="offcanvas-body">
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3" id="navItemSection">
                   <li className="nav-item">
-                    <NavLink id="navLink" className="nav-link mx-auto-lg" to="/">Home</NavLink>
+                    <NavLink id="navLink" className="nav-link mx-auto-lg" to={homePage}>Home</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a id="navLink" className="nav-link mx-auto-lg" href="/about">About</a>
+                    <NavLink id="navLink" className="nav-link mx-auto-lg" to="">About</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a id="navLink" className="nav-link mx-auto-lg" href="/contact">Contact</a>
+                    <NavLink id="navLink" className="nav-link mx-auto-lg" to="/">Contact</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a id="navLink" className="nav-link mx-auto-lg" href="/contact">Listing</a>
+                    <NavLink id="navLink" className="nav-link mx-auto-lg" to="/">Listing</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a id="navLink" className="nav-link mx-auto-lg" href="/contact">Event</a>
+                    <NavLink id="navLink" className="nav-link mx-auto-lg" to="/">Event</NavLink>
                   </li>
                 </ul>
               </div>
             </div>
             <ul id="loginMain " className="hidden navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" id="loginSection" href="/login"><FontAwesomeIcon id="loginIcon" className="me-2 rounded" icon={faUser}/>Login</a>
+                <NavLink className="nav-link" id="loginSection" to={UserLoginPage}><FontAwesomeIcon id="loginIcon" className="me-2 rounded" icon={faUser}/>Login</NavLink>
               </li>
               <li className="nav-item d-flex">
                 <span className="slash"> | </span>
-                <a className="nav-link" id="loginSection" href="/register">Register</a>
+                <NavLink className="nav-link" id="loginSection" to="/">Register</NavLink>
               </li>
             </ul>
           </div>
