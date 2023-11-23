@@ -7,6 +7,7 @@ import slider3 from "/slider-3.jpg"
 import { useEffect, useState } from "react";
 import { getAllGigs } from "../../helpers/api";
 import GigCards from "../../components/cards/GigCards";
+import Catagories from "../../components/Catagories";
 
 const HomePageComponent = () => {
 
@@ -128,6 +129,8 @@ const HomePageComponent = () => {
           </div>
         </div>
       </section>
+
+      <Catagories />
     </>
   );
 };

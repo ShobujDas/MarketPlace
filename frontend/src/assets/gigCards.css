@@ -4,22 +4,80 @@
   border-radius: 5px;
   box-shadow: 2px 5px 10px rgba(0,0,0,0.1);
   overflow: hidden;
+  transition: 0.4s;
 }
 
 .gig-box .gig-cover{
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
+}
+.gig-box .gig-cover img{
+  transform: scale(1) rotate(0deg);
+  transition: 0.4s;
 }
 
 .gig-box .text-content{
-  padding: 20px;
-  border-bottom: 2px solid #cecece;
+  padding: 20px 15px 0 15px;
 }
-.gig-box .text-content h4{
+.gig-box .text-content .gig-title{
   font-size: 17px;
+  text-decoration: none;
+  color: var(--font-color);
+  font-weight: 600;
   margin-bottom: 15px;
+  display: inline-block;
+}
+.gig-box .text-content .gig-title:hover{
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 .gig-box .text-content .gig-cost{
   color: var(--primary);
+}
+
+.gig-box .text-content .reviews{
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.gig-box .text-content .reviews .icon{
+  font-size: 16px;
+}
+
+/* image provider */
+.gig-box .provider-box{
+  border-top: 1px solid #cecece;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gig-box .provider-box .provider-detail{
+  display: flex;
+  align-items: center;
+}
+
+.gig-box .provider-box .provider-img{
+  width: 30px;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.price{
+  color: var(--primary);
+}
+
+/* hover actions */
+.gig-box:hover .provider-box{
+  border-color: var(--primary);
+  transition: 0.4s;
+}
+.gig-box:hover .gig-cover img {
+  transform: scale(1.1) rotate(-2deg);
+  transition: 0.4s;
 }

@@ -73,6 +73,7 @@ exports.getAllGigs = async (req) => {
         starNumber: 1,
         price: 1,
         category: 1,
+        totalStars:1,
         'provider.serviceName': 1,
         'provider.img': 1
       }
@@ -123,6 +124,9 @@ exports.getGigByCategory = async (req) => {
         title: 1,
         short_desc: 1,
         starNumber: 1,
+        price: 1,
+        category: 1,
+        totalStars: 1,
         'provider.serviceName': 1,
         'provider.img': 1
       }

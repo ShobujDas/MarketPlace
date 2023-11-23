@@ -1,4 +1,4 @@
-import { TbCoinTaka } from "react-icons/tb";
+import { FaStar } from "react-icons/fa6";
 import { NavLink } from 'react-router-dom';
 
 const GigCards = ({data}) => {
@@ -12,19 +12,25 @@ const GigCards = ({data}) => {
         </div>
 
         <div className="text-content">
-          <h4 className="gig-title">{data['title']}</h4>
+          <NavLink to={`/services/${data['category']}/${data['_id']}`} className="gig-title">{data['title']}</NavLink>
           <p>{data['short_desc']}</p>
-          <div className="d-flex justify-content-between align-items-center mt-4">
-            <NavLink to={`/services/${data['category']}/${data['_id']}`} className={"btn"}>see more</NavLink>
-            <p className="gig-cost mb-0 fw-bold"><span className="fs-5"><TbCoinTaka /></span> {data['price']}</p>
-          </div>
+
+          <p className="reviews mb-2">
+            <span className="icon text-warning me-1 mb-1"><FaStar /></span>
+            {data['starNumber'].toFixed(2)}
+            <span className="review amount ms-3 text-black-50">{data['totalStars']} reviews</span>
+          </p>
         </div>
 
-        <div className="provider-detail">
-          <div className="provider-img">
-            <img src="" alt="" />
+        <div className="provider-box">
+          <div className="provider-detail">
+            <div className="provider-img">
+              <img src={data['provider']['img']} alt="" />
+            </div>
+            <h6 className="ms-2 mt-1 pt-1">{data['provider']['serviceName']}</h6>
           </div>
-          <h6>{data['provider']['serviceName']}</h6>
+
+          <div className="price"><p className="mb-0 fw-bold">৳ {data['price']}</p></div>
         </div>
 
       </div>
