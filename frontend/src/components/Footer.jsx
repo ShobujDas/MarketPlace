@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="roww">
             <div className="footer-col">
               <h4>company</h4>
-              <ul>
+              <ul className="ms-0 ps-0">
                 <li>
                   <a href="#">about us</a>
                 </li>
@@ -25,7 +25,7 @@ const Footer = () => {
             </div>
             <div className="footer-col">
               <h4>get help</h4>
-              <ul>
+              <ul className="ms-0 ps-0">
                 <li>
                   <a href="#">FAQ</a>
                 </li>
@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
             <div className="footer-col">
               <h4>online shop</h4>
-              <ul>
+              <ul className="ms-0 ps-0">
                 <li>
                   <a href="#">watch</a>
                 </li>
