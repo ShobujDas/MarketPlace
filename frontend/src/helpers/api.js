@@ -1,7 +1,7 @@
 import axios from "axios";
 import { errorToast } from './alert';
 
-let BASEURL="http://localhost:8080/api/v1"
+let BASEURL = "https://test-server-2-u462.onrender.com/api/v1"
 
 export default async function CatagoriesListReq(){
     try {

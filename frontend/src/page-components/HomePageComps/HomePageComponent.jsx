@@ -7,7 +7,6 @@ import slider3 from "/slider-3.jpg"
 import { useEffect, useState } from "react";
 import CatagoriesListReq, { getAllGigs } from "../../helpers/api";
 import GigCards from "../../components/cards/GigCards";
-import Catagories from "../../components/Catagories";
 import { NavLink } from 'react-router-dom';
 import CategoryCards from './../../components/cards/CategoryCards';
 
