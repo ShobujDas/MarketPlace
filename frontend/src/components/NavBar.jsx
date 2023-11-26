@@ -18,7 +18,7 @@ const NavBar = ({profileImg}) => {
         <div className="container">
 
           <div className="logo">
-            <a href="">
+            <a href="/">
               Trust<span>Home</span>
             </a>
           </div>

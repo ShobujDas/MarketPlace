@@ -23,7 +23,7 @@ const LoginForm = () => {
 
                     <div className="col-md-8 mx-auto ">
                         <div className="card shadow border border-0 rounded my-3">
-                            <img className="loginImage" src= {slider}alt="slider" />
+                            <img className="loginImage" src= {slider} alt="slider" />
                             <div className="card-body p-5">
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>

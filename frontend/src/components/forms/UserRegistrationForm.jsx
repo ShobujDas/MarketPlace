@@ -66,7 +66,7 @@ const UserRegistrationForm = () => {
                     </div>
                   <div className="input-group mb-3">
                     <div className="col-6 mx-auto">
-                      <button className="btn btn-primary"></button>
+                      <button className=""></button>
                     </div>
                   </div>
                 </form>
