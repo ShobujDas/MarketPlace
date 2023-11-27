@@ -1,0 +1,77 @@
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+.section{
+    animation: 1s ease-in-out 0s 1 slideInFromLeft;
+}
+.coverSection{
+    width: 99.2%;
+    background-color: brown;
+    color: white;
+    height: 250px;
+    border-radius: 4px;
+}
+.slideText{
+    animation: 0.8s ease-in-out 0s 1 slideInFromLeft;
+    position: relative;
+    top: 80px;
+    left: 60px;
+}
+.inputField{
+    border-radius: 4px;
+    display: flex;
+    border: 1px solid rgb(207, 207, 207);
+    padding: 11px;
+    width: 100%;
+}
+.inputField:focus-visible{
+    outline: 2px solid rgb(255, 0, 0);
+}
+
+.registerBTN{
+    padding: 5px 10px;
+    color: white;
+    background: rgb(228, 35, 1);
+    border: 2px solid rgb(255, 38, 0);
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 3px;
+    width: 350px;
+    height: 40px;
+}
+
+
+.registerBTN:hover{
+    padding: 5px 10px;
+    background: rgb(221, 34, 1);
+    border: 2px solid rgb(221, 34, 1);
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 3px;
+}
+.horigonline{
+    width: 100%;
+    background-color: red;
+    height: 2px;
+}
+.redirectLogin{
+    margin: 4px;
+}
+.redirectLogin a {
+    text-decoration: none;
+}
+.redirectLogin  span{
+    cursor: pointer;
+    color: rgb(228, 35, 1);
+
+}

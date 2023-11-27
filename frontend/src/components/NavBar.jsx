@@ -29,6 +29,7 @@ const NavBar = ({profileImg}) => {
                 <li><NavLink to={"/"}>Home</NavLink></li>
                 <li><NavLink to={"/"}>Services</NavLink></li>
                 <li><NavLink to={"/"}>Category</NavLink></li>
+                <li><NavLink to={"/become-seller"}>Become Seller</NavLink></li>
               </ul>
             </div>
             <div className="controls">
@@ -39,6 +40,7 @@ const NavBar = ({profileImg}) => {
                 </div>
                 <div className={`profile-options ${showPfp ? "open" : ""}`}>
                   <NavLink to={"/login/user"}>Login</NavLink>
+
                   <NavLink to={"/register/user"}>Register</NavLink>
                   <NavLink to={"/"}>Dashboard</NavLink>
                   <NavLink to={"/"}>Logout</NavLink>

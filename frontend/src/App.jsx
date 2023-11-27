@@ -3,6 +3,8 @@ import HomePage from './pages/HomePage';
 import UserLoginPage from "./pages/UserLoginPage";
 import SingleService from './pages/SingleService';
 import UserRegistrationPage from "./pages/UserRegistrationPage.jsx";
+import SellerRegPage from "./pages/SellerRegPage.jsx";
+
 
 
 const App = () => {
@@ -15,6 +17,9 @@ const App = () => {
           <Route path="/login/seller" element={<UserLoginPage />} />
           <Route path="/register/user" element={<UserRegistrationPage />} />
           <Route path="/services/:category/:id" element={<SingleService />} />
+          <Route path="/become-seller" element={<SellerRegPage />} />
+
+
         </Routes>
       </BrowserRouter>
     </>
