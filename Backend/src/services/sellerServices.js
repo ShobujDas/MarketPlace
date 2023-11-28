@@ -5,7 +5,7 @@ const { encryptPass, comparePass } = require("../util/passSecurity");
 // user registration service
 exports.sellerRegister = async (req) => {
   try {
-    let query = { $or: [{ email: req.body.email }, { serviceName: req.body.serviceName }] }
+    let query = { $or: [{ email: req.body.email }] }
     const seller = await sellers.findOne(query).count('total')
 
     if (seller != 0) {
