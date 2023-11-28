@@ -42,7 +42,7 @@ const NavBar = ({profileImg}) => {
                   <NavLink to={"/login/user"}>Login</NavLink>
 
                   <NavLink to={"/register/user"}>Register</NavLink>
-                  <NavLink to={"/"}>Dashboard</NavLink>
+                  <NavLink to={"/dashboard/user"}>Dashboard</NavLink>
                   <NavLink to={"/"}>Logout</NavLink>
                 </div>
               </button>
