@@ -17,7 +17,7 @@ router.get('/seller-login', seller_login)
 router.post('/seller-register', seller_register)
 router.post('/seller-delete/:id', authVerification, deleteSeller)
 router.post('/seller-update/:id', authVerification, updateSeller)
-router.get('/seller/:id', authVerification, getSeller)
+router.get('/seller/:id', getSeller)
 
 router.post('/logout', authVerification, logout)
 module.exports = router

@@ -37,7 +37,7 @@ exports.updateGig = async (req) => {
 // gig by id
 exports.getGigById = async (req) => {
   try {
-    let result = await gig.findOne({ _id: req.params.id })
+    let result = await gig.findOne({ _id: req.params.id, isActive: true })
     return { status: 1, code: 200, data: result }
     
   } catch (error) {
