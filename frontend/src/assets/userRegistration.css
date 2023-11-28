@@ -6,7 +6,7 @@
     }
     100% {
         opacity: 100%;
-        transform: translateX(0);
+        transform: translateX(0%);
     }
 }
 .section{

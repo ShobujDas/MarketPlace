@@ -1,8 +1,29 @@
 import Accordion from "./Accordion/Accordion.jsx";
 import faqs from "../helpers/data.js";
 import "../assets/userRegistration.css"
+import {useForm} from "react-hook-form";
+import {successToast} from "../helpers/alert.js";
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 const SellerRegistration = () => {
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+    const onSignUp=async(data)=>{
+
+        try {
+            const res = await axios.post("http://localhost:8080/api/v1/seller-register",data);
+            if(res.data.status===1){
+                successToast("Account created successfully")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div>
             <div className='section'>
@@ -25,39 +46,114 @@ const SellerRegistration = () => {
                                     <p className='text-center'>Whether you have questions or you would just like to say hello, contact us.</p>
                                     <hr />
                                 </div>
-                                <div className='card-body '>
-                                    <div className='d-flex gap-2 justify-content-center'>
-                                        <div className="mb-3 w-50">
-                                            <label className="form-label">First Name</label>
-                                            <input type="text" className="inputField"  placeholder="First Name"/>
-                                        </div>
-                                        <div className="mb-3 w-50">
-                                            <label className="form-label">Last Name</label>
-                                            <input type="text" className="inputField"  placeholder="Last Name"/>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Email</label>
-                                        <input type="email" className="inputField"  placeholder="name@example.com"/>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Password</label>
-                                        <input type="password" className="inputField"  placeholder="********"/>
-                                    </div>
-                                    <div className='mb-3'>
-                                        <textarea className="inputField" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'></textarea>
-                                    </div>
+                                <form onSubmit={handleSubmit(onSignUp)}>
+                                    <div className='card-body '>
+                                        <div className='d-flex gap-2 justify-content-center'>
+                                            <div className="mb-3 w-50">
+                                                <label className="form-label">Service Name</label>
+                                                <input type="text" className="inputField"  placeholder="Service Name"
+                                                       {...register("serviceName", {
+                                                           required: true
 
-                                    <div className='d-flex gap-2 justify-content-center'>
-                                        <span></span>
+                                                       })}
+                                                />
+                                                {errors.serviceName && <p className='text-danger'>{errors.serviceName.message}</p>}
+                                            </div>
+                                            <div className="mb-3 w-50">
+                                                <label className="form-label">Phone Number</label>
+                                                <input type="text" className="inputField"  placeholder="Phone Number"
+                                                       {...register("phone", {
+                                                           required: true
+                                                       })}
+                                                />
+                                                {errors.phone && <p className='text-danger'>{errors.phone.message}</p>}
+                                            </div>
+                                        </div>
                                         <div className="mb-3">
-                                            <button type="button" className="registerBTN">Register</button>
+                                            <label className="form-label">Email</label>
+                                            <input type="email" className="inputField"  placeholder="name@example.com"
+                                                   {...register("email", {
+                                                       required: true
+                                                   })}
+                                            />
+                                            {errors.email && <p className='text-danger'>{errors.email.message}</p>}
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Profile</label>
+                                            <input type="text" className="inputField"  placeholder="Profile Link"
+                                                   {...register("img", {
+                                                       required: true
+                                                   })}
+                                            />
+                                            {errors.img && <p className='text-danger'>{errors.img.message}</p>}
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <label className="form-label">Password</label>
+                                            <input type="password" className="inputField"  placeholder="********"
+                                                   {...register("password", {
+                                                       required: true
+                                                   })}
+                                            />
+                                            {errors.password && <p className='text-danger'>{errors.password.message}</p>}
+                                        </div>
+                                        <div className='d-flex gap-2 justify-content-center'>
+                                            <div className="mb-3 w-50">
+                                                <label className="form-label">Road NO.</label>
+                                                <input type="text" className="inputField"  placeholder="Road NO."
+                                                       {...register("road", {
+                                                           required: false
+                                                       })}
+                                                />
+
+                                            </div>
+                                            <div className="mb-3 w-50">
+                                                <label className="form-label">House No</label>
+                                                <input type="text" className="inputField"  placeholder="House No"
+                                                       {...register("houseNo", {
+                                                           required: false
+                                                       })}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className='d-flex gap-2 justify-content-center'>
+                                            <div className="mb-3 w-50">
+                                                <label className="form-label">City Name</label>
+                                                <input type="text" className="inputField"  placeholder="City Name"
+                                                       {...register("city", {
+                                                           required: false
+                                                       })}
+                                                />
+
+                                            </div>
+                                            <div className="mb-3 w-50">
+                                                <label className="form-label">Country Name</label>
+                                                <input type="text" className="inputField"  placeholder="Country Name"
+                                                       {...register("country", {
+                                                           required: false
+                                                       })}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className='mb-3'>
+                                        <textarea className="inputField" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'
+                                                  {...register("decs", {
+                                                      required: false
+                                                  })}
+                                        ></textarea>
+                                        </div>
+
+                                        <div className='d-flex gap-2 justify-content-center'>
+                                            <span></span>
+                                            <div className="mb-3">
+                                                <button type="submit" className="registerBTN">Register</button>
+                                            </div>
+                                        </div>
+                                        <div className='redirectLogin'>
+                                            <Link to="#">Already have an account? <span>Log In!</span></Link>
                                         </div>
                                     </div>
-                                    <div className='redirectLogin'>
-                                        <div href="#">Already have an account? <span>Log In!</span></div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
