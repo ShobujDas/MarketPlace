@@ -1,5 +1,5 @@
 import axios from "axios";
-import { errorToast } from './alert';
+import {errorToast, successToast} from './alert';
 
 let BASEURL = "http://localhost:5000/api/v1"
 
@@ -61,3 +61,19 @@ export const sellerById = async (id) => {
         errorToast("something went wrong")
     }
 }
+
+//http://localhost:8080/api/v1/seller-register
+
+export const sellerRegistraion = async (data) => {
+    try {
+        let result = await axios.post(`${BASEURL}/seller-register`,data);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
+            return successToast("Account created successfully")
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+};

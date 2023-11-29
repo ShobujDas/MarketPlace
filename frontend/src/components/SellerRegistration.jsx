@@ -2,11 +2,11 @@ import Accordion from "./Accordion/Accordion.jsx";
 import faqs from "../helpers/data.js";
 import "../assets/SellerBuyer.css"
 import {useForm} from "react-hook-form";
-import {successToast} from "../helpers/alert.js";
-import axios from "axios";
+
 import {Link} from "react-router-dom";
 import {FaHeadphonesSimple, FaRegAddressCard, FaUserCheck} from "react-icons/fa6";
 import {RiMoneyDollarCircleFill} from "react-icons/ri";
+import {sellerRegistraion} from "../helpers/api.js";
 
 const SellerRegistration = () => {
 
@@ -18,10 +18,8 @@ const SellerRegistration = () => {
     const onSignUp=async(data)=>{
 
         try {
-            const res = await axios.post("http://localhost:8080/api/v1/seller-register",data);
-            if(res.data.status===1){
-                successToast("Account created successfully")
-            }
+            await sellerRegistraion(data);
+
         } catch (error) {
             console.log(error)
         }
@@ -32,7 +30,7 @@ const SellerRegistration = () => {
                 <div className='coverSection my-2 mx-2'>
                     <div className='slideText'>
                         <h1>Contact us</h1>
-                        <p>We'd love to talk about how we can help you.</p>
+                        <p>We&apos;d love to talk about how we can help you.</p>
                     </div>
                 </div>
                 <div className='container mx-auto my-5'>

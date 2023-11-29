@@ -2,7 +2,7 @@
 
 import '../../assets/loginPage.css'
 import slider1 from "../../../public/slider-1.jpg";
-import {FiLogIn} from "react-icons/fi";
+
 import {FaHeadphonesSimple, FaRegAddressCard, FaUserCheck} from "react-icons/fa6";
 import {RiMoneyDollarCircleFill} from "react-icons/ri";
 const UserRegistrationForm = () => {

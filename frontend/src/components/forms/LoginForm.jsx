@@ -47,7 +47,7 @@ const LoginForm = () => {
                                     </div>
                                     <div className="mb-3 my-2 d-flex justify-content-between" id="forterms">
                                         <span className="keepme"><input className="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault"/> Keep me signed in </span>
-                                        <p>Don't have an account? <Link to="/register/user" className="registerNow link-danger cursor-pointer">Register Now!</Link></p>
+                                        <p>Don&apos;t have an account? <Link to="/register/user" className="registerNow link-danger cursor-pointer">Register Now!</Link></p>
                                     </div>
                                     <div className="mb-3 mx-auto d-flex gap-2 justify-content-center mt-2 position-relative">
                                         <button type="button" className="loginBtn" >Login Now <span><FiLogIn/></span></button>
