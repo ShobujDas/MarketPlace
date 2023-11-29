@@ -17,20 +17,11 @@ app.use(expressMongoSanitize());
 app.use(express.json({limit:'50mb'}));
 app.use(express.urlencoded({ limit: '50mb' }));
 
-const userRoute = require('./src/routes/userRoute')
-app.use("/api/v1", userRoute)
 
-const categoryRoutes = require('./src/routes/routes')
-app.use("/api/v1", categoryRoutes)
+// route connection
+const routes = require('./src/routes/routes')
+app.use("/api/v1", routes)
 
-const gigRoutes = require('./src/routes/gigRoute')
-app.use("/api/v1", gigRoutes)
-
-const orderRoutes = require('./src/routes/orderRoute')
-app.use("/api/v1", orderRoutes)
-
-const reviewRoute = require('./src/routes/reviewRoute')
-app.use("/api/v1", reviewRoute)
 
 //mongoDB Connection Here
 mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)
