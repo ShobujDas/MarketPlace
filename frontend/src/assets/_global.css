@@ -76,7 +76,7 @@ p,a,button{
   border: 2px solid #cecece;
   text-transform: capitalize;
   transition: 0.3s;
-  border-radius: 1px;
+  border-radius: 3px;
   font-size: 15px;
 }
 
@@ -116,3 +116,15 @@ button{
 .section-title h3 span{
   color: var(--primary);
 }
+
+.inputField{
+  border-radius: 4px;
+  display: flex;
+  border: 1px solid rgb(207, 207, 207);
+  padding: 11px;
+  width: 100%;
+}
+.inputField:focus{
+  outline: 2px solid var(--primary);
+}
+

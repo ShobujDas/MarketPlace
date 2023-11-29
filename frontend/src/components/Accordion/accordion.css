@@ -48,10 +48,10 @@
   
   /* OPEN STATE */
   .open {
-    border-top: 4px solid #7f0808;
+    border-top: 4px solid var(--primary);
   }
   
   .open .number,
   .open .title {
-    color: rgb(255, 38, 0);
+    color: var(--primary);
   }

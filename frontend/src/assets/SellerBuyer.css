@@ -14,7 +14,7 @@
 }
 .coverSection{
     width: 99.2%;
-    background-color: brown;
+    background-color: var(--primary);
     color: white;
     height: 250px;
     border-radius: 4px;
@@ -25,22 +25,13 @@
     top: 80px;
     left: 60px;
 }
-.inputField{
-    border-radius: 4px;
-    display: flex;
-    border: 1px solid rgb(207, 207, 207);
-    padding: 11px;
-    width: 100%;
-}
-.inputField:focus-visible{
-    outline: 2px solid rgb(255, 0, 0);
-}
+
 
 .registerBTN{
     padding: 5px 10px;
     color: white;
-    background: rgb(228, 35, 1);
-    border: 2px solid rgb(255, 38, 0);
+    background: var(--primary);
+    border: 2px solid var(--primary);
     text-transform: capitalize;
     text-decoration: none;
     font-weight: 500;
@@ -59,19 +50,15 @@
     font-weight: 500;
     border-radius: 3px;
 }
-.horigonline{
-    width: 100%;
-    background-color: red;
-    height: 2px;
-}
+
 .redirectLogin{
     margin: 4px;
 }
-.redirectLogin a {
+.redirectLogin  {
     text-decoration: none;
+    color: var(--primary);
 }
-.redirectLogin  span{
+.redirectLogin  Link{
     cursor: pointer;
-    color: rgb(228, 35, 1);
 
 }
