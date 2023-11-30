@@ -1,7 +1,7 @@
 
 
 import '../../assets/loginPage.css'
-import slider1 from "../../../public/slider-1.jpg";
+import slider1 from "/slider-1.jpg";
 
 import {FaHeadphonesSimple, FaRegAddressCard, FaUserCheck} from "react-icons/fa6";
 import {RiMoneyDollarCircleFill} from "react-icons/ri";

@@ -10,6 +10,8 @@ import GigCards from "../../components/cards/GigCards";
 import { NavLink } from 'react-router-dom';
 import CategoryCards from './../../components/cards/CategoryCards';
 
+import serviceImg from "/service-img.jpg"
+
 const HomePageComponent = () => {
 
   const [gigs, setGigs] = useState([])
@@ -140,8 +142,32 @@ const HomePageComponent = () => {
         </div>
       </section>
 
+      <section className="find-service my-section">
+        <div className="container">
+          <div className="row">
+
+            <div className="col-lg-6 col-md-6">
+              <div className="text-content">
+                <h3>Find services your way</h3>
+                <p className="pt-3">Work with the largest network of independent service providers and
+                  get things done—from quick turnarounds to big transformations.</p>
+
+                  <NavLink className={"btn btn-lg"}>contact us</NavLink>
+              </div>
+            </div>
+
+            <div className="col-lg-6 col-md-6">
+              <div className="service-img shadow">
+                <img src={serviceImg} alt="" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* category */}
-      <section className="category my-section" id="category">
+      <section className="category my-section bg-body-tertiary" id="category">
         <div className="container">
           <div className="section-title">
             <h3>Our service <span>categories</span></h3>

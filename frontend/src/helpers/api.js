@@ -1,7 +1,14 @@
 import axios from "axios";
 import {errorToast, successToast} from './alert';
 
-let BASEURL = "http://localhost:5000/api/v1"
+const BASEURL = "http://127.0.0.1:5000/api/v1"
+
+const header = {
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}
+
 
 export default async function CatagoriesListReq(){
     try {
@@ -71,9 +78,25 @@ export const sellerRegistraion = async (data) => {
             errorToast(result.data['data']);
             return;
         } else {
-            return successToast("Account created successfully")
+            return result.data
         }
     } catch (error) {
         errorToast("Something went wrong");
     }
 };
+
+// buyer login
+export const buyerLogin = async (data) => {
+    try {
+        let result = await axios.post(`${BASEURL}/user-login`, data, header);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
+            localStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            return result.data
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}

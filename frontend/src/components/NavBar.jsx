@@ -39,7 +39,7 @@ const NavBar = ({profileImg}) => {
                   <img src={img} alt="profile image" />
                 </div>
                 <div className={`profile-options ${showPfp ? "open" : ""}`}>
-                  <NavLink to={"/login/user"}>Login</NavLink>
+                  <NavLink to={"/login"}>Login</NavLink>
 
                   <NavLink to={"/register/user"}>Register</NavLink>
                   <NavLink to={"/dashboard/user"}>Dashboard</NavLink>
