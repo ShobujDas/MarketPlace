@@ -22,11 +22,11 @@ router.get("/update-category/:id", authVerification, categoryController.category
 
 
 // user routes
-router.get('/user-login', authController.user_login)
+router.post('/user-login', authController.user_login)
 router.post('/user-register', authController.user_register)
 router.post('/user-delete/:id', authVerification, authController.deleteUser)
 router.post('/user-update/:id', authVerification, authController.updateUser)
-router.get('/user/:id', authVerification, authController.getUser)
+router.get('/user/:id', authController.getUser)
 
 // seller routes
 router.get('/seller-login', authController.seller_login)
