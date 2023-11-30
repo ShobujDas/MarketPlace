@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import slider from "../../../public/slider-1.jpg"
 import { FiLogIn } from "react-icons/fi";
 import '../../assets/loginPage.css'
 import { buyerLogin } from "../../helpers/api";
 const LoginForm = () => {
 
+    const naviagate = useNavigate()
     const [data, setData] = useState({
         email : "",
         password: ""
@@ -17,7 +18,9 @@ const LoginForm = () => {
 
     let login = async () => {
         let result = await buyerLogin(data)
-        console.log(result)
+        if(result){
+            naviagate('/', {replace : true})
+        }
     }
 
     return (

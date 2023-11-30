@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { FaBars } from "react-icons/fa6";
 import "../assets/navBar.css";
 
 import avatar from '/profile-avatar.jpg'
+import { getBuyerById } from "../helpers/api";
 
 const NavBar = ({profileImg}) => {
 
   const [img, setImg] = useState(profileImg ? profileImg : avatar)
 
   const [showPfp, setShowPfp] = useState(false)
+
+  let data = JSON.parse(localStorage.getItem('buyer'))
+  useEffect(() => {
+    if(data){
+      (async () => {
+        let result = await getBuyerById(data._id)
+        setImg(result.img)
+      })()
+    }
+  }, [0])
+
+
 
   return (
     <>
@@ -39,11 +52,12 @@ const NavBar = ({profileImg}) => {
                   <img src={img} alt="profile image" />
                 </div>
                 <div className={`profile-options ${showPfp ? "open" : ""}`}>
-                  <NavLink to={"/login"}>Login</NavLink>
+                  {data == null && <NavLink to={"/login"}>Login</NavLink> }
+                  {data == null && <NavLink to={"/register/user"}>Register</NavLink> }
+                  {data != null && <NavLink to={"/dashboard/user"}>Dashboard</NavLink> }               
+                  
+                  {data != null && <NavLink to={"/"}>Logout</NavLink>}
 
-                  <NavLink to={"/register/user"}>Register</NavLink>
-                  <NavLink to={"/dashboard/user"}>Dashboard</NavLink>
-                  <NavLink to={"/"}>Logout</NavLink>
                 </div>
               </button>
             </div>

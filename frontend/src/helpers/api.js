@@ -3,13 +3,6 @@ import {errorToast, successToast} from './alert';
 
 const BASEURL = "http://127.0.0.1:5000/api/v1"
 
-const header = {
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}
-
-
 export default async function CatagoriesListReq(){
     try {
         let result=await axios.get(BASEURL + '/get-category')
@@ -88,13 +81,29 @@ export const sellerRegistraion = async (data) => {
 // buyer login
 export const buyerLogin = async (data) => {
     try {
-        let result = await axios.post(`${BASEURL}/user-login`, data, header);
+        let result = await axios.post(`${BASEURL}/user-login`, data);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
         } else {
             localStorage.setItem('buyer', JSON.stringify(result.data['data']))
             return result.data
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// get buyer detail
+export const getBuyerById = async (id) => {
+    try {
+        let result = await axios.get(`${BASEURL}/user/${id}`);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
+            localStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            return result.data['data']
         }
     } catch (error) {
         errorToast("Something went wrong");
