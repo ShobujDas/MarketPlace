@@ -18,7 +18,9 @@ const NavBar = ({profileImg}) => {
     if(data){
       (async () => {
         let result = await getBuyerById(data._id)
-        setImg(result.img)
+        if(result != null){
+          setImg(result.img)
+        }
       })()
     }
   }, [0])

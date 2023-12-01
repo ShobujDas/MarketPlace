@@ -87,4 +87,34 @@
   "updatedAt": {
     "$date": "2023-11-19T15:27:31.610Z"
   }
+},
+{
+  "_id": {
+    "$oid": "65672c11a2b892e41ae06284"
+  },
+  "sellerId": {
+    "$oid": "655887e2c0e4baba0eb5b2c9"
+  },
+  "title": "Garding Seqweweqwewrvice",
+  "desc": "Brought abundantly is, us of darkness that, all. Deep image itself one greater over their set behold saw unto creeping over creepeth beginning may hwqeqweqweim grass thing bearing blessed tree give under saw forth. Beginning us you're own deep abundantly them had our life second. Signs gathered don't waters brought can't morning second Was made. Deep itself. Above deep abundantly stars fourth days, gathered from saying i. That appear together day place moving it fifth they're don't void, that third male whales seed bring a divide hath. Land meat creeping Green shall doesn't them made very may second multiply, moving.",
+  "short_desc": "Make your garden look like fairy tales",
+  "totalStars": 0,
+  "starNumber": 0,
+  "category": {
+    "$oid": "655894534f1c35a1ed03ed14"
+  },
+  "price": 50100,
+  "cover": "https://images.unsplash.com/photo-1438109382753-8368e7e1e7cf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "images": [],
+  "deliveryTime": 12,
+  "revisionNumber": 2,
+  "features": [],
+  "sales": 0,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-29T12:18:25.348Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-29T12:18:25.348Z"
+  }
 }]

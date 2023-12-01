@@ -1,7 +1,7 @@
 import axios from "axios";
 import {errorToast, successToast} from './alert';
 
-const BASEURL = "http://127.0.0.1:5000/api/v1"
+const BASEURL = "https://test-server-2-u462.onrender.com/api/v1"
 
 export default async function CatagoriesListReq(){
     try {
