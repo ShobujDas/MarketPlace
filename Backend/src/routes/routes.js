@@ -29,7 +29,7 @@ router.post('/user-update/:id', authVerification, authController.updateUser)
 router.get('/user/:id', authController.getUser)
 
 // seller routes
-router.get('/seller-login', authController.seller_login)
+router.post('/seller-login', authController.seller_login)
 router.post('/seller-register', authController.seller_register)
 router.post('/seller-delete/:id', authVerification, authController.deleteSeller)
 router.post('/seller-update/:id', authVerification, authController.updateSeller)
@@ -52,6 +52,7 @@ router.post("/create-conv", authVerification, msgController.conversationCreate)
 
 
 // review routes
+router.get("/review/:gigId", reviewController.reviewBygig)
 router.post("/create-review", authVerification, reviewController.createReview);
 // router.get("/get-review/:id/:isSeller", getReviews);
 // router.delete("/delete-review/:id/:isSeller", deleteReviews);

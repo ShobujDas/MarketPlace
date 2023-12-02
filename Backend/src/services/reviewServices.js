@@ -1,6 +1,5 @@
 const ReviewModel = require("../models/reviewModel");
 const gigModel = require('../models/gigModel')
-const mongoose = require("mongoose")
 
 const { ObjectId } = require('mongoose').Types;
 
@@ -74,6 +73,42 @@ exports.reviewDelete = async (req) => {
     return { status: 0, code: 200, data: "could not delete review" }
 
     
+  } catch (error) {
+    return { status: 0, code: 200, data: "something went wrong" }
+  }
+}
+
+// get review by gigs
+exports.getReviewByGig = async (req) => {
+  try {
+    let gigId = req.params.gigId
+
+    let matchStage = { $match: { GigId: new ObjectId(gigId) }}
+    let lookup1 = {
+      $lookup: {
+        from: 'users',
+        localField: 'UserId',
+        foreignField: '_id',
+        as: 'user'
+      }
+    }
+    let unwindStage = {$unwind: '$user'}
+    let projection = {
+      $project: {
+        _id: 0,
+        Star: 1,
+        desc: 1,
+        'user.img': 1,
+        'user.firstName': 1,
+        'user.lastName': 1
+      }
+    }
+
+    let reviews = await ReviewModel.aggregate([matchStage, lookup1, unwindStage, projection])
+
+    return { status: 1, code: 200, data: reviews }
+
+
   } catch (error) {
     return { status: 0, code: 200, data: "something went wrong" }
   }

@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa6";
 import "../assets/navBar.css";
 
 import avatar from '/profile-avatar.jpg'
-import { getBuyerById } from "../helpers/api";
+import { getBuyerById, sellerById } from "../helpers/api";
 
 const NavBar = ({profileImg}) => {
 
@@ -13,11 +13,18 @@ const NavBar = ({profileImg}) => {
 
   const [showPfp, setShowPfp] = useState(false)
 
-  let data = JSON.parse(localStorage.getItem('buyer'))
+  let data = JSON.parse(sessionStorage.getItem('buyer'))
   useEffect(() => {
     if(data){
       (async () => {
-        let result = await getBuyerById(data._id)
+        let result
+        
+        if(data.isSeller){
+          result = await sellerById(data._id)
+        }else{
+          result = await getBuyerById(data._id)
+        }
+
         if(result != null){
           setImg(result.img)
         }
@@ -44,7 +51,9 @@ const NavBar = ({profileImg}) => {
                 <li><NavLink to={"/"}>Home</NavLink></li>
                 <li><NavLink to={"/"}>Services</NavLink></li>
                 <li><NavLink to={"/"}>Category</NavLink></li>
-                <li><NavLink to={"/become-seller"}>Become Seller</NavLink></li>
+                {
+                  (data == null || !data.isSeller) && <li><NavLink to={"/become-seller"}>Become Seller</NavLink></li>
+                }
               </ul>
             </div>
             <div className="controls">

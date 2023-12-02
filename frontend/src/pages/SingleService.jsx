@@ -4,6 +4,7 @@ import MasterLayout from './../components/layouts/MasterLayout';
 import { gigByID } from '../helpers/api';
 import { useParams } from 'react-router-dom';
 import SingleServiceDescriptions from '../page-components/single-service-page-comps/SingleServiceDescriptions';
+import ReviewComponent from '../components/ReviewComponent';
 
 const SingleService = () => {
 
@@ -21,6 +22,7 @@ const SingleService = () => {
     <MasterLayout>
       <SingleServiceHome data={data} />
       <SingleServiceDescriptions data={data} />
+      <ReviewComponent data={params} />
     </MasterLayout>
   );
 };

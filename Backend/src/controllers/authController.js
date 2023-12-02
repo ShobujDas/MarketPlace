@@ -78,7 +78,10 @@ exports.seller_login = async (req, res) => {
         res.status(200).json({
             status: result.status,
             code: result.code,
-            data: result.data
+            data: {
+                _id: result.data['_id'],
+                isSeller: result.data['isSeller']
+            }
         })
 
         return

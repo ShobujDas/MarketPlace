@@ -1,13 +1,18 @@
 import axios from "axios";
 import {errorToast, successToast} from './alert';
 
-const BASEURL = "https://test-server-2-u462.onrender.com/api/v1"
+const BASEURL = "http://localhost:5000/api/v1"
+
+const headers = {
+    headers: {
+        withCredentials: true
+    }
+}
 
 export default async function CatagoriesListReq(){
     try {
-        let result=await axios.get(BASEURL + '/get-category')
+        let result = await axios.get(BASEURL + '/get-category', headers)
         let data=result.data['data']
-        console.log(data)
         return data
     } catch (error) {
         return []
@@ -16,7 +21,7 @@ export default async function CatagoriesListReq(){
 
 export const getAllGigs = async (page, limit) => {
     try {
-        let result = await axios.get(`${BASEURL}/get-gig/${page}/${limit}`)
+        let result = await axios.get(`${BASEURL}/get-gig/${page}/${limit}`, headers)
         if(result.data['status'] == 0){
             errorToast(result.data['data'])
             return
@@ -33,7 +38,7 @@ export const getAllGigs = async (page, limit) => {
 // get gig by id
 export const gigByID = async (id) => {
     try {
-        let result = await axios.get(`${BASEURL}/get-gig/${id}`)
+        let result = await axios.get(`${BASEURL}/get-gig/${id}`, headers)
         if (result.data['status'] == 0) {
             errorToast(result.data['data'])
             return
@@ -49,7 +54,7 @@ export const gigByID = async (id) => {
 // get seller by id
 export const sellerById = async (id) => {
     try {
-        let result = await axios.get(`${BASEURL}/seller/${id}`)
+        let result = await axios.get(`${BASEURL}/seller/${id}`, headers)
         if (result.data['status'] == 0) {
             errorToast(result.data['data'])
             return
@@ -62,11 +67,10 @@ export const sellerById = async (id) => {
     }
 }
 
-//http://localhost:8080/api/v1/seller-register
-
+// seller registration
 export const sellerRegistraion = async (data) => {
     try {
-        let result = await axios.post(`${BASEURL}/seller-register`,data);
+        let result = await axios.post(`${BASEURL}/seller-register`, data, headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
@@ -81,7 +85,7 @@ export const sellerRegistraion = async (data) => {
 // buyer login
 export const buyerLogin = async (data) => {
     try {
-        let result = await axios.post(`${BASEURL}/user-login`, data);
+        let result = await axios.post(`${BASEURL}/user-login`, data, headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
@@ -94,15 +98,44 @@ export const buyerLogin = async (data) => {
     }
 }
 
-// get buyer detail
-export const getBuyerById = async (id) => {
+// seller login
+export const sellerLogin = async (data) => {
     try {
-        let result = await axios.get(`${BASEURL}/user/${id}`);
+        let result = await axios.post(`${BASEURL}/seller-login`, data, headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
         } else {
-            localStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            sessionStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            return result.data
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// get buyer detail
+export const getBuyerById = async (id) => {
+    try {
+        let result = await axios.get(`${BASEURL}/user/${id}`, headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
+            return result.data['data']
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+export const getReviews = async (gigId) => {
+    try {
+        let result = await axios.get(`${BASEURL}/review/${gigId}`, headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
             return result.data['data']
         }
     } catch (error) {

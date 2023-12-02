@@ -5,7 +5,7 @@ exports.cookieMaker = (tokenPayload) => {
     expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     httpOnly: false,
     sameSite: "none",
-    secure: false,
+    secure: true,
   }
 
   return { token: createToken(tokenPayload), cookieOption }

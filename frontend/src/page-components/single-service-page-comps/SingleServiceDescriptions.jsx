@@ -3,7 +3,7 @@ import ProfileCards from '../../components/cards/ProfileCards';
 import { useEffect, useState } from 'react';
 import { sellerById } from '../../helpers/api';
 
-const SingleServiceDescriptions = ({data}) => {
+const SingleServiceDescriptions = ({data, loader}) => {
 
   const [seller, setSeller] = useState({})
   

@@ -11,20 +11,26 @@ import { NavLink } from 'react-router-dom';
 import CategoryCards from './../../components/cards/CategoryCards';
 
 import serviceImg from "/service-img.jpg"
+import CardLoader from "../../components/loaders/CardLoader";
+import HomeLoader from "../../components/loaders/HomeLoader";
 
 const HomePageComponent = () => {
 
   const [gigs, setGigs] = useState([])
   const [category, setCategory] = useState([])
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
 
     (async () => {
       let getGig = await getAllGigs(1, 10)
-      setGigs(getGig.gigs)
-
       let getCategory = await CatagoriesListReq()
-      setCategory(getCategory)
+      
+      if(getGig && getCategory){
+        setGigs(getGig.gigs)
+        setCategory(getCategory)
+        setLoader(false)
+      }
     })()
 
   }, [0])
@@ -33,45 +39,52 @@ const HomePageComponent = () => {
     <>
     {/* home section */}
       <section className="home" id="home">
-        <div id="home-slider" className="carousel slide carousel-fade" data-bs-ride="carousel">
-          <div className="carousel-inner">
 
-            <div className="carousel-item active" data-bs-interval="4000">
-              <img src={slider1} className="d-block w-100" alt="..." />
-              <div className="content">
-                <h1 className="display-1">Trust<span>Home</span></h1>
-                <p>Your Trusted Partner in Homecare</p>
-                <a href="#services" className="bg-btns">see services</a>
+        {
+          loader && <HomeLoader />
+        }
+        
+        {
+          !loader && <div id="home-slider" className="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div className="carousel-inner">
+
+              <div className="carousel-item active" data-bs-interval="4000">
+                <img src={slider1} className="d-block w-100" alt="..." />
+                <div className="content">
+                  <h1 className="display-1">Trust<span>Home</span></h1>
+                  <p>Your Trusted Partner in Homecare</p>
+                  <a href="#services" className="bg-btns">see services</a>
+                </div>
+
+              </div>
+
+              <div className="carousel-item" data-bs-interval="4000">
+                <img src={slider2} className="d-block w-100" alt="..." />
+
+                <div className="content">
+                  <h1 className="display-1">Any <span>Service</span></h1>
+                  <p>Your can get from here</p>
+                  <a href="#category" className="bg-btns">see categories</a>
+                </div>
+              </div>
+
+              <div className="carousel-item" data-bs-interval="4000">
+                <img src={slider3} className="d-block w-100" alt="..." />
+                <div className="content">
+                  <h1 className="display-1">We <span>Are</span></h1>
+                  <p>A platform for all in one home services</p>
+                  <a href="#contact" className="bg-btns">contact us</a>
+                </div>
               </div>
 
             </div>
-
-            <div className="carousel-item" data-bs-interval="4000">
-              <img src={slider2} className="d-block w-100" alt="..." />
-
-              <div className="content">
-                <h1 className="display-1">Any <span>Service</span></h1>
-                <p>Your can get from here</p>
-                <a href="#category" className="bg-btns">see categories</a>
-              </div>
+            <div className="carousel-indicators">
+              <button type="button" data-bs-target="#home-slider" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#home-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#home-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-
-            <div className="carousel-item" data-bs-interval="4000">
-              <img src={slider3} className="d-block w-100" alt="..." />
-              <div className="content">
-                <h1 className="display-1">We <span>Are</span></h1>
-                <p>A platform for all in one home services</p>
-                <a href="#contact" className="bg-btns">contact us</a>
-              </div>
-            </div>
-
           </div>
-          <div className="carousel-indicators">
-            <button type="button" data-bs-target="#home-slider" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#home-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#home-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-        </div>
+        }
 
       </section>
 
@@ -128,11 +141,15 @@ const HomePageComponent = () => {
             <p>Best services loved by our users</p>
           </div>
 
+          {
+            loader && <CardLoader />
+          }
+
           <div className="row">
             {
-              gigs.length != 0 ? gigs.map((e, index) => (
+              gigs.length > 0 && gigs.map((e, index) => (
                 <GigCards data={e} key={index} />
-              )) : <h5 className="py-5 text-center">No services found</h5>
+              ))
             }
           </div>
 
@@ -174,11 +191,15 @@ const HomePageComponent = () => {
             <p>Best services loved by our users</p>
           </div>
 
+          {
+            loader && <CardLoader />
+          }
+
           <div className="row">
             {
-              category.length != 0 ? category.map((e, index) => (
+              category.length >= 0 && category.map((e, index) => (
                 <CategoryCards data={e} key={index} />
-              )) : <h5 className="py-5 text-center">No categories found</h5>
+              ))
             }
           </div>
         </div>

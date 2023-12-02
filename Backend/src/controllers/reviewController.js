@@ -1,4 +1,4 @@
-const { reviewCreate, reviewUpdate } = require("../services/reviewServices");
+const { reviewCreate, reviewUpdate, getReviewByGig } = require("../services/reviewServices");
 
 
 //Create Review
@@ -47,3 +47,9 @@ exports.updateReviews = async (req, res) => {
   let result = await reviewUpdate(req)
   res.status(200).json(result)
 };
+
+
+exports.reviewBygig = async (req, res) => {
+  let result = await getReviewByGig(req)
+  res.status(200).json(result)
+}

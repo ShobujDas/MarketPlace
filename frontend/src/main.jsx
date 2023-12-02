@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './index.css'
 
+import 'react-loading-skeleton/dist/skeleton.css'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
