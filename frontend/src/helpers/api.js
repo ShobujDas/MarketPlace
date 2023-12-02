@@ -109,6 +109,7 @@ export const buyerLogin = async (data) => {
             return;
         } else {
             sessionStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            successToast("login successfull")
             return result.data
         }
     } catch (error) {
@@ -125,6 +126,7 @@ export const sellerLogin = async (data) => {
             return;
         } else {
             sessionStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            successToast("login successfull")
             return result.data
         }
     } catch (error) {
