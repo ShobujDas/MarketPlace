@@ -1,4 +1,5 @@
 import { FaLocationArrow } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 
 const CategoryCards = ({data}) => {
   return (
@@ -11,7 +12,7 @@ const CategoryCards = ({data}) => {
           <p className="category-title mb-0">{data['categoryName']}</p>
           <p className="category-desc">{data['categoryDesc']}</p>
 
-          <a href="" className="icon">
+          <a href={`/services?category=${data._id}&page=1&limit=10`} className="icon">
             <FaLocationArrow />
           </a>
 

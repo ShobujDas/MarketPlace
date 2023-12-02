@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <>
       <MasterLayout>
-            <HomePageComponent />
+        <HomePageComponent />
       </MasterLayout>
     </>
   );

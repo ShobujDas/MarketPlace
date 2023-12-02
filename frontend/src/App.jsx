@@ -5,6 +5,7 @@ import SingleService from './pages/SingleService';
 import UserRegistrationPage from "./pages/UserRegistrationPage.jsx";
 import SellerRegPage from "./pages/SellerRegPage.jsx";
 import DashHomePage from "./components/Dashboard/DashHomePage.jsx";
+import AllServices from "./pages/AllServices.jsx";
 
 
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" element={<UserLoginPage />} />
           <Route path="/register/user" element={<UserRegistrationPage />} />
           <Route path="/services/:category/:id" element={<SingleService />} />
+          <Route path="/services" element={<AllServices />} />
           <Route path="/become-seller" element={<SellerRegPage />} />
           <Route path="/dashboard/user" element={<DashHomePage />} />
         </Routes>

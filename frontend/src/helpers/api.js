@@ -19,9 +19,27 @@ export default async function CatagoriesListReq(){
     }
 }
 
+// get all gigs
 export const getAllGigs = async (page, limit) => {
     try {
         let result = await axios.get(`${BASEURL}/get-gig/${page}/${limit}`, headers)
+        if(result.data['status'] == 0){
+            errorToast(result.data['data'])
+            return
+        }
+        else{
+            return result.data['data']
+        }
+        
+    } catch (error) {
+        errorToast("something went wrong")
+    }
+}
+
+// get gig buy category
+export const getGigsByCategory = async (category, page, limit) => {
+    try {
+        let result = await axios.get(`${BASEURL}/get-gig-category/${category}/${page}/${limit}`, headers)
         if(result.data['status'] == 0){
             errorToast(result.data['data'])
             return
@@ -90,7 +108,7 @@ export const buyerLogin = async (data) => {
             errorToast(result.data['data']);
             return;
         } else {
-            localStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            sessionStorage.setItem('buyer', JSON.stringify(result.data['data']))
             return result.data
         }
     } catch (error) {
@@ -129,9 +147,25 @@ export const getBuyerById = async (id) => {
     }
 }
 
+// get reviews of a gig
 export const getReviews = async (gigId) => {
     try {
         let result = await axios.get(`${BASEURL}/review/${gigId}`, headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
+            return result.data['data']
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// get categories
+export const getCategories = async () => {
+    try {
+        let result = await axios.get(`${BASEURL}/get-category`, headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;

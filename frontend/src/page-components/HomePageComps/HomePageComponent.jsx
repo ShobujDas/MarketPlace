@@ -13,6 +13,7 @@ import CategoryCards from './../../components/cards/CategoryCards';
 import serviceImg from "/service-img.jpg"
 import CardLoader from "../../components/loaders/CardLoader";
 import HomeLoader from "../../components/loaders/HomeLoader";
+import SectionTitle from "../../components/SectionTitle";
 
 const HomePageComponent = () => {
 
@@ -136,10 +137,7 @@ const HomePageComponent = () => {
       {/* gigs */}
       <section className="gigs my-section bg-body-tertiary" id="gigs">
         <div className="container">
-          <div className="section-title">
-            <h3>Popular <span>services</span></h3>
-            <p>Best services loved by our users</p>
-          </div>
+          <SectionTitle title="Popular" titleHighlight="services" text="Best services loved by our users" />
 
           {
             loader && <CardLoader />
@@ -153,9 +151,11 @@ const HomePageComponent = () => {
             }
           </div>
 
-          <div className="text-center mt-5">
-            <NavLink className="btn btn-lg">all services</NavLink>
-          </div>
+          {
+            gigs.length > 0 && <div className="text-center mt-5">
+              <NavLink className="btn btn-lg" to={"/services?category=0&page=1&limit=10"}>all services</NavLink>
+            </div>
+          }
         </div>
       </section>
 
