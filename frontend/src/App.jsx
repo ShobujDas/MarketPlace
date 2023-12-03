@@ -6,6 +6,8 @@ import UserRegistrationPage from "./pages/UserRegistrationPage.jsx";
 import SellerRegPage from "./pages/SellerRegPage.jsx";
 import DashHomePage from "./components/Dashboard/DashHomePage.jsx";
 import AllServices from "./pages/AllServices.jsx";
+import ScrollToTop from './ScrollToTop';
+import BuyerProfile from "./pages/BuyerProfile.jsx";
 
 
 
@@ -13,15 +15,18 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<UserLoginPage />} />
-          <Route path="/register/user" element={<UserRegistrationPage />} />
-          <Route path="/services/:category/:id" element={<SingleService />} />
-          <Route path="/services" element={<AllServices />} />
-          <Route path="/become-seller" element={<SellerRegPage />} />
-          <Route path="/dashboard/user" element={<DashHomePage />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<UserLoginPage />} />
+            <Route path="/register/user" element={<UserRegistrationPage />} />
+            <Route path="/services/:category/:id" element={<SingleService />} />
+            <Route path="/services" element={<AllServices />} />
+            <Route path="/become-seller" element={<SellerRegPage />} />
+            <Route path="/dashboard/user" element={<DashHomePage />} />
+            <Route path="/profile/:id" element={<BuyerProfile />} />
+          </Routes>
+        </ScrollToTop>
       </BrowserRouter>
     </>
   );

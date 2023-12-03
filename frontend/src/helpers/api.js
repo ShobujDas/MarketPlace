@@ -134,6 +134,22 @@ export const sellerLogin = async (data) => {
     }
 }
 
+// logout
+export const logout = async () => {
+    try {
+        let result = await axios.post(`${BASEURL}/logout`, headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return 0;
+        } else {
+            successToast(result.data['data'])
+            return 1
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
 // get buyer detail
 export const getBuyerById = async (id) => {
     try {

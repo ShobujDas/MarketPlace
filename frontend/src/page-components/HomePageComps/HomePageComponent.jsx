@@ -1,16 +1,17 @@
+import { useEffect, useState } from "react";
+import { NavLink } from 'react-router-dom';
 import { FaRegAddressCard, FaUserCheck, FaHeadphonesSimple } from "react-icons/fa6";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 
 import slider1 from "/slider-1.jpg"
 import slider2 from "/slider-2.jpg"
 import slider3 from "/slider-3.jpg"
-import { useEffect, useState } from "react";
-import CatagoriesListReq, { getAllGigs } from "../../helpers/api";
-import GigCards from "../../components/cards/GigCards";
-import { NavLink } from 'react-router-dom';
-import CategoryCards from './../../components/cards/CategoryCards';
-
 import serviceImg from "/service-img.jpg"
+
+import CatagoriesListReq, { getAllGigs } from "../../helpers/api";
+
+import GigCards from "../../components/cards/GigCards";
+import CategoryCards from './../../components/cards/CategoryCards';
 import CardLoader from "../../components/loaders/CardLoader";
 import HomeLoader from "../../components/loaders/HomeLoader";
 import SectionTitle from "../../components/SectionTitle";
@@ -93,16 +94,13 @@ const HomePageComponent = () => {
       <section className="needs my-section" id="needs">
         <div className="container">
 
-          <div className="section-title">
-            <h3>Need something <span>done</span></h3>
-            <p>Any kind of services for your home</p>
-          </div>
+          <SectionTitle title="Need something" titleHighlight="done" text="Any kind of services for your home" />
 
           <div className="row">
 
             <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
               <div className="text-content">
-                <p className="icon fs-1"><FaRegAddressCard /></p>
+                <span className="icon d-block pb-2 fs-2"><FaRegAddressCard /></span>
                 <h5>Post a job</h5>
                 <p>It&apos;s free and easy to post a job. Simply fill
                   in a title, description.</p>
@@ -110,21 +108,21 @@ const HomePageComponent = () => {
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
               <div className="text-content">
-                <p className="icon fs-1"><FaUserCheck /></p>
+                <span className="icon d-block pb-2 fs-2"><FaUserCheck /></span>
                 <h5>Choose Providers</h5>
                 <p>Find all kinds of provides needed for your home</p>
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
               <div className="text-content">
-                <p className="icon fs-1"><RiMoneyDollarCircleFill /></p>
+                <span className="icon d-block pb-2 fs-2"><RiMoneyDollarCircleFill /></span>
                 <h5>Pay safely</h5>
                 <p>Pay any time with no fear with the best security</p>
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
               <div className="text-content">
-                <p className="icon fs-1"><FaHeadphonesSimple /></p>
+                <span className="icon d-block pb-2 fs-2"><FaHeadphonesSimple /></span>
                 <h5>We&apos;re here to help</h5>
                 <p>Any problem for your home or about services, we are here</p>
               </div>
@@ -163,7 +161,7 @@ const HomePageComponent = () => {
         <div className="container">
           <div className="row">
 
-            <div className="col-lg-6 col-md-6">
+            <div className="col-lg-6 col-md-6 mt-3">
               <div className="text-content">
                 <h3>Find services your way</h3>
                 <p className="pt-3">Work with the largest network of independent service providers and
@@ -173,7 +171,7 @@ const HomePageComponent = () => {
               </div>
             </div>
 
-            <div className="col-lg-6 col-md-6">
+            <div className="col-lg-6 col-md-6 mt-3">
               <div className="service-img shadow">
                 <img src={serviceImg} alt="" />
               </div>

@@ -9,7 +9,7 @@ const createToken =(user)=>{
 //fucntioon to verify token
 const verifyToken =(token)=>{
     try {
-        const decoded = jwt.verify(token,secretkey);
+        const decoded = jwt.verify(token, process.env.secretkey);
         return decoded;
     } catch (error) {
         return null;

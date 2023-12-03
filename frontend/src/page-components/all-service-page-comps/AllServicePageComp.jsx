@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { convertParams } from "../../helpers/helpers";
 import { getAllGigs, getCategories, getGigsByCategory } from "../../helpers/api";
 import SectionTitle from "../../components/SectionTitle";
@@ -9,17 +9,19 @@ import GigCards from './../../components/cards/GigCards';
 
 const AllServicePageComp = () => {
 
+  const { search } = useLocation()
+  // params
+  const [urlParams, SetUrlParams] = useSearchParams(search)
+  let params = convertParams(new URLSearchParams(urlParams))
+
+
   const [categories, setCategories] = useState([])
   const [gigs, setGigs] = useState([])
-  const [loader, setLoader] = useState(true)
-
-  // params
-  const [searchParams, setSearchParams] = useSearchParams({})
-  let params = convertParams(searchParams)
+  const [loader, setLoader] = useState(true)  
 
   // handle the filter changes
   let handleChange = (e) => {
-    setSearchParams(prev => {
+    SetUrlParams(prev => {
       prev.set(e.target.name, e.target.value)
       return prev
     }, {replace: true})
@@ -36,8 +38,9 @@ const AllServicePageComp = () => {
 
   // get services
   useEffect(() => {
-    if(params.category == 0){
+    if(params.category == "0"){
       (async () => {
+        setLoader(true)
         let result = await getAllGigs(params.page, params.limit)
         result && setGigs(result.gigs)
         setTimeout(() => { setLoader(false) }, 500)
@@ -45,12 +48,13 @@ const AllServicePageComp = () => {
     }
     else{
       (async () => {
+        setLoader(true)
         let result = await getGigsByCategory(params.category ,params.page, params.limit)
         result && setGigs(result.gigs)
         setTimeout(() => { setLoader(false) }, 500)
       })()
     }
-  }, [loader])
+  }, [urlParams])
 
 
   return (
@@ -67,11 +71,11 @@ const AllServicePageComp = () => {
               <div className="col-lg-4 col-md-6">
                 <div className="input-group mb-3">
                   <span className="input-group-text">category</span>
-                  <select className="form-select" id="category-opt" name="category" onChange={handleChange}>
-                    <option value={0}>All</option>
+                  <select className="form-select" id="category-opt" name="category" onChange={handleChange} value={params.category}>
+                    <option value="0">All</option>
                     {
                       categories.map((e, index) => (
-                        <option value={e._id} key={index}>{e.categoryName}</option>
+                        <option value={e._id} key={index} >{e.categoryName}</option>
                       ))
                     }
                   </select>

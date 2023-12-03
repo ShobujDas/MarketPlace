@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const GigCards = ({data}) => {
   return (
-    <div className="col-lg-4 col-md-6 col-sm-2 mt-3">
+    <div className="col-lg-4 col-md-6 mt-3">
       <div className="gig-box">
 
         {/* gig cover */}

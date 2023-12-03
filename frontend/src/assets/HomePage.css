@@ -41,5 +41,13 @@
 
 /* needs */
 .needs .text-content:hover h5{
+  background: var(--alt-color);
   color: var(--primary);
+}
+.needs .text-content{
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 20px 15px;
+}
+.needs .text-content p{
+  font-size: 15px;
 }

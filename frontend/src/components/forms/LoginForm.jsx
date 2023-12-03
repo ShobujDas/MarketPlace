@@ -7,7 +7,7 @@ import { buyerLogin, sellerLogin } from "../../helpers/api";
 const LoginForm = () => {
 
     const naviagate = useNavigate()
-    const [seller, setSeller] = useState(false)
+    let [seller, setSeller] = useState(false)
     const [data, setData] = useState({
         email : "",
         password: ""
@@ -24,9 +24,11 @@ const LoginForm = () => {
         let result
         if(!seller){
             result = await buyerLogin(data)
+            console.log(result, "buyer")
         }
-        else{
+        if(seller){
             result = await sellerLogin(data)
+            console.log(result, "seller")
         }
         
         if(result){
@@ -70,6 +72,7 @@ const LoginForm = () => {
                                         <input className="form-check-input" type="radio" name="seller" id="buyer" value={false} checked={seller == false} onChange={userTypaHandle} />
                                         <label className="form-check-label" >Buyer</label>
                                     </div>
+                                    {seller}
                                     <div className="mb-3 my-2 d-flex justify-content-between" id="forterms">
                                         <span className="keepme"><input className="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault"/> Keep me signed in </span>
                                         <p>Don&apos;t have an account? <Link to="/register/user" className="registerNow link-danger cursor-pointer">Register Now!</Link></p>

@@ -58,6 +58,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .navbar-section .profile-btn{
     position: relative;
@@ -88,12 +89,14 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
     top: calc(100% + 10px);
-    left: calc(-100% - 20px);
+    left: 100%;
+    transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
     transition: 0.5s ease;
 }
-.profile-options a{
+.profile-options a,
+.profile-options button{
     width: 100%;
     text-decoration: none;
     padding: 10px 0;
@@ -101,10 +104,11 @@
     text-align: center;
     font-weight: 500;
 }
-.profile-options a:not(:last-child){
+.profile-options *:not(:last-child){
     border-bottom: 2px solid #cecece;
 }
-.profile-options a:hover{
+.profile-options a:hover,
+.profile-options button:hover{
     color: var(--primary);
 }
 
@@ -112,4 +116,43 @@
 /* control button */
 .control-btn{
     display: none;
+}
+
+/* navbar responsive */
+@media screen and (max-width: 992px) {
+    .control-btn{
+        display: block;
+        font-size: 20px;
+    }
+    .navbar-section .links.bar-open{
+        left: 0px;
+        transition: 0.5s;
+    }
+    .navbar-section .links{
+        position: fixed;
+        width: 250px;
+        height: calc(100vh - 65px);
+        top: 65px;
+        left: -250px;
+        background: var(--alt-color);
+        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+        border-right: 2px solid #cecece;
+        border-right-style: dashed;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+    .navbar-section .links ul{
+        padding-left: 0;
+    }
+    .navbar-section .links ul li{
+        display: block;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .navbar-section .links ul li:hover{
+        background: var(--primary);
+    }
+    .navbar-section .links ul li:hover > a{
+        color: var(--font-color-alt);
+    }
 }

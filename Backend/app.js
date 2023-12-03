@@ -17,7 +17,6 @@ const corsOptions = {
     //origin: true,
 
     credentials: true,
-    optionsSuccessStatus: 200,
 }
 
 app.use(helmet());
@@ -30,7 +29,7 @@ app.use(express.urlencoded({ limit: '50mb' }));
 
 
 // route connection
-const routes = require('./src/routes/routes')
+const routes = require('./src/routes/routes');
 app.use("/api/v1", routes)
 
 
