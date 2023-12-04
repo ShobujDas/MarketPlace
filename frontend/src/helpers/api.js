@@ -1,7 +1,7 @@
 import axios from "axios";
 import {errorToast, successToast} from './alert';
 
-const BASEURL = "https://test-repo-production-dbc4.up.railway.app/api/v1"
+const BASEURL = "http://localhost:5000/api/v1"
 
 const headers = {
     headers: {
