@@ -24,11 +24,9 @@ const LoginForm = () => {
         let result
         if(!seller){
             result = await buyerLogin(data)
-            console.log(result, "buyer")
         }
         if(seller){
             result = await sellerLogin(data)
-            console.log(result, "seller")
         }
         
         if(result){
