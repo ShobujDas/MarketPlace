@@ -7,6 +7,7 @@ import "../assets/navBar.css";
 import avatar from '/profile-avatar.jpg'
 import { getBuyerById, getCategories, logout, sellerById } from "../helpers/api";
 
+// eslint-disable-next-line react/prop-types
 const NavBar = ({profileImg}) => {
 
   const [img, setImg] = useState(profileImg ? profileImg : avatar)
@@ -53,7 +54,6 @@ const NavBar = ({profileImg}) => {
     <>
       <nav className="navbar-section">
         <div className="container">
-
           <div className="logo">
             <a href="/">
               Trust<span>Home</span>

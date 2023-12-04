@@ -9,17 +9,17 @@ const Accordion = ({ data }) => {
 
   return (
     <div className="accordion">
-      {data.map((el, i) => (
-        <AccordionItem
-          curOpen={curOpen}
-          onOpen={setCurOpen}
-          title={el.title}
-          num={i}
-          key={el.title}
-        >
-          {el.text}
-        </AccordionItem>
-      ))}
+            {data.map((el, i) => (
+            <AccordionItem
+                curOpen={curOpen}
+                onOpen={setCurOpen}
+                title={el.title}
+                num={i}
+                key={el.title}
+            >
+                {el.text}
+            </AccordionItem>
+            ))}
 
     </div>
   );

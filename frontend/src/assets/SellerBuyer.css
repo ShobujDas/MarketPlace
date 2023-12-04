@@ -1,32 +1,30 @@
 @keyframes slideInFromLeft {
     0% {
         opacity: 0;
-        transform: translateX(100%);
+        transform: translateY(100%);
 
     }
     100% {
         opacity: 100%;
-        transform: translateX(0%);
+        transform: translateY(0%);
     }
 }
-.section{
-    animation: 1s ease-in-out 0s 1 slideInFromLeft;
-}
 .coverSection{
-    width: 99.2%;
     background-color: var(--primary);
     color: white;
     height: 250px;
     border-radius: 4px;
 }
 .slideText{
-    animation: 0.8s ease-in-out 0s 1 slideInFromLeft;
+    animation: 0.8s ease-in-out 0.2s 1 slideInFromLeft;
     position: relative;
     top: 80px;
     left: 60px;
 }
 
-
+.cardSection{
+    animation: 0.8s ease-in-out 0.2s 1 slideInFromLeft;
+}
 .registerBTN{
     padding: 5px 10px;
     color: white;
