@@ -1,16 +1,14 @@
 
 .accordion {
-    animation: 1s ease-in-out 0s 1 slideInFromLeft;
-    width: 500px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   .item {
+    animation: 0.8s ease-in-out 0.2s 1 slideInFromLeft;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     padding: 20px 24px;
-    padding-right: 48px;
     cursor: pointer;
     border-top: 4px solid #fff;
     border-bottom: 4px solid #fff;
@@ -50,7 +48,6 @@
   .open {
     border-top: 4px solid var(--primary);
   }
-  
   .open .number,
   .open .title {
     color: var(--primary);

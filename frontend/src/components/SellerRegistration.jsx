@@ -26,21 +26,17 @@ const SellerRegistration = () => {
     }
     return (
         <div>
-            <div className='section'>
+            <div className='sectionbody'>
                 <div className='coverSection my-2 mx-2'>
-                    <div className='slideText'>
+                    <div className='col-12 slideText'>
                         <h1>Contact us</h1>
                         <p>We&apos;d love to talk about how we can help you.</p>
                     </div>
                 </div>
-                <div className='container mx-auto my-5'>
+                <div className='container mx-auto my-5 w-100'>
                     <div className='row'>
                         <div className='col-md-6 col-12'>
-                            <h3 className='text-center mt-2'>Frequently Asked Questions</h3>
-                            <Accordion data={faqs}/>
-                        </div>
-                        <div className='col-md-6 col-12'>
-                            <div className='cardSection card border border-0 shadow my-5 p-4'> {/*position-absolute top-50 start-50 translate-end p-4*/}
+                            <div className='cardSection card border border-0 shadow my-5 ml-5 p-4'> {/*position-absolute top-50 start-50 translate-end p-4*/}
                                 <div className='card-title'>
                                     <h3 className='text-center mt-2 text-danger text-uppercase'>Tell us about yourself</h3>
                                     <p className='text-center'>Whether you have questions or you would just like to say hello, contact us.</p>
@@ -156,6 +152,11 @@ const SellerRegistration = () => {
                                 </form>
                             </div>
                         </div>
+                        <div className='col-md-6'>
+                            <h3 className='text-center mt-2'>Frequently Asked Questions</h3>
+                            <Accordion data={faqs}/>
+                        </div>
+
                     </div>
                 </div>
                 <div className="howitWorks mb-5" id="needs">
