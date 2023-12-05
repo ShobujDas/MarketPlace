@@ -6,6 +6,7 @@ import Main from "../Dashboard/LayoutComponent/Main";
 
 
 
+
 const DashboardLayout = (props) => {
 
 
@@ -16,12 +17,13 @@ const DashboardLayout = (props) => {
         <div className="display-flex">
         <Sidebar/>
         {/* <Toaster/> */}
-        <Main/>
+        <Main>
+          {props.children}
+        </Main>
         </div>
        
       </MasterLayout>
     </>
   );
 };
-
 export default DashboardLayout;

@@ -32,7 +32,7 @@ mainn .mainn .helper span {
 }
 .menuu {
   background: #5bc995;
-  height: 100vh;
+  height: auto;
   width: 240px;
   /* position: fixed; */
   top: 0;
