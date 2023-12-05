@@ -41,8 +41,9 @@ exports.sellerLogin = async (req) => {
     if (!passCompare) {
       return { status: 0, code: 200, data: "Invalid login" }
     }
+    let token = createToken({ email: req.body.email, id: user['_id'].toString(), isSeller: user['isSeller'] })
 
-    return { status: 1, code: 200, data: user }
+    return { status: 1, code: 200, data: user, token }
 
   } catch (error) {
     return { status: 0, code: 200, data: "something went wrong" }

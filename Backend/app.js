@@ -5,19 +5,10 @@ const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
 const expressMongoSanitize=require("express-mongo-sanitize");
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
 const app = express();
-require("dotenv").config()
-
-const corsOptions = {
-    // set origin to a specific origin.
-    origin: 'https://test-app-101.netlify.app/',
-
-    // or, set origin to true to reflect the request origin
-    //origin: true,
-
-    credentials: true,
-}
+const routes = require('./src/routes/routes');
 
 app.use(helmet());
 app.use(hpp());
@@ -29,9 +20,8 @@ app.use(express.urlencoded({ limit: '50mb' }));
 
 
 // route connection
-const routes = require('./src/routes/routes');
 app.use("/api/v1", routes)
-
+dotenv.config()
 
 //mongoDB Connection Here
 mongoose.connect(process.env.dbUrl+"/"+process.env.dbName)

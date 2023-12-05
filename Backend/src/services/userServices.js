@@ -1,6 +1,7 @@
 const users = require("../models/userModel");
 const sellers = require("../models/sellerModel");
 const { encryptPass, comparePass } = require("../util/passSecurity");
+const { createToken } = require("../util/jwt");
 
 // user registration service
 exports.userRegister = async (req) => {
@@ -39,7 +40,8 @@ exports.userLogin = async (req) => {
     if (!passCompare) {
       return { status: 0, code: 200, data: "Invalid login" }
     }
-    return { status: 1, code: 200, data: user }
+    let token = createToken({ email: req.body.email, id: user['_id'].toString(), isSeller: user['isSeller'] })
+    return { status: 1, code: 200, data: user, token }
     
   } catch (error) {
     return {status: 0, code: 200, data: "something went wrong"}
