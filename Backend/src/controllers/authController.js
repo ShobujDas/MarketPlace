@@ -14,10 +14,11 @@ exports.user_login = async (req, res) => {
     if(result['status'] === 1){
         let cookieOption = {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-            httpOnly: false
+            httpOnly: false,
+            sameSite: "none",
+            secure: true
         }
-        res.cookie("token", result.token, cookieOption)
-        res.status(200).json({
+        res.status(200).cookie("token", result.token, cookieOption).json({
             status: result.status,
             code: result.code,
             data: {

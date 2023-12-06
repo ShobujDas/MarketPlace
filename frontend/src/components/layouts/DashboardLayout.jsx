@@ -1,4 +1,3 @@
-import { Toaster } from "react-hot-toast";
 import "../../assets/dashboard.css";
 import Sidebar from "../Dashboard/LayoutComponent/Sidebar";
 import MasterLayout from "./MasterLayout";

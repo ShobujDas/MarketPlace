@@ -1,5 +1,6 @@
 const sellers = require("../models/sellerModel");
 const users = require("../models/userModel");
+const { createToken } = require("../util/jwt");
 const { encryptPass, comparePass } = require("../util/passSecurity");
 
 // user registration service
@@ -30,7 +31,6 @@ exports.sellerRegister = async (req) => {
 // user login service
 exports.sellerLogin = async (req) => {
   try {
-
     let query = { email: req.body.email, isSeller: true }
 
     const user = await sellers.findOne(query).select("_id password isSeller")

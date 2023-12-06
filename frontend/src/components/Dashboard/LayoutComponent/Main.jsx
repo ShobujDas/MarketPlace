@@ -1,6 +1,5 @@
-import React from "react";
 
-function Main() {
+function Main(props) {
   return (
     <>
      <main className="mainn">
