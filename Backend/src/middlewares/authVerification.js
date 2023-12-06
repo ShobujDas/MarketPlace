@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   let decoded = verifyToken(token);
 
   if (decoded === null) {
-    return res.status(401).json({
+    res.status(401).json({
       success: false,
       status: 0,
       code: 401,

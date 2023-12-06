@@ -27,6 +27,7 @@ router.post('/user-register', authController.user_register)
 router.post('/user-delete/:id', authVerification, authController.deleteUser)
 router.post('/user-update/:id', authVerification, authController.updateUser)
 router.get('/user/:id', authController.getUser)
+router.get('/user-profile', authVerification, authController.getUserProfile)
 
 // seller routes
 router.post('/seller-login', authController.seller_login)

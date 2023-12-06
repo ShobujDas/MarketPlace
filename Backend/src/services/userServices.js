@@ -88,3 +88,83 @@ exports.getUserById = async (req) => {
     return { status: 0, code: 200, data: "something went wrong" }
   }
 }
+
+// user profile
+exports.profile = async (req) => {
+  try {
+    let id = req.headers.id
+
+    let matchStage = { $match: { _id: id, isSeller: false }}
+    let getOrderStage = {
+      $lookup: {
+        from: 'orders',
+        localField: '_id',
+        foreignField: 'buyerId',
+        as: 'orders'
+      }
+    }
+
+    let unwindOrder = {
+      $unwind: {
+        path: '$orders',
+        preserveNullAndEmptyArrays: true
+      }
+    }
+
+    let getGigFromOrder = {
+      $lookup: {
+        from: 'gigs',
+        localField: 'orders.gigId',
+        foreignField: '_id',
+        as: 'gigs'
+      }
+    }
+
+    let unwindGig = {
+      $unwind: {
+        path: '$seller',
+        preserveNullAndEmptyArrays: true
+      }
+    }
+
+    let projecttion = {
+      $project: {
+        _id: 1,
+        firstName: 1,
+        lastName: 1,
+        email: 1,
+        img: 1,
+        country: 1,
+        phone: 1,
+        decs: 1,
+        isSeller: 1,
+        city: 1,
+        road: 1,
+        houseNo: 1,
+        'orders._id': '$orders._id',
+        'orders.title': '$orders.title',
+        'orders.img': '$orders.img',
+        'orders.price': '$orders.price',
+        'orders.isCompleted': '$orders.isCompleted',
+        'gigs._id': '$gigs._id',
+        'gigs.title': '$gigs.title',
+        'gigs.desc': '$gigs.desc',
+        'gigs.price': '$gigs.price',
+        'gigs.cover': '$gigs.cover',
+        'gigs.deliveryTime': '$gigs.deliveryTime',
+        'gigs.features': '$gigs.features',
+        'seller.serviceName': '$seller.serviceName',
+        'seller.img': '$seller.img'
+      }
+    }
+
+    // const profileData = await users.aggregate([matchStage, getOrderStage, unwindOrder, getGigFromOrder, unwindGig, projecttion]);
+    const profile = await users.findOne({ _id: id }).select("firstName lastName email img country phone decs isSeller city road houseNo");
+
+    return { status: 1, code: 200, data: profile }
+    
+  } catch (error) {
+    console.log(error)
+    return { status: 0, code: 200, data: "something went wrong" }
+  }
+}
