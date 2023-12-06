@@ -15,13 +15,13 @@ function Sidebar() {
           <NavLink to={"/dashboard/user"}><span>Dashboard</span></NavLink>
           </li>
           <li tabIndex={0} className="icon-customers">
-            <span> <NavLink to={"/dashboard/customers"}>Customers</NavLink></span>
+            <span> <NavLink to={"/dashboard/create-gig"}>Create Gig</NavLink></span>
           </li>
           <li tabIndex={0} className="icon-users">
-            <span> <NavLink to={"/dashboard/settigns"}>Users</NavLink></span>
+            <span> <NavLink to={"/dashboard/all-gig"}>My Gigs</NavLink></span>
           </li>
           <li tabIndex={0} className="icon-settings">
-            <span> <NavLink to={"/dashboard/oik"}>Settings</NavLink></span>
+            <span> Settings</span>
           </li>
         </ul>
       </nav>
