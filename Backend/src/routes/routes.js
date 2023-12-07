@@ -25,7 +25,7 @@ router.get("/update-category/:id", authVerification, categoryController.category
 router.post('/user-login', authController.user_login)
 router.post('/user-register', authController.user_register)
 router.post('/user-delete/:id', authVerification, authController.deleteUser)
-router.post('/user-update/:id', authVerification, authController.updateUser)
+router.post('/user-update', authVerification, authController.updateUser)
 router.get('/user/:id', authController.getUser)
 router.get('/user-profile', authVerification, authController.getUserProfile)
 
@@ -36,7 +36,7 @@ router.post('/seller-delete/:id', authVerification, authController.deleteSeller)
 router.post('/seller-update/:id', authVerification, authController.updateSeller)
 router.get('/seller/:id', authController.getSeller)
 
-router.post('/logout', authVerification, authController.logout)
+router.get('/logout', authVerification, authController.logout)
 
 
 // gig routes

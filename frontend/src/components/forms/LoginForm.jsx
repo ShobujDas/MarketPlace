@@ -16,9 +16,6 @@ const LoginForm = () => {
     let handleData = (e) => {
         setData({...data, [e.target.name]: e.target.value})
     }
-    let userTypaHandle = (e) => {
-        setSeller(e.target.value)
-    }
 
     let login = async () => {
         let result
@@ -55,22 +52,21 @@ const LoginForm = () => {
                             <div className="card-body p-5">
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">Email address</label>
-                                    <input type="email" className="inputField" id="email" name="email" value={data.email} placeholder="Email address" onChange={(e) => handleData(e)} />
+                                    <input type="email" className="form-control" id="email" name="email" value={data.email} placeholder="Email address" onChange={(e) => handleData(e)} />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="pass" className="form-label">Password</label>
-                                    <input type="password" className="inputField d-inline" id="pass" name="password" value={data.password} placeholder="Password" onChange={(e) => handleData(e)} />
+                                    <input type="password" className="form-control d-inline" id="pass" name="password" value={data.password} placeholder="Password" onChange={(e) => handleData(e)} />
                                 </div>
                                 <div className="mb-3">
                                     <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="radio" name="seller" id="seller" value={true} checked={seller == true} onChange={userTypaHandle} />
+                                        <input className="form-check-input" type="radio" name="seller" id="seller" value={seller} checked={seller == true} onChange={(e) => setSeller(true)} />
                                         <label className="form-check-label" >Seller</label>
                                     </div>
                                     <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="radio" name="seller" id="buyer" value={false} checked={seller == false} onChange={userTypaHandle} />
+                                        <input className="form-check-input" type="radio" name="seller" id="buyer" value={seller} checked={seller == false} onChange={(e) => setSeller(false)} />
                                         <label className="form-check-label" >Buyer</label>
                                     </div>
-                                    {seller}
                                     <div className="mb-3 my-2 d-flex justify-content-between" id="forterms">
                                         <span className="keepme"><input className="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault"/> Keep me signed in </span>
                                         <p>Don&apos;t have an account? <Link to="/register/user" className="registerNow link-danger cursor-pointer">Register Now!</Link></p>

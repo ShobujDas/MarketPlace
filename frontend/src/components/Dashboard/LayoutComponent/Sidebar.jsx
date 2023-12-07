@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 function Sidebar() {
@@ -12,13 +11,13 @@ function Sidebar() {
         </header>
         <ul>
           <li tabIndex={0} className="icon-dashboard">
-          <NavLink to={"/dashboard/user"}><span>Dashboard</span></NavLink>
+          <NavLink to={"/dashboard"} replace={true}><span>Dashboard</span></NavLink>
           </li>
           <li tabIndex={0} className="icon-customers">
-            <span> <NavLink to={"/dashboard/create-gig"}>Create Gig</NavLink></span>
+            <span> <NavLink to={"/dashboard/create-gig"} replace={true}>Create Gig</NavLink></span>
           </li>
           <li tabIndex={0} className="icon-users">
-            <span> <NavLink to={"/dashboard/all-gig"}>My Gigs</NavLink></span>
+            <span> <NavLink to={"/dashboard/all-gig"} replace={true}>My Gigs</NavLink></span>
           </li>
           <li tabIndex={0} className="icon-settings">
             <span> Settings</span>

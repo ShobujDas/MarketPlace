@@ -98,6 +98,7 @@ exports.getReviewByGig = async (req) => {
         _id: 0,
         Star: 1,
         desc: 1,
+        createdAt: 1,
         'user.img': 1,
         'user.firstName': 1,
         'user.lastName': 1

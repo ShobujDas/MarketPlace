@@ -11,7 +11,7 @@ const headers = {
 
 export default async function CatagoriesListReq(){
     try {
-        let result = await axios.get(BASEURL + '/get-category', headers)
+        let result = await axios.get(BASEURL + '/get-category', headers.headers)
         let data=result.data['data']
         return data
     } catch (error) {
@@ -22,7 +22,7 @@ export default async function CatagoriesListReq(){
 // get all gigs
 export const getAllGigs = async (page, limit) => {
     try {
-        let result = await axios.get(`${BASEURL}/get-gig/${page}/${limit}`, headers)
+        let result = await axios.get(`${BASEURL}/get-gig/${page}/${limit}`, headers.headers)
         if(result.data['status'] == 0){
             errorToast(result.data['data'])
             return
@@ -39,7 +39,7 @@ export const getAllGigs = async (page, limit) => {
 // get gig buy category
 export const getGigsByCategory = async (category, page, limit) => {
     try {
-        let result = await axios.get(`${BASEURL}/get-gig-category/${category}/${page}/${limit}`, headers)
+        let result = await axios.get(`${BASEURL}/get-gig-category/${category}/${page}/${limit}`, headers.headers)
         if(result.data['status'] == 0){
             errorToast(result.data['data'])
             return
@@ -56,7 +56,7 @@ export const getGigsByCategory = async (category, page, limit) => {
 // get gig by id
 export const gigByID = async (id) => {
     try {
-        let result = await axios.get(`${BASEURL}/get-gig/${id}`, headers)
+        let result = await axios.get(`${BASEURL}/get-gig/${id}`, headers.headers)
         if (result.data['status'] == 0) {
             errorToast(result.data['data'])
             return
@@ -72,7 +72,7 @@ export const gigByID = async (id) => {
 // get seller by id
 export const sellerById = async (id) => {
     try {
-        let result = await axios.get(`${BASEURL}/seller/${id}`, headers)
+        let result = await axios.get(`${BASEURL}/seller/${id}`, headers.headers)
         if (result.data['status'] == 0) {
             errorToast(result.data['data'])
             return
@@ -88,7 +88,7 @@ export const sellerById = async (id) => {
 // seller registration
 export const sellerRegistraion = async (data) => {
     try {
-        let result = await axios.post(`${BASEURL}/seller-register`, data, headers);
+        let result = await axios.post(`${BASEURL}/seller-register`, data, headers.headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
@@ -120,7 +120,7 @@ export const buyerLogin = async (data) => {
 // seller login
 export const sellerLogin = async (data) => {
     try {
-        let result = await axios.post(`${BASEURL}/seller-login`, data, headers);
+        let result = await axios.post(`${BASEURL}/seller-login`, data, headers.headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
@@ -137,9 +137,12 @@ export const sellerLogin = async (data) => {
 // logout
 export const logout = async () => {
     try {
-        let result = await axios.post(`${BASEURL}/logout`, headers);
+        let result = await axios.get(`${BASEURL}/logout`, headers.headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
+            setTimeout(() => {
+                window.location.replace('/')
+            }, 500)
             return 0;
         } else {
             successToast(result.data['data'])
@@ -153,7 +156,7 @@ export const logout = async () => {
 // get buyer detail
 export const getBuyerById = async (id) => {
     try {
-        let result = await axios.get(`${BASEURL}/user/${id}`, headers);
+        let result = await axios.get(`${BASEURL}/user/${id}`, headers.headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return;
@@ -195,6 +198,7 @@ export const getCategories = async () => {
     }
 }
 
+// buyer profile
 export const userProfile = async () => {
     try {
         let result = await axios.get(`${BASEURL}/user-profile`, headers.headers);
@@ -203,6 +207,22 @@ export const userProfile = async () => {
             return;
         } else {
             return result.data['data']
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// buyer profile update
+export const updateBuyerProfile = async (data) => {
+    try {
+        let result = await axios.post(`${BASEURL}/user-update`, data, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return 0;
+        } else {
+            successToast(result.data['data'])
+            return 1
         }
     } catch (error) {
         errorToast("Something went wrong");

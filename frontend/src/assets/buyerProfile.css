@@ -1,0 +1,17 @@
+/* buyer profile */
+
+.buyer-profile-section{
+  width: 100%;
+  height: auto;
+}
+
+.buyer-profile-section .buyer-profile-img{
+  width: 200px;
+  max-width: calc(100% - 10px);
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 40px 0;
+  display: block;
+}
+

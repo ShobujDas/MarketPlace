@@ -117,14 +117,17 @@ button{
   color: var(--primary);
 }
 
-.inputField{
+.form-control{
   border-radius: 4px;
   display: flex;
   border: 1px solid rgb(207, 207, 207);
   padding: 11px;
   width: 100%;
+  box-shadow: none;
+  outline: none;
 }
-.inputField:focus{
+.form-control:focus{
   outline: 2px solid var(--primary);
+  box-shadow: none;
 }
 

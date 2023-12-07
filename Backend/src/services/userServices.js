@@ -63,7 +63,7 @@ exports.userDelete = async (req) => {
 // user delete
 exports.userUpdate = async (req) => {
   try {
-    const userId = req.params.id;
+    const userId = req.headers.id;
     let update = await users.updateOne({ _id: userId }, req.body)
 
     return { status: 1, code: 200, data: "Account updated" }

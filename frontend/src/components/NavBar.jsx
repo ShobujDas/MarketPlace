@@ -103,8 +103,8 @@ const NavBar = ({profileImg}) => {
               <div className={`profile-options ${showPfp ? "open" : ""}`}>
                 {data == null && <NavLink to={"/login"}>Login</NavLink>}
                 {data == null && <NavLink to={"/register/user"}>Register</NavLink>}
-                {(data != null && data.isSeller) && <NavLink to={"/dashboard/user"}>Dashboard</NavLink>}
-                {(data != null && !data.isSeller) && <NavLink to={"/profile/"+data._id}>Profile</NavLink>}
+                {(data != null && data.isSeller) && <NavLink to={"/dashboard"} replace={true}>Dashboard</NavLink>}
+                {(data != null && !data.isSeller) && <NavLink to={"/profile"} replace={true}>Profile</NavLink>}
 
                 {data != null && <button onClick={logoutDevice}>Logout</button>}
 

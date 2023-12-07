@@ -23,10 +23,10 @@ const App = () => {
             <Route path="/services/:category/:id" element={<SingleService />} />
             <Route path="/services" element={<AllServices />} />
             <Route path="/become-seller" element={<SellerRegPage />} />
-            <Route path="/dashboard/user" element={<DashHomePage />} />
+            <Route path="/dashboard" element={<DashHomePage />} />
             <Route path="/dashboard/create-gig" element={<Creategigpage />} />
             <Route path="/dashboard/all-gig" element={<Allgig />} />
-            <Route path="/profile/:id" element={<BuyerProfile />} />
+            <Route path="/profile" element={<BuyerProfile />} />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>
