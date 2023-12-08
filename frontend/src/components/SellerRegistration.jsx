@@ -47,7 +47,7 @@ const SellerRegistration = () => {
                                         <div className='d-flex gap-2 justify-content-center'>
                                             <div className="mb-3 w-50">
                                                 <label className="form-label">Service Name</label>
-                                                <input type="text" className="inputField"  placeholder="Service Name"
+                                                <input type="text" className="form-control"  placeholder="Service Name"
                                                        {...register("serviceName", {
                                                            required: true
 
@@ -57,7 +57,7 @@ const SellerRegistration = () => {
                                             </div>
                                             <div className="mb-3 w-50">
                                                 <label className="form-label">Phone Number</label>
-                                                <input type="text" className="inputField"  placeholder="Phone Number"
+                                                <input type="text" className="form-control"  placeholder="Phone Number"
                                                        {...register("phone", {
                                                            required: true
                                                        })}
@@ -67,7 +67,7 @@ const SellerRegistration = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label className="form-label">Email</label>
-                                            <input type="email" className="inputField"  placeholder="name@example.com"
+                                            <input type="email" className="form-control"  placeholder="name@example.com"
                                                    {...register("email", {
                                                        required: true
                                                    })}
@@ -76,7 +76,7 @@ const SellerRegistration = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label className="form-label">Profile</label>
-                                            <input type="text" className="inputField"  placeholder="Profile Link"
+                                            <input type="text" className="form-control"  placeholder="Profile Link"
                                                    {...register("img", {
                                                        required: true
                                                    })}
@@ -86,7 +86,7 @@ const SellerRegistration = () => {
 
                                         <div className="mb-3">
                                             <label className="form-label">Password</label>
-                                            <input type="password" className="inputField"  placeholder="********"
+                                            <input type="password" className="form-control"  placeholder="********"
                                                    {...register("password", {
                                                        required: true
                                                    })}
@@ -96,7 +96,7 @@ const SellerRegistration = () => {
                                         <div className='d-flex gap-2 justify-content-center'>
                                             <div className="mb-3 w-50">
                                                 <label className="form-label">Road NO.</label>
-                                                <input type="text" className="inputField"  placeholder="Road NO."
+                                                <input type="text" className="form-control"  placeholder="Road NO."
                                                        {...register("road", {
                                                            required: false
                                                        })}
@@ -105,7 +105,7 @@ const SellerRegistration = () => {
                                             </div>
                                             <div className="mb-3 w-50">
                                                 <label className="form-label">House No</label>
-                                                <input type="text" className="inputField"  placeholder="House No"
+                                                <input type="text" className="form-control"  placeholder="House No"
                                                        {...register("houseNo", {
                                                            required: false
                                                        })}
@@ -115,7 +115,7 @@ const SellerRegistration = () => {
                                         <div className='d-flex gap-2 justify-content-center'>
                                             <div className="mb-3 w-50">
                                                 <label className="form-label">City Name</label>
-                                                <input type="text" className="inputField"  placeholder="City Name"
+                                                <input type="text" className="form-control"  placeholder="City Name"
                                                        {...register("city", {
                                                            required: false
                                                        })}
@@ -124,7 +124,7 @@ const SellerRegistration = () => {
                                             </div>
                                             <div className="mb-3 w-50">
                                                 <label className="form-label">Country Name</label>
-                                                <input type="text" className="inputField"  placeholder="Country Name"
+                                                <input type="text" className="form-control"  placeholder="Country Name"
                                                        {...register("country", {
                                                            required: false
                                                        })}
@@ -132,7 +132,7 @@ const SellerRegistration = () => {
                                             </div>
                                         </div>
                                         <div className='mb-3'>
-                                        <textarea className="inputField" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'
+                                        <textarea className="form-control" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'
                                                   {...register("decs", {
                                                       required: false
                                                   })}
@@ -146,7 +146,7 @@ const SellerRegistration = () => {
                                             </div>
                                         </div>
                                         <div className=''>
-                                            <span>Already have an account? <Link className="redirectLogin" to="/login/user">Log In!</Link></span>
+                                            <span>Already have an account? <Link className="redirectLogin" to="/login">Log In!</Link></span>
                                         </div>
                                     </div>
                                 </form>

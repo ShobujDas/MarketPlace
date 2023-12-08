@@ -48,7 +48,7 @@ const BuyerInfo = () => {
 
 
   return (
-    <section className="my-section buyer-profile-section">
+    <section className="my-5 buyer-profile-section">
       <div className="container">
 
         <SectionTitle title={"Your"} titleHighlight={"profile"} text={"See your profile info here"} />
@@ -95,7 +95,7 @@ const BuyerInfo = () => {
                   <input type="text" className="form-control" name="houseNo" placeholder="houseNo" value={profile.houseNo} onChange={handleData} />
                 </div>
 
-                <button type="submit" className="bg-btns btn-lg mt-4">save</button>                
+                <button type="submit" className="bg-btns btn-lg mt-4">save account</button>                
 
               </div>
             </div>

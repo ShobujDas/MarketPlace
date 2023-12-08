@@ -129,5 +129,6 @@ button{
 .form-control:focus{
   outline: 2px solid var(--primary);
   box-shadow: none;
+  border-color: transparent;
 }
 

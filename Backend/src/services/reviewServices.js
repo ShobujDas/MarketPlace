@@ -29,7 +29,6 @@ exports.reviewCreate = async (req) => {
     return { status: 0, code: 200, data: "cannot post review" }
     
   } catch (error) {
-    console.log(error)
     return { status: 0, code: 200, data: "something went wrong" }
   }
 }

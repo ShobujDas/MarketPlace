@@ -71,7 +71,7 @@ const AllServicePageComp = () => {
               <div className="col-lg-4 col-md-6">
                 <div className="input-group mb-3">
                   <span className="input-group-text">category</span>
-                  <select className="form-select" id="category-opt" name="category" onChange={handleChange} value={params.category}>
+                  <select className="form-control form-select" id="category-opt" name="category" onChange={handleChange} value={params.category}>
                     <option value="0">All</option>
                     {
                       categories.map((e, index) => (
@@ -84,7 +84,7 @@ const AllServicePageComp = () => {
               <div className="col-lg-4 col-md-6">
                 <div className="input-group mb-3">
                   <span className="input-group-text">services</span>
-                  <select className="form-select" id="category-opt" name="limit" onChange={handleChange}>
+                  <select className="form-control form-select" id="category-opt" name="limit" onChange={handleChange}>
                     <option value={10}>10</option>
                     <option value={15}>15</option>
                     <option value={20}>20</option>

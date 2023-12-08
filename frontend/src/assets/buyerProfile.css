@@ -1,5 +1,18 @@
-/* buyer profile */
+/* buyer profile tab */
+.buyer-profile-tab .nav-item .profile-tab-btn{
+  padding: 10px 12px;
+  border: 1px solid transparent;
+}
+.buyer-profile-tab .nav-item.active .profile-tab-btn{
+  border: 1px solid #cecece;
+  border-bottom: 1px solid var(--bs-body-bg);
+}
 
+.buyer-profile-tab .nav-item:hover .profile-tab-btn{
+  color: var(--primary);
+}
+
+/* buyer profile */
 .buyer-profile-section{
   width: 100%;
   height: auto;
@@ -13,5 +26,8 @@
   overflow: hidden;
   margin: 40px 0;
   display: block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+
+/* responsive */

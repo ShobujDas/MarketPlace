@@ -16,7 +16,7 @@ const NavBar = ({profileImg}) => {
   const [categories, setCategories] = useState([])
   const navigate = useNavigate()
 
-  let data = JSON.parse(sessionStorage.getItem('buyer'))
+  let data = JSON.parse(sessionStorage.getItem('user'))
   useEffect(() => {
     if(data){
       (async () => {

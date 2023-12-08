@@ -25,51 +25,51 @@ const UserRegistrationForm = () => {
                       <div className='d-flex gap-2 '>
                         <div className="mb-3 w-50">
                           <label className="form-label">First Name</label>
-                          <input type="text" className="inputField"  placeholder="First Name"/>
+                          <input type="text" className="form-control"  placeholder="First Name"/>
                         </div>
                         <div className="mb-3 w-50">
                           <label className="form-label">Last Name</label>
-                          <input type="text" className="inputField"  placeholder="Last Name"/>
+                          <input type="text" className="form-control"  placeholder="Last Name"/>
                         </div>
                       </div>
                       <div className="mb-3 ">
                         <label className="form-label">Email</label>
-                        <input type="email" className="inputField"  placeholder="Email"/>
+                        <input type="email" className="form-control"  placeholder="Email"/>
                       </div>
                       <div className="mb-3 ">
                         <label className="form-label">Phone</label>
-                        <input type="email" className="inputField"  placeholder="Phone"/>
+                        <input type="email" className="form-control"  placeholder="Phone"/>
                       </div>
                       <div className="mb-3 ">
                         <label className="form-label">Password</label>
-                        <input type="password" className="inputField"  placeholder="Password"/>
+                        <input type="password" className="form-control"  placeholder="Password"/>
                       </div>
                       <div className="mb-3 ">
                         <label className="form-label">Profile</label>
-                        <input type="password" className="inputField"  placeholder="Image Link"/>
+                        <input type="password" className="form-control"  placeholder="Image Link"/>
                       </div>
                       <div className='d-flex gap-2 justify-content-center'>
                         <div className="mb-3 w-50">
                           <label className="form-label">Country Name</label>
-                          <input type="text" className="inputField"  placeholder="Country Name"/>
+                          <input type="text" className="form-control"  placeholder="Country Name"/>
                         </div>
                         <div className="mb-3 w-50">
                           <label className="form-label">City</label>
-                          <input type="text" className="inputField"  placeholder="City"/>
+                          <input type="text" className="form-control"  placeholder="City"/>
                         </div>
                       </div>
                       <div className='d-flex gap-2 justify-content-center'>
                         <div className="mb-3 w-50">
                           <label className="form-label">Road No.</label>
-                          <input type="text" className="inputField"  placeholder="Road No."/>
+                          <input type="text" className="form-control"  placeholder="Road No."/>
                         </div>
                         <div className="mb-3 w-50">
                           <label className="form-label">House No.</label>
-                          <input type="text" className="inputField"  placeholder="House No."/>
+                          <input type="text" className="form-control"  placeholder="House No."/>
                         </div>
                       </div>
                       <div className='mb-3'>
-                        <textarea className="inputField" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'
+                        <textarea className="form-control" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'
                         ></textarea>
                       </div>
                       <div className="mb-3 mx-auto d-flex gap-2 justify-content-center mt-2 position-relative">

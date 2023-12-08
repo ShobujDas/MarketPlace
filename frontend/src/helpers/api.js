@@ -1,7 +1,7 @@
 import axios from "axios";
 import {errorToast, successToast} from './alert';
 
-const BASEURL = "http://localhost:5000/api/v1"
+const BASEURL = "https://server-2-vwl9.onrender.com/api/v1"
 
 const headers = {
     headers: {
@@ -108,7 +108,7 @@ export const buyerLogin = async (data) => {
             errorToast(result.data['data']);
             return;
         } else {
-            sessionStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            sessionStorage.setItem('user', JSON.stringify(result.data['data']))
             successToast("login successfull")
             return result.data
         }
@@ -125,7 +125,7 @@ export const sellerLogin = async (data) => {
             errorToast(result.data['data']);
             return;
         } else {
-            sessionStorage.setItem('buyer', JSON.stringify(result.data['data']))
+            sessionStorage.setItem('user', JSON.stringify(result.data['data']))
             successToast("login successfull")
             return result.data
         }
@@ -217,6 +217,22 @@ export const userProfile = async () => {
 export const updateBuyerProfile = async (data) => {
     try {
         let result = await axios.post(`${BASEURL}/user-update`, data, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return 0;
+        } else {
+            successToast(result.data['data'])
+            return 1
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// create review
+export const createReview = async (data) => {
+    try {
+        let result = await axios.post(`${BASEURL}/create-review`, data, headers.headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
             return 0;

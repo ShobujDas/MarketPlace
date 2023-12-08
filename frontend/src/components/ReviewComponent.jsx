@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ReviewCards from "./cards/ReviewCards";
 import { getReviews } from "../helpers/api";
 
-const ReviewComponent = ({data}) => {
+const ReviewComponent = ({data, load}) => {
 
   const [reviews, setReviews] = useState([])
 
@@ -11,7 +11,7 @@ const ReviewComponent = ({data}) => {
       let result = await getReviews(data.id)
       setReviews(result)
     })()
-  }, [0])
+  }, [load])
 
   return (
     <section className="review-section my-section">
