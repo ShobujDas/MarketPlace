@@ -1,7 +1,7 @@
 import axios from "axios";
 import {errorToast, successToast} from './alert';
 
-const BASEURL = "https://server-2-vwl9.onrender.com/api/v1"
+const BASEURL = "http://localhost:5000/api/v1"
 
 const headers = {
     headers: {

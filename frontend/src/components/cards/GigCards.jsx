@@ -2,6 +2,7 @@ import { FaStar } from "react-icons/fa6";
 import { NavLink } from 'react-router-dom';
 
 const GigCards = ({data}) => {
+  console.log(data)
   return (
     <div className="col-lg-4 col-md-6 mt-3">
       <div className="gig-box">
@@ -29,7 +30,7 @@ const GigCards = ({data}) => {
             <div className="provider-img">
               <img src={data['provider']['img']} alt="" />
             </div>
-            <h6 className="ms-2 mt-1 pt-1">{data['provider']['serviceName']}</h6>
+            <NavLink className="ms-2 text-decoration-none text-black" to={`/profile/${data['provider']['_id']}`}>{data['provider']['serviceName']}</NavLink>
           </div>
 
           <div className="price"><p className="mb-0 fw-bold">৳ {data['price']}</p></div>
