@@ -42,7 +42,7 @@ router.get('/logout', authVerification, authController.logout)
 // gig routes
 router.post("/create-gig", authVerification, gigController.gigCreate)
 router.get("/get-gig/:page/:limit", gigController.AllGig)
-router.get("/get-gig-seller/:seller/:page/:limit", gigController.AllGig)
+router.get("/get-gig-seller/:seller/:page/:limit", gigController.gigBySeller)
 router.get("/get-gig/:id", gigController.gigById)
 router.post("/delete-gig/:id", authVerification, gigController.gigDelete)
 router.post("/update-gig/:id", authVerification, gigController.gigUpdate)

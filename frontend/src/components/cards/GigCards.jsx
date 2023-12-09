@@ -2,7 +2,6 @@ import { FaStar } from "react-icons/fa6";
 import { NavLink } from 'react-router-dom';
 
 const GigCards = ({data}) => {
-  console.log(data)
   return (
     <div className="col-lg-4 col-md-6 mt-3">
       <div className="gig-box">

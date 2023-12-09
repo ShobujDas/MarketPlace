@@ -53,6 +53,23 @@ export const getGigsByCategory = async (category, page, limit) => {
     }
 }
 
+// get gig buy seller
+export const getGigsBySeller = async (seller, page, limit) => {
+    try {
+        let result = await axios.get(`${BASEURL}/get-gig-seller/${seller}/${page}/${limit}`, headers.headers)
+        if(result.data['status'] == 0){
+            errorToast(result.data['data'])
+            return
+        }
+        else{
+            return result.data['data']
+        }
+        
+    } catch (error) {
+        errorToast("something went wrong")
+    }
+}
+
 // get gig by id
 export const gigByID = async (id) => {
     try {
