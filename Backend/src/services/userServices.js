@@ -21,7 +21,7 @@ exports.userRegister = async (req) => {
     let pass = await encryptPass(req.body.password)
     req.body.password = pass
     const userCreate = await users.create(req.body)
-    return { status: 1, code: 200, data: userCreate }
+    return { status: 1, code: 200, data: "Account created" }
 
   } catch (error) {
     return {status: 0, code: 200, data: "something went wrong"}

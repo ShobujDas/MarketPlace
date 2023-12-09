@@ -100,6 +100,22 @@ export const sellerRegistraion = async (data) => {
     }
 };
 
+// user registration
+export const userRegistraion = async (data) => {
+    try {
+        let result = await axios.post(`${BASEURL}/user-register`, data, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return;
+        } else {
+            successToast(result.data['data']);
+            return 1
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+};
+
 // buyer login
 export const buyerLogin = async (data) => {
     try {
