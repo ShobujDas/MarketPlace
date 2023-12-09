@@ -156,3 +156,61 @@ exports.getGigByCategory = async (req) => {
     return { status: 0, code: 200, data: "something went wrong" }
   }
 }
+
+// gig by seller
+exports.getGigBySeller = async (req) => {
+  try {
+    let limit = parseInt(req.params.limit)
+    let skip = (parseInt(req.params.page) - 1) * limit
+
+    let matchStage = { $match: { sellerId: new ObjectId(req.params.seller), isActive: true } }
+    let sortStage = { $sort: { starNumber: -1 } }
+    let skipStage = { $skip: skip }
+    let limitStage = { $limit: limit }
+    let lookUpSeller = {
+      $lookup: {
+        from: 'service_providers',
+        localField: 'sellerId',
+        foreignField: '_id',
+        as: 'provider'
+      }
+    }
+    let unwind = { $unwind: '$provider' }
+    let projectStage = {
+      $project: {
+        _id: 1,
+        cover: 1,
+        title: 1,
+        short_desc: 1,
+        starNumber: 1,
+        price: 1,
+        category: 1,
+        totalStars: 1,
+        'provider._id': 1,
+        'provider.serviceName': 1,
+        'provider.img': 1
+      }
+    }
+    let countStage = {
+      $count: 'total'
+    }
+
+    // let category = await gig.find({ category: req.params.category }).sort({ starNumber: -1 }).skip(skip).limit(limit)
+    let category = await gig.aggregate([
+      {
+        $facet: {
+          "gigs": [matchStage, sortStage, skipStage, limitStage, lookUpSeller, unwind, projectStage],
+          "totalCount": [matchStage, countStage]
+        }
+      }
+    ])
+
+    // let total = await gig.find({ category: mongoose.Types.ObjectId(req.params.category) }).count("total")
+
+    return { status: 1, code: 200, data: category[0] }
+
+  } catch (error) {
+    console.log(error)
+    return { status: 0, code: 200, data: "something went wrong" }
+  }
+}

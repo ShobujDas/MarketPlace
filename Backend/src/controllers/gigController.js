@@ -30,6 +30,12 @@ exports.AllGig = async (req, res) => {
     res.status(200).json(result)
 }
 
+// get gigs by seller
+exports.gigBySeller = async (req, res) => {
+    let result = await getAllGigs(req)
+    res.status(200).json(result)
+}
+
 // gig by category
 exports.gigByCategory = async (req, res) => {
     let result = await getGigByCategory(req)
