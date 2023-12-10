@@ -11,6 +11,7 @@ import BuyerProfile from "./pages/BuyerProfile.jsx";
 import Creategigpage from './components/Dashboard/Creategigpage';
 import Allgig from './components/Dashboard/Allgig';
 import SellerProfile from "./pages/SellerProfile.jsx";
+import MessagePage from "./pages/MessagePage.jsx";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/dashboard/all-gig" element={<Allgig />} />
             <Route path="/profile" element={<BuyerProfile />} />
             <Route path="/profile/:id" element={<SellerProfile />} />
+            <Route path="/message" element={<MessagePage />} />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

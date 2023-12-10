@@ -1,6 +1,10 @@
 
 const MessageModel = require('../models/messageModel');
+const { createMsg } = require('../services/messageServices');
 
+exports.msgCreate = async (msg) => {
+  let result = await createMsg(msg)
+}
 
 exports.createMessage = async (req, res) => {
   try {

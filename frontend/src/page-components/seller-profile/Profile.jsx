@@ -3,10 +3,14 @@ import parse from 'html-react-parser'
 import SectionTitle from './../../components/SectionTitle';
 import { sellerById } from '../../helpers/api';
 import HomeLoader from './../../components/loaders/HomeLoader';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { errorToast } from './../../helpers/alert';
 
 const Profile = ({id}) => {
 
   const [profile, setProfile] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
     (async () => {
@@ -14,6 +18,21 @@ const Profile = ({id}) => {
       result && setProfile(result)
     })()
   }, [0])
+
+  // go to messenger
+  let goToMessage = (e) => {
+    e.preventDefault()
+    let session = JSON.parse(sessionStorage.getItem('user'))
+    let cookies = Cookies.get('token')
+
+    if(cookies && session){
+      navigate('/message')
+    }
+    else{
+      errorToast("Please login to chat")
+    }
+    
+  }
 
   return (
     <section className="my-section buyer-profile">
@@ -49,7 +68,7 @@ const Profile = ({id}) => {
 
                       <h6 className='fw-normal'><span className='fw-medium'>Email : </span><a href={`mailto:${profile['email']}`} className="text-decoration-none">{profile['email']}</a></h6>
 
-                      <button className='btn mt-3'>message seller</button>
+                      <button className='btn mt-3' onClick={goToMessage} >message seller</button>
 
                     </div>
                   </div>

@@ -1,0 +1,29 @@
+/* design for chat page */
+
+.chat-wrapper{
+  padding: 50px 0;
+}
+
+.chat-wrapper .chat-online,
+.chat-wrapper .chat-box{
+  height: 80vh;
+  background: var(--alt-color);
+  padding: 20px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.chat-box .chat-form{
+  position: absolute;
+  width: calc(100% - 15px);
+  bottom: calc(0px + 20px);
+  left: 15px;
+  box-sizing: border-box;
+}
+
+.chat-box .sender-btn:hover{
+  color: var(--primary);
+}
