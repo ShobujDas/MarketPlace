@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const BuyerProfileSideBar = ({children, showPanel}) => {
 
   const [active, setActive] = useState(1)
+
+  const location = useLocation()
   
   let panelChange = (e) => {
     showPanel(e.target.value)
@@ -14,8 +17,13 @@ const BuyerProfileSideBar = ({children, showPanel}) => {
       <div className="container buyer-profile-tab mt-5">
         <ul className="nav nav-tabs">
           <li className={`nav-item ${active == 1 && "active"}`}>
-           <button className="profile-tab-btn" value={1} onClick={panelChange}>Profile</button>
+           <button className="profile-tab-btn" value={1} onClick={panelChange}>{location.pathname == "/profile" ? "Profile" : "Dashboard"}</button>
           </li>
+          {
+            location.pathname != "/profile" && <li className={`nav-item ${active == 5 && "active"}`}>
+              <button className="profile-tab-btn" value={5} onClick={panelChange}>Services</button>
+            </li>
+          }
           <li className={`nav-item ${active == 2 && "active"}`}>
             <button className="profile-tab-btn" value={2} onClick={panelChange}>Bills</button>
           </li>

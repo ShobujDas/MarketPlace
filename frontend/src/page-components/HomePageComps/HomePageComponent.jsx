@@ -133,7 +133,7 @@ const HomePageComponent = () => {
       </section>
 
       {/* gigs */}
-      <section className="gigs my-section bg-body-tertiary" id="gigs">
+      <section className="gigs my-section bg-body-tertiary" id="services">
         <div className="container">
           <SectionTitle title="Popular" titleHighlight="services" text="Best services loved by our users" />
 

@@ -64,7 +64,7 @@ const NavBar = ({profileImg}) => {
             <div className={`links ${sideBar ? "bar-open" : ""}`}>
               <ul className="m-0">
                 <li><NavLink to={"/"}>Home</NavLink></li>
-                <li><NavLink to={"/"}>Services</NavLink></li>
+                <li><NavLink to={"/services?category=0&page=1&limit=10"}>Services</NavLink></li>
                 <li>
                   <div className="btn-group">
                   <button type="button" className="btn btn-danger border-0">
