@@ -40,31 +40,27 @@ const CommentReview = ({load, param}) => {
   }
 
   return (
-    <>
-      {
-        !seller.isSeller && <section className="my-section comment-review bg-body-tertiary">
-          <div className="container">
+    <section className="my-section comment-review bg-body-tertiary">
+      <div className="container">
 
-            <SectionTitle title={"Comment"} titleHighlight={"review"} text={"Leave your review here"} />
+        <SectionTitle title={"Comment"} titleHighlight={"review"} text={"Leave your review here"} />
 
-            <div className="mt-4">
-              <StarRatings
-                starDimension="20px"
-                rating={review.Star}
-                starRatedColor="red"
-                changeRating={changeRate}
-                numberOfStars={5}
-                name='Star'
-              />
-              <textarea className='form-control mt-3' name='desc' value={review.desc} onChange={(e) => setReview({...review, [e.target.name]: e.target.value})} />
-            </div>
+        <div className="mt-4">
+          <StarRatings
+            starDimension="20px"
+            rating={review.Star}
+            starRatedColor="red"
+            changeRating={changeRate}
+            numberOfStars={5}
+            name='Star'
+          />
+          <textarea className='form-control mt-3' disabled={seller.isSeller == true} name='desc' value={review.desc} onChange={(e) => setReview({ ...review, [e.target.name]: e.target.value })} />
+        </div>
 
-            <button className='bg-btns mt-4' onClick={postReview}>post review</button>
-            
-          </div>
-        </section>
-      }
-    </>
+        <button className={`bg-btns mt-4 ${seller.isSeller && "opacity-50"}`} disabled={seller.isSeller == true} onClick={postReview}>post review</button>
+
+      </div>
+    </section>
   );
 };
 
