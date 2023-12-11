@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 function Sidebar() {
   return (
     <>
-      <nav className="menuu" tabIndex={0}>
+      {/*<nav className="menuu" tabIndex={0}>
         <div className="smartphone-menu-trigger" />
         <header className="avatar">
           <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" />
@@ -23,7 +23,7 @@ function Sidebar() {
             <span> Settings</span>
           </li>
         </ul>
-      </nav>
+      </nav>*/}
     </>
   );
 }

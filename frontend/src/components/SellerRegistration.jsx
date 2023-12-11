@@ -16,7 +16,6 @@ const SellerRegistration = () => {
         formState: { errors },
     } = useForm()
     const onSignUp=async(data)=>{
-
         try {
             await sellerRegistraion(data);
 
@@ -38,7 +37,7 @@ const SellerRegistration = () => {
                         <div className='col-md-6 col-12'>
                             <div className='cardSection card border border-0 shadow my-5 ml-5 p-4'> {/*position-absolute top-50 start-50 translate-end p-4*/}
                                 <div className='card-title'>
-                                    <h3 className='text-center mt-2 text-danger text-uppercase'>Tell us about yourself</h3>
+                                    <h3 className='text-center mt-2 text-uppercase '>Tell us about yourself</h3>
                                     <p className='text-center'>Whether you have questions or you would just like to say hello, contact us.</p>
                                     <hr />
                                 </div>

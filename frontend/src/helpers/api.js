@@ -107,7 +107,7 @@ export const sellerRegistraion = async (data) => {
     try {
         let result = await axios.post(`${BASEURL}/seller-register`, data, headers.headers);
         if (result.data['status'] === 0) {
-            errorToast(result.data['data']);
+            successToast(result.data['data']);
             return;
         } else {
             return result.data

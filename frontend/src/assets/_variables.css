@@ -3,10 +3,22 @@
 :root{
   --primary: #a23af8;
   --alt-color: #ffffff;
-
+  --hover-color: #9300ff;
   --font-color: #0F2027;
   --font-color-alt: #fff;
 
   --header-font: "ROBOTO", sans-serif;
   --paragraph-font: "cabin", sans-serif;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0%);
+  }
 }
