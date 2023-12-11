@@ -14,7 +14,7 @@ const ProfileCards = ({data}) => {
         <a href={`mailto:${data['email']}`} className="seller-contact-info fs-6"> <span className="icon me-2"><MdOutlineAlternateEmail /></span> {data['email']}</a>
       </div>
 
-      <NavLink className="btn bg-btns mt-4">See provider</NavLink>
+      <NavLink to={"/profile/"+data._id} className="btn bg-btns mt-4">See provider</NavLink>
     </div>
   );
 };
