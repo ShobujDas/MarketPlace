@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import slider from "../../../public/slider-1.jpg"
 import { FiLogIn } from "react-icons/fi";
@@ -36,7 +36,6 @@ const LoginForm = () => {
             }, 3000)
         }
     }
-
     return (
         <section className="login-form my-section" id="login-form">
             <div className="container mx-auto">
@@ -46,7 +45,7 @@ const LoginForm = () => {
                         <p className="text-center mt-2">Make Your Experience More Better</p>
                     </div>
 
-                    <div className="col-md-8 mx-auto">
+                    <div className=" col-md-8 mx-auto">
                         <div className="card shadow border border-0 rounded my-3">
                             <img className="loginImage" src= {slider} alt="slider" />
                             <div className="card-body p-5">
@@ -60,14 +59,14 @@ const LoginForm = () => {
                                 </div>
                                 <div className="mb-3">
                                     <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="radio" name="seller" id="seller" value={seller} checked={seller == true} onChange={(e) => setSeller(true)} />
+                                        <input className="form-check-input" type="radio" name="seller" id="seller" value={seller} checked={seller == true} onChange={() => setSeller(true)} />
                                         <label className="form-check-label" >Seller</label>
                                     </div>
                                     <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="radio" name="seller" id="buyer" value={seller} checked={seller == false} onChange={(e) => setSeller(false)} />
+                                        <input className="form-check-input" type="radio" name="seller" id="buyer" value={seller} checked={seller == false} onChange={() => setSeller(false)} />
                                         <label className="form-check-label" >Buyer</label>
                                     </div>
-                                    <div className="mb-3 my-2 d-flex justify-content-between" id="forterms">
+                                    <div className="mb-4 my-2 d-flex justify-content-between gap-3" id="forterms">
                                         <span className="keepme"><input className="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault"/> Keep me signed in </span>
                                         <p>Don&apos;t have an account? <Link to="/register/user" className="registerNow link-danger cursor-pointer">Register Now!</Link></p>
                                     </div>

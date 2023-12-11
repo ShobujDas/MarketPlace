@@ -24,17 +24,13 @@ function DashHomePage() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-
-
   return (
     <DashboardLayout>
     <div className="container rounded bg-white mt-5 mb-5">
       <div className="row">
         <div className="col-md-3 border-right">
           <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img
-              className="rounded-circle mt-5"
-              width="150px"
+            <img className="rounded-circle mt-5" width="150px"
               src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
             />
             <div className="mb-3">

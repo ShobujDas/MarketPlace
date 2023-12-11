@@ -6,7 +6,9 @@ import {FaHeadphonesSimple, FaRegAddressCard, FaUserCheck} from "react-icons/fa6
 import {RiMoneyDollarCircleFill} from "react-icons/ri";
 import { buyerRegValidate } from '../../helpers/helpers';
 import { userRegistraion } from '../../helpers/api';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+
+import SectionTitle from "../SectionTitle.jsx";
 
 
 
@@ -69,7 +71,7 @@ const UserRegistrationForm = () => {
           <div className="col-md-8 mx-auto">
             <div className="cardStyle card shadow-lg border border-0 p-2">
               <div className="card-body">
-                <h2 className="card-title text-center">User Registration</h2>
+                <h2 className="card-title text-center section-title">User Registration</h2>
                 <hr/>
                 <div className="col-md-12">
                   <form>
@@ -98,7 +100,7 @@ const UserRegistrationForm = () => {
                       </div>
                       <div className="mb-3 ">
                         <label className="form-label">Profile</label>
-                          <input type="password" className="form-control" name="img" placeholder="Image Link" value={data.img} onChange={handleData} />
+                          <input type="text" className="form-control" name="img" placeholder="Image Link" value={data.img} onChange={handleData} />
                       </div>
                       <div className='d-flex gap-2 justify-content-center'>
                         <div className="mb-3 w-50">
@@ -123,6 +125,9 @@ const UserRegistrationForm = () => {
                       <div className="mb-3 mx-auto d-flex gap-2 justify-content-center mt-2 position-relative">
                         <button type="button" className="userRegister" onClick={createUser} >Register Now</button>
                       </div>
+                      <div className="mb-3 my-2 " id="forterms">
+                        <p>Already have an account?<Link to="/login" className="registerNow link-danger cursor-pointer"> Login</Link></p>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -130,45 +135,46 @@ const UserRegistrationForm = () => {
             </div>
           </div>
           </div>
-                <div className="col-12 mt-5">
-                  <h3>How It <span>Works</span></h3>
-                  <p>Most viewed and all-time top-selling services</p>
-                </div>
-                <div className="col-lg-3 col-md-4 col-sm-6 mt-3 mb-5">
-                  <div className="text-content">
-                    <p className="icon fs-1"><FaRegAddressCard /></p>
-                    <h5>Post a job</h5>
-                    <p>It&apos;s free and easy to post a job. Simply fill
-                      in a title, description.</p>
+          <div className="col-md-12">
+            <section className="needs my-section" id="needs">
+              <div className="container">
+                <SectionTitle title="Need something" titleHighlight="done" text="Any kind of services for your home" />
+                <div className="row">
+                  <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
+                    <div className="text-content">
+                      <span className="icon d-block pb-2 fs-2"><FaRegAddressCard /></span>
+                      <h5>Post a job</h5>
+                      <p>It&apos;s free and easy to post a job. Simply fill
+                        in a title, description.</p>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
+                    <div className="text-content">
+                      <span className="icon d-block pb-2 fs-2"><FaUserCheck /></span>
+                      <h5>Choose Providers</h5>
+                      <p>Find all kinds of provides needed for your home</p>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
+                    <div className="text-content">
+                      <span className="icon d-block pb-2 fs-2"><RiMoneyDollarCircleFill /></span>
+                      <h5>Pay safely</h5>
+                      <p>Pay any time with no fear with the best security</p>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
+                    <div className="text-content">
+                      <span className="icon d-block pb-2 fs-2"><FaHeadphonesSimple /></span>
+                      <h5>We&apos;re here to help</h5>
+                      <p>Any problem for your home or about services, we are here</p>
+                    </div>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                  <div className="text-content">
-                    <p className="icon fs-1"><FaUserCheck /></p>
-                    <h5>Choose Providers</h5>
-                    <p>Find all kinds of provides needed for your home</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                  <div className="text-content">
-                    <p className="icon fs-1"><RiMoneyDollarCircleFill /></p>
-                    <h5>Pay safely</h5>
-                    <p>Pay any time with no fear with the best security</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                  <div className="text-content">
-                    <p className="icon fs-1"><FaHeadphonesSimple /></p>
-                    <h5>We&apos;re here to help</h5>
-                    <p>Any problem for your home or about services, we are here</p>
-                  </div>
-                </div>
-
-
+              </div>
+            </section>
+          </div>
           </div>
         </div>
-
-
     </div>
   );
 };

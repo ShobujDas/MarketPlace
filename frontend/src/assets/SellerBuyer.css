@@ -1,14 +1,4 @@
-@keyframes slideInFromLeft {
-    0% {
-        opacity: 0;
-        transform: translateY(100%);
 
-    }
-    100% {
-        opacity: 100%;
-        transform: translateY(0%);
-    }
-}
 .coverSection{
     background-color: var(--primary);
     color: white;
@@ -25,30 +15,6 @@
 .cardSection{
     animation: 0.8s ease-in-out 0.2s 1 slideInFromLeft;
 }
-.registerBTN{
-    padding: 5px 10px;
-    color: white;
-    background: var(--primary);
-    border: 2px solid var(--primary);
-    text-transform: capitalize;
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 3px;
-    width: 350px;
-    height: 40px;
-}
-
-
-.registerBTN:hover{
-    padding: 5px 10px;
-    background: rgb(221, 34, 1);
-    border: 2px solid rgb(221, 34, 1);
-    text-transform: capitalize;
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 3px;
-}
-
 .redirectLogin{
     margin: 4px;
 }
@@ -58,5 +24,7 @@
 }
 .redirectLogin  Link{
     cursor: pointer;
-
+}
+.card-title h3{
+    color: var(--primary);
 }
