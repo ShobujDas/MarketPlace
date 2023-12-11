@@ -27,3 +27,35 @@
 .chat-box .sender-btn:hover{
   color: var(--primary);
 }
+
+/* chat box header */
+.chat-box .chat-box-header{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+/* chat cards for messeges */
+.chat-card{
+  width: 100%;
+  min-height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 8px;
+  border-bottom: 2px solid #cecece;
+  display: flex;
+  align-items: center;
+}
+.chat-card.active{
+  background: #e1e1e1;
+  border-radius: 5px;
+}
+
+.chat-card .sender-img,
+.chat-box .chat-box-header .sender-img{
+  width: 45px;
+  height: 45px;
+  display: block;
+  border-radius: 50%;overflow: hidden;
+}

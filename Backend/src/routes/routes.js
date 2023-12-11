@@ -4,7 +4,7 @@ const express = require('express');
 const authController = require('../controllers/authController')
 const categoryController = require('../controllers/categoryController');
 const gigController = require('../controllers/gigController');
-const msgController = require('../controllers/conversationController');
+const msgController = require('../controllers/messageController');
 const reviewController = require("../controllers/reviewController");
 const orderController = require("../controllers/orderController")
 
@@ -50,7 +50,7 @@ router.get("/get-gig-category/:category/:page/:limit", gigController.gigByCatego
 
 
 // conversation routes
-router.post("/create-conv", authVerification, msgController.conversationCreate)
+// router.post("/create-conv", authVerification, msgController.conversationCreate)
 
 
 // review routes
@@ -64,5 +64,9 @@ router.post("/update-review/:id/:isSeller/:reviewId", authVerification, reviewCo
 // order routes
 router.post("/create-order/:gigId", authVerification, orderController.paymentIntCont)
 //router.post("/get-order",authVerification,paymentIntCont)
+
+// chat routes
+router.get("/chats", authVerification, msgController.chatGet)
+router.get("/get-msgs/:id", authVerification, msgController.msgGet)
 
 module.exports = router

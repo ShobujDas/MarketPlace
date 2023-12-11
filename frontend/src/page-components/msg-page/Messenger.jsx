@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { flushSync } from 'react-dom';
 import SectionTitle from './../../components/SectionTitle';
 import { FaPaperPlane } from "react-icons/fa6";
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { getChat, getMsg } from "../../helpers/api";
+import ChatCards from "../../components/cards/ChatCards";
 
 
 const Messenger = () => {
@@ -15,23 +18,35 @@ const Messenger = () => {
     navigate('/login', {replace: true})
   }
 
-  const [sellerId, setSellerId] = useState("655887afc0e4baba0eb5b2c4")
+  const [receiever, setReceiever] = useState("")
+  const [senders, setSenders] = useState([])
   const [msg, setMsg] = useState({
-    receiverId: sellerId,
+    receiverId: receiever,
     text: ""
   })
-  const [messeges, setMesseges] = ([])
+  const [msgTo, setMsgTo] = useState({})
+  const [messages, setMessages] = useState([]);
   const [ws, setWs] = useState(null)
 
-  // useEffect(() => {
-  //   connectToSocket()
-  // }, [sellerId])
-
-  let connectToSocket = () => {
+  useEffect(() => {
+    (async () => {
+      let result = await getChat()
+      if (result) {
+        setSenders(result)
+      }
+    })()
+    connectToSocket()
+  }, [receiever])
+  
+  
+  // connnect to webSocket
+  let connectToSocket = async () => {
     let ws = new WebSocket("ws://localhost:5000?token="+token)
     setWs(ws)
-
     ws.addEventListener('message', handleMessage)
+    ws.addEventListener('close', () => {
+      setTimeout(() => {connectToSocket()}, 1000)
+    })
   }
 
   let handleMessage = (ev) => {
@@ -41,11 +56,34 @@ const Messenger = () => {
 
   }
 
+  // sending msg
   let sendMsg = (e) => {
     e.preventDefault()
-
+    msg['receiverId'] = receiever
     ws.send(JSON.stringify(msg))
   }
+
+  // handle receiever
+  let handleReceieve = () => {
+
+  }
+
+  // get msgs by user
+  useEffect(() => {
+    if (receiever != "") {
+      (async () => {
+        let result = await getMsg(receiever)
+        if(result){
+          setMessages(result)
+          setMsgTo(senders.filter(e => e._id == receiever)[0])
+        }
+        
+      })()
+    }
+  }, [receiever])
+  console.log(messages)
+  
+
 
   return (
     <section className="my-section ">
@@ -60,18 +98,33 @@ const Messenger = () => {
             <div className="col-lg-4 col-md-4">
               <div className="chat-online">
                 <h5 className="border-bottom border-1 border-danger pb-3">Your chats</h5>
+
+                {senders.length > 0 && <ChatCards data={senders} sender={setReceiever}/>}
               </div>
             </div>
             <div className="col-lg-8 col-md-8">
               <div className="chat-box">
 
+                <div className="chat-box-header border-bottom border-1 pb-2">
+                  {
+                    Object.keys(msgTo).length > 0 ? 
+                    <>
+                      <div className="sender-img">
+                        <img src={msgTo['img']} alt="" />
+                      </div>
+                      <h6 className="mb-0 ms-2">{msgTo['firstName']} {msgTo['lastName']} {msgTo['serviceName']}</h6>
+                    </> : <h6 className="mb-0">Select a chat</h6>
+                  }
+                  
+                </div>
+
                 {/* chat form */}
                 <div className="chat-form">
                   <form action="">
                     <div className="input-group">
-                      <input type="text" className="form-control" value={msg.text} onChange={(e) => setMsg({...msg,['text']: e.target.value})} placeholder="Type your message" />
+                      <input type="text" className="form-control" value={msg.text} onChange={(e) => setMsg({...msg,['text']: e.target.value})} placeholder="Type your message" required />
                       <span className="input-group-text">
-                        <button className="sender-btn" onClick={sendMsg}><FaPaperPlane /></button>
+                        <button type="button" className="sender-btn" onClick={sendMsg}><FaPaperPlane /></button>
                       </span>
                     </div>
                   </form>

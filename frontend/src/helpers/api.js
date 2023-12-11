@@ -277,3 +277,33 @@ export const createReview = async (data) => {
         errorToast("Something went wrong");
     }
 }
+
+// get chat messages
+export const getChat = async () => {
+    try {
+        let result = await axios.get(`${BASEURL}/chats`, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return
+        } else {
+            return result.data['data']
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// get chat messages
+export const getMsg = async (id) => {
+    try {
+        let result = await axios.get(`${BASEURL}/get-msgs/${id}`, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return
+        } else {
+            return result.data['data']
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}

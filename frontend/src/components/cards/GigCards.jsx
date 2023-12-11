@@ -14,7 +14,7 @@ const GigCards = ({data}) => {
 
           {/* gig text content */}
           <div className="text-content">
-            <NavLink to={`/services/${data['category']}/${data['_id']}`} className="gig-title">{data['title']}</NavLink>
+            <h6 className="gig-title">{data['title']}</h6>
             <p className="text-dark">{data['short_desc']}</p>
 
             <p className="reviews mb-2 text-black">
@@ -25,6 +25,7 @@ const GigCards = ({data}) => {
           </div>
 
           {/* gig provider */}
+        </NavLink>
           <div className="provider-box">
             <div className="provider-detail">
               <div className="provider-img">
@@ -35,7 +36,6 @@ const GigCards = ({data}) => {
 
             <div className="price"><p className="mb-0 fw-bold">৳ {data['price']}</p></div>
           </div>
-        </NavLink>
         
       </div>
     </div>

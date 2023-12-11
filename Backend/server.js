@@ -8,35 +8,44 @@ let server = app.listen(port,function (){
     console.log(`Server is Running & Port No-${port}`)
 })
 
-// let wss = new ws.WebSocketServer({server})
+let wss = new ws.WebSocketServer({server})
+const clients = {};
 
-// wss.on('connection',(connected, req) => {
-//     let token = req.url.split("=")[1]
-//     let {user} = verifyToken(token)
+wss.on('connection',(connected, req) => {
+    let token = req.url.split("=")[1]
+    let {user} = verifyToken(token)
     
-//     connected.timer = setInterval(() => {
-//         connected.ping();
-//         connected.deathTimer = setTimeout(() => {
-//             connected.isAlive = false;
-//             clearInterval(connected.timer);
-//             connected.terminate();
-//         }, 1000);
-//     }, 5000);
+    connected.timer = setInterval(() => {
+        connected.ping();
+        connected.deathTimer = setTimeout(() => {
+            connected.isAlive = false;
+            clearInterval(connected.timer);
+            connected.terminate();
+        }, 1000);
+    }, 5000);
 
-//     connected.on('pong', () => {
-//         clearTimeout(connected.deathTimer);
-//     });
+    connected.on('pong', () => {
+        clearTimeout(connected.deathTimer);
+    });
 
-//     if(user){
-//         connected.on('message', async (messege) => {
-//             const data = JSON.parse(messege.toString())
-//             data.senderId = user.id
-//             await msgCreate(data)
-//         })
+    if(user){
+        connected.on('message', async (messege) => {
+            const data = JSON.parse(messege.toString())
+            data.senderId = user.id
+            await msgCreate(data)
+            
+            clients.user = user
+            clients.data = data
+            clients.connected = connected
+            
+            const recipientSocket = clients['data'];
+            console.log(recipientSocket)
+            if (recipientSocket && recipientSocket.readyState === ws.OPEN) {
+                recipientSocket.send(data);
+            }
 
-
-
-//     }
-// })
+        })
+    }
+})
 
 module.exports = server
