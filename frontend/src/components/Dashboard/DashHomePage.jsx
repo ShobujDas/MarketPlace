@@ -15,7 +15,6 @@ function DashHomePage() {
     city: "",
     road: "",
     houseNo: "",
-
   });
 
   const [photo,setPhoto] = useState()

@@ -21,17 +21,17 @@ const BuyerProfileSideBar = ({children, showPanel}) => {
           </li>
           {
             location.pathname != "/profile" && <li className={`nav-item ${active == 5 && "active"}`}>
-              <button className="profile-tab-btn" value={5} onClick={panelChange}>Services</button>
+              <button className="profile-tab-btn ms-1" value={5} onClick={panelChange}>Services</button>
             </li>
           }
           <li className={`nav-item ${active == 2 && "active"}`}>
-            <button className="profile-tab-btn" value={2} onClick={panelChange}>Bills</button>
+            <button className="profile-tab-btn ms-1" value={2} onClick={panelChange}>Bills</button>
           </li>
           <li className={`nav-item ${active == 3 && "active"}`}>
-            <button className="profile-tab-btn" value={3} onClick={panelChange}>Account</button>
+            <button className="profile-tab-btn ms-1" value={3} onClick={panelChange}>Account</button>
           </li>
           <li className={`nav-item ${active == 4 && "active"}`}>
-            <button className="profile-tab-btn" value={4} onClick={panelChange}>Setting</button>
+            <button className="profile-tab-btn ms-1" value={4} onClick={panelChange}>Setting</button>
           </li>
         </ul>
       </div>

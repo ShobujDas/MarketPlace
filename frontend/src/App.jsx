@@ -12,6 +12,7 @@ import Creategigpage from './components/Dashboard/Creategigpage';
 import Allgig from './components/Dashboard/Allgig';
 import SellerProfile from "./pages/SellerProfile.jsx";
 import MessagePage from "./pages/MessagePage.jsx";
+import SellerDashBoard from "./pages/SellerDashBoard.jsx";
 
 const App = () => {
   return (
@@ -25,9 +26,7 @@ const App = () => {
             <Route path="/services/:category/:id" element={<SingleService />} />
             <Route path="/services" element={<AllServices />} />
             <Route path="/become-seller" element={<SellerRegPage />} />
-            <Route path="/dashboard" element={<DashHomePage />} />
-            <Route path="/dashboard/create-gig" element={<Creategigpage />} />
-            <Route path="/dashboard/all-gig" element={<Allgig />} />
+            <Route path="/dashboard" element={<SellerDashBoard />} />
             <Route path="/profile" element={<BuyerProfile />} />
             <Route path="/profile/:id" element={<SellerProfile />} />
             <Route path="/message" element={<MessagePage />} />
