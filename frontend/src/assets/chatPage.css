@@ -6,12 +6,11 @@
 
 .chat-wrapper .chat-online,
 .chat-wrapper .chat-box{
-  height: 80vh;
+  height: 85vh;
   background: var(--alt-color);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
   position: relative;
 }
 
@@ -19,12 +18,12 @@
   padding: 20px 15px;
 }
 
+/* chat form */
 .chat-box .chat-form{
-  position: sticky;
   width: 100%;
-  bottom: 0;
+  height: 10vh;
   background: var(--alt-color);
-  padding: 20px;
+  padding: 9px 10px;
   box-sizing: border-box;
 }
 
@@ -35,7 +34,7 @@
 /* chat box header */
 .chat-box .chat-box-header{
   width: 100%;
-  height: auto;
+  height: 10vh;
   display: flex;
   align-items: center;
   position: sticky;
@@ -64,23 +63,37 @@
   width: 45px;
   height: 45px;
   display: block;
-  border-radius: 50%;overflow: hidden;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 
 /* .chat msg */
+.chat-box .show-chat p{
+  margin-bottom: 7px;
+}
+.chat-box .show-chat{
+  width: 100%;
+  height: 65vh;
+  padding: 10px 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 .chat-box .show-chat .received{
-  width: 50%;
-  padding: 10px 7px;
+  width: fit-content;
+  max-width: 50%;
+  padding: 10px 12px;
   background: var(--primary);
   color: var(--font-color-alt);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .chat-box .show-chat .sent{
-  width: 50%;
-  padding: 10px 7px;
+  width: fit-content;
+  max-width: 50%;
+  padding: 10px 12px;
   background: rgb(255, 60, 46);
   color: var(--font-color-alt);
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: auto;
+  text-align: right;
 }

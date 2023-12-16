@@ -92,9 +92,15 @@ exports.getPeople = async (req) => {
 // get messages
 exports.getMsgs = async (req) => {
   try {
-    let sender = req.headers.id
+    let senderId = req.headers.id
+    let receiverId = req.params.id
 
-    let chats = await msgModel.find({ receiverId: new ObjectId(sender), senderId: new ObjectId(req.params.id) }).select("_id senderId receiverId text")
+    let chats = await msgModel.find({
+      $or: [
+        { senderId, receiverId },
+        { senderId: receiverId, receiverId: senderId },
+      ],
+    }).select("senderId receiverId text")
 
     return { status: 1, code: 200, data: chats }
 

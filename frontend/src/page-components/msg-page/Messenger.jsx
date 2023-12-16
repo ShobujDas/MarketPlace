@@ -8,12 +8,16 @@ import ChatCards from "../../components/cards/ChatCards";
 import io from 'socket.io-client'
 
 const Messenger = () => {
-
+  
+  const socket = io.connect('http://localhost:5000')
   let data = JSON.parse(sessionStorage.getItem('user'))
   let token = Cookies.get('token')
-  const socket = io.connect('http://localhost:5000')
 
   const navigate = useNavigate()
+
+  if (data == null || token == null){
+    navigate('/login', {replace: true})
+  }
 
 
   const [receiever, setReceiever] = useState("")
@@ -27,7 +31,8 @@ const Messenger = () => {
   const [messages, setMessages] = useState([]);
   const [ws, setWs] = useState(null)
 
-useEffect(() => {
+  // get chats
+  useEffect(() => {
     (async () => {
       let result = await getChat()
       if (result) {
@@ -69,7 +74,7 @@ useEffect(() => {
   // send message
   let sendMsg = async (e) => {
     e.preventDefault()
-    
+
     socket.emit('send-message', {msg, receiever})
 
     setMessages(prevMessages => [...prevMessages, msg]);
@@ -110,7 +115,10 @@ useEffect(() => {
                   
                 </div>
 
-                <div className="show-chat px-3">
+                <div className="show-chat px-3" id="show-chat">
+                  {
+                    messages.length == 0 && <p className="text-center fw-bold text-black-50 fs-3">Chat will be shown here</p>
+                  }
                   {
                     messages.length > 0 && messages.map((e, index) => {
                       return (e.receiverId == data._id ? <p className="received" key={index}>{e.text}</p> : <p className="sent" key={index}>{e.text}</p>)
@@ -119,10 +127,10 @@ useEffect(() => {
                 </div>
 
                 {/* chat form */}
-                <div className="chat-form">
+                <div className="chat-form border-top border-1">
                   <form action="" onSubmit={sendMsg}>
                     <div className="input-group">
-                      <input type="text" className="form-control" value={msg.text} onChange={(e) => setMsg({...msg,['text']: e.target.value})} placeholder="Type your message" required minLength={3} />
+                      <input type="text" className="form-control" value={msg.text} onChange={(e) => setMsg({...msg,['text']: e.target.value})} placeholder="Type your message" required minLength={2} />
                       <span className="input-group-text">
                         <button type="submit" className="sender-btn"><FaPaperPlane /></button>
                       </span>
