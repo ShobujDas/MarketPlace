@@ -1,72 +1,41 @@
 import { useEffect, useState } from "react";
-import { flushSync } from 'react-dom';
 import SectionTitle from './../../components/SectionTitle';
 import { FaPaperPlane } from "react-icons/fa6";
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { getChat, getMsg } from "../../helpers/api";
 import ChatCards from "../../components/cards/ChatCards";
-
+import io from 'socket.io-client'
 
 const Messenger = () => {
 
   let data = JSON.parse(sessionStorage.getItem('user'))
   let token = Cookies.get('token')
+  const socket = io.connect('http://localhost:5000')
+
   const navigate = useNavigate()
 
-  if(data == null || token == null){
-    navigate('/login', {replace: true})
-  }
 
   const [receiever, setReceiever] = useState("")
   const [senders, setSenders] = useState([])
   const [msg, setMsg] = useState({
-    receiverId: receiever,
+    senderId: data._id,
+    receiverId: "",
     text: ""
   })
   const [msgTo, setMsgTo] = useState({})
   const [messages, setMessages] = useState([]);
   const [ws, setWs] = useState(null)
 
-  useEffect(() => {
+useEffect(() => {
     (async () => {
       let result = await getChat()
       if (result) {
         setSenders(result)
       }
     })()
-    connectToSocket()
   }, [receiever])
-  
-  
-  // connnect to webSocket
-  let connectToSocket = async () => {
-    let ws = new WebSocket("ws://localhost:5000?token="+token)
-    setWs(ws)
-    ws.addEventListener('message', handleMessage)
-    ws.addEventListener('close', () => {
-      setTimeout(() => {connectToSocket()}, 1000)
-    })
-  }
 
-  let handleMessage = (ev) => {
-    const messageData = JSON.parse(ev.data);
-
-    console.log({ ev, messageData })
-
-  }
-
-  // sending msg
-  let sendMsg = (e) => {
-    e.preventDefault()
-    msg['receiverId'] = receiever
-    ws.send(JSON.stringify(msg))
-  }
-
-  // handle receiever
-  let handleReceieve = () => {
-
-  }
 
   // get msgs by user
   useEffect(() => {
@@ -76,13 +45,36 @@ const Messenger = () => {
         if(result){
           setMessages(result)
           setMsgTo(senders.filter(e => e._id == receiever)[0])
-        }
-        
+        }        
       })()
     }
   }, [receiever])
-  console.log(messages)
+
+  // receive msg
+  useEffect(() => {
+
+    socket.on('receive-message', (data) => {
+      setMessages(prevMessages => [...prevMessages, data]);
+    })
+
+  }, [socket])
+
+  // setting receiver
+  let settingReceiever = (receieverID) => {
+    setReceiever(receieverID)
+    setMsg({ ...msg, ['receiverId']: receieverID })
+    socket.emit('join-room', data._id)
+  }
   
+  // send message
+  let sendMsg = async (e) => {
+    e.preventDefault()
+    
+    socket.emit('send-message', {msg, receiever})
+
+    setMessages(prevMessages => [...prevMessages, msg]);
+    setMsg({ ...msg, ['text']: "" })
+  }
 
 
   return (
@@ -99,13 +91,13 @@ const Messenger = () => {
               <div className="chat-online">
                 <h5 className="border-bottom border-1 border-danger pb-3">Your chats</h5>
 
-                {senders.length > 0 && <ChatCards data={senders} sender={setReceiever}/>}
+                {senders.length > 0 && <ChatCards data={senders} sender={settingReceiever}/>}
               </div>
             </div>
             <div className="col-lg-8 col-md-8">
               <div className="chat-box">
 
-                <div className="chat-box-header border-bottom border-1 pb-2">
+                <div className="chat-box-header border-bottom border-1 py-2 px-3">
                   {
                     Object.keys(msgTo).length > 0 ? 
                     <>
@@ -118,13 +110,21 @@ const Messenger = () => {
                   
                 </div>
 
+                <div className="show-chat px-3">
+                  {
+                    messages.length > 0 && messages.map((e, index) => {
+                      return (e.receiverId == data._id ? <p className="received" key={index}>{e.text}</p> : <p className="sent" key={index}>{e.text}</p>)
+                    })
+                  }
+                </div>
+
                 {/* chat form */}
                 <div className="chat-form">
-                  <form action="">
+                  <form action="" onSubmit={sendMsg}>
                     <div className="input-group">
-                      <input type="text" className="form-control" value={msg.text} onChange={(e) => setMsg({...msg,['text']: e.target.value})} placeholder="Type your message" required />
+                      <input type="text" className="form-control" value={msg.text} onChange={(e) => setMsg({...msg,['text']: e.target.value})} placeholder="Type your message" required minLength={3} />
                       <span className="input-group-text">
-                        <button type="button" className="sender-btn" onClick={sendMsg}><FaPaperPlane /></button>
+                        <button type="submit" className="sender-btn"><FaPaperPlane /></button>
                       </span>
                     </div>
                   </form>

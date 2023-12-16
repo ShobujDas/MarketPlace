@@ -9,6 +9,8 @@ import { errorToast } from './../../helpers/alert';
 
 const Profile = ({id}) => {
 
+  let session = JSON.parse(sessionStorage.getItem('user'))
+  let cookies = Cookies.get('token')
   const [profile, setProfile] = useState({})
   const navigate = useNavigate()
 
@@ -22,16 +24,12 @@ const Profile = ({id}) => {
   // go to messenger
   let goToMessage = (e) => {
     e.preventDefault()
-    let session = JSON.parse(sessionStorage.getItem('user'))
-    let cookies = Cookies.get('token')
-
-    if(cookies && session){
+    if(session != null && cookies != null){
       navigate('/message')
     }
     else{
-      errorToast("Please login to chat")
+      errorToast('Please login to message')
     }
-    
   }
 
   return (

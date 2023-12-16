@@ -25,7 +25,8 @@
     "react-loading-skeleton": "^3.3.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.19.0",
-    "react-star-ratings": "^2.3.0"
+    "react-star-ratings": "^2.3.0",
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

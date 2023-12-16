@@ -27,13 +27,21 @@ const LoginForm = () => {
         }
         
         if(result){
+            let isSeller = seller
+            if(isSeller){
+                setTimeout(() => {
+                    naviagate('/dashboard', { replace: true })
+                }, 3000)
+            }
+            else{
+                setTimeout(() => {
+                    naviagate('/profile', { replace: true })
+                }, 3000)
+            }
             setData({
                 email: "",
                 password: ""
             })
-            setTimeout(() => {
-                naviagate('/', { replace: true })
-            }, 3000)
         }
     }
     return (

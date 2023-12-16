@@ -26,8 +26,8 @@
     "mongoose": "^8.0.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.7",
-    "stripe": "^14.4.0",
-    "ws": "^8.15.0"
+    "socket.io": "^4.7.2",
+    "stripe": "^14.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
