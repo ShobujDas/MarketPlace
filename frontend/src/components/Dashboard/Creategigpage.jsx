@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DashboardLayout from "../layouts/DashboardLayout";
+// import DashboardLayout from "../layouts/DashboardLayout";
 
 function Creategigpage() {
   const [data, setData] = useState({
@@ -29,7 +29,7 @@ function Creategigpage() {
   const [photo, setPhoto] = useState();
 
   return (
-    <DashboardLayout>
+    // <DashboardLayout>
       <div className="container rounded bg-white mb-5">
         <div className="row">
           <div className="col-md-12 border-right">
@@ -172,7 +172,7 @@ function Creategigpage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    // </DashboardLayout>
   );
 }
 

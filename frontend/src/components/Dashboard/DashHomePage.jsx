@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DashboardLayout from '../layouts/DashboardLayout'
+// import DashboardLayout from '../layouts/DashboardLayout'
 
 function DashHomePage() {
 
@@ -24,7 +24,7 @@ function DashHomePage() {
   };
 
   return (
-    <DashboardLayout>
+    // <DashboardLayout>
     <div className="container rounded bg-white mt-5 mb-5">
       <div className="row">
         <div className="col-md-3 border-right">
@@ -190,7 +190,7 @@ function DashHomePage() {
         </div>
       </div>
     </div>
-  </DashboardLayout>
+  // </DashboardLayout>
   )
 }
 

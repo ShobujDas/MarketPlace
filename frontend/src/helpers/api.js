@@ -307,3 +307,18 @@ export const getMsg = async (id) => {
         errorToast("Something went wrong");
     }
 }
+
+// get seller profile
+export const fetchSellerProfile = async () => {
+    try {
+        let result = await axios.get(`${BASEURL}/seller-profile`, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return
+        } else {
+            return result.data['data']
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}

@@ -132,3 +132,8 @@ button{
   border-color: transparent;
 }
 
+
+/* quill editor */
+.ql-editor{
+  height: 50vh;
+}

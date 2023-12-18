@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DashboardLayout from "../layouts/DashboardLayout";
+// import DashboardLayout from "../layouts/DashboardLayout";
 import toast from "react-hot-toast";
 
 function Allgig() {
@@ -30,7 +30,7 @@ function Allgig() {
   // }, []);
 
   return (
-    <DashboardLayout>
+    // <DashboardLayout>
       <div className="container-fluid m-3 p-3">
         <div className="row">
           <div className="col-md-12">
@@ -92,7 +92,7 @@ function Allgig() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    // </DashboardLayout>
   );
 }
 

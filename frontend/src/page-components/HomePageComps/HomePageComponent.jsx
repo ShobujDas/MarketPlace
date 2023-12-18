@@ -47,7 +47,7 @@ const HomePageComponent = () => {
         }
         
         {
-          !loader && <div id="home-slider" className="carousel slide carousel-fade" data-bs-ride="carousel">
+          !loader && <div id="home-slider" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
 
               <div className="carousel-item active" data-bs-interval="4000">

@@ -72,7 +72,7 @@ const BuyerInfo = () => {
                 </div>
                 <div className="input-group mb-3">
                   <span className="input-group-text" id="email">Email</span>
-                  <input type="email" className="form-control" name="email" placeholder="EMail" value={profile.email} onChange={handleData} />
+                  <input type="email" className="form-control" name="email" placeholder="EMail" value={profile.email} disabled />
                 </div>
                 <div className="input-group mb-3">
                   <span className="input-group-text" id="phone">Phone</span>
