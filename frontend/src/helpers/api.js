@@ -322,3 +322,19 @@ export const fetchSellerProfile = async () => {
         errorToast("Something went wrong");
     }
 }
+
+// update seller profile
+export const updateSellerProfile = async (data) => {
+    try {
+        let result = await axios.post(`${BASEURL}/seller-update`, data, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return 0;
+        } else {
+            successToast(result.data['data'])
+            return 1
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}

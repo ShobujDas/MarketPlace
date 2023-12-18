@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../../components/SectionTitle";
 import ReactQuill from 'react-quill';
 
-import { fetchSellerProfile } from '../../helpers/api'
+import { fetchSellerProfile, updateSellerProfile } from '../../helpers/api'
+import { quillModule } from "../../helpers/helpers";
 
 const SellerInfo = () => {
 
@@ -14,7 +15,7 @@ const SellerInfo = () => {
     img: "",
     country: "",
     phone: "",
-    des: "",
+    decs: "",
     short_des: "",
     city: "",
     road: "",
@@ -27,6 +28,7 @@ const SellerInfo = () => {
 
   useEffect(() => {
     getSellerInfo()
+    setLoader(false)
   }, [loader])
 
   // get seller info
@@ -39,7 +41,7 @@ const SellerInfo = () => {
         img: result?.img ?? "",
         country: result?.country ?? "",
         phone: result?.phone ?? "",
-        des: result?.des ?? "",
+        decs: result?.decs ?? "",
         short_des: result?.short_des ?? "",
         city: result?.city ?? "",
         road: result?.road ?? "",
@@ -49,9 +51,12 @@ const SellerInfo = () => {
   }
 
   // update info
-  let updateInfo = async () => {
-    
+  let updateInfo = async (e) => {
+    e.preventDefault()
+    let result = await updateSellerProfile(profile)
+    setLoader(true)
   }
+
 
 
 
@@ -62,7 +67,7 @@ const SellerInfo = () => {
         <SectionTitle title={"Your"} titleHighlight={"profile"} text={"See your information here"} />
 
         <div className="col-12 mt-4">
-          <form action="">
+          <form action="" onSubmit={updateInfo}>
 
             <div className="col-lg-7">
               <div className="input-group mb-3">
@@ -102,7 +107,7 @@ const SellerInfo = () => {
 
             <div className="mb-3">
               <p className="mt-5 fw-medium fs-4 border-bottom border-1 pb-3 border-danger-subtle">Description about profile</p>
-              <ReactQuill theme="snow" value={profile.des} onChange={(e) => setProfile({ ...profile, ['des']: e })} />
+              <ReactQuill theme="snow" modules={quillModule()} value={profile.decs} onChange={(e) => setProfile({ ...profile, ['decs']: e })} />
             </div>
 
             <div className="mt-4">
