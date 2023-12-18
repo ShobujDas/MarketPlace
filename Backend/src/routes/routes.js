@@ -33,7 +33,7 @@ router.get('/user-profile', authVerification, authController.getUserProfile)
 router.post('/seller-login', authController.seller_login)
 router.post('/seller-register', authController.seller_register)
 router.post('/seller-delete/:id', authVerification, authController.deleteSeller)
-router.post('/seller-update/:id', authVerification, authController.updateSeller)
+router.post('/seller-update', authVerification, authController.updateSeller)
 router.get('/seller/:id', authController.getSeller)
 router.get('/seller-profile', authVerification, authController.sellerProfile)
 
