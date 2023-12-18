@@ -1,5 +1,5 @@
 const { cookieMaker } = require("../helper/helper");
-const { sellerRegister, sellerDelete, getSellerById, sellerUpdate, sellerLogin } = require("../services/sellerServices");
+const { sellerRegister, sellerDelete, getSellerById, sellerUpdate, sellerLogin, getSellerProfile } = require("../services/sellerServices");
 const { userRegister, userLogin, userDelete, getUserById, userUpdate, profile } = require("../services/userServices");
 
 // registration controller
@@ -117,5 +117,11 @@ exports.updateSeller = async (req, res) => {
 // get seller by id
 exports.getSeller = async (req, res) => {
     let result = await getSellerById(req)
+    res.status(200).json(result)
+}
+
+// get seller profile
+exports.sellerProfile = async (req, res) => {
+    let result = await getSellerProfile(req)
     res.status(200).json(result)
 }

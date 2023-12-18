@@ -66,7 +66,7 @@ exports.sellerDelete = async (req) => {
 // seller delete
 exports.sellerUpdate = async (req) => {
   try {
-    const userId = req.params.id;
+    const userId = req.headers.id;
     let update = await sellers.updateOne({ _id: userId }, req.body)
 
     return { status: 1, code: 200, data: "Account updated" }
@@ -92,3 +92,17 @@ exports.getSellerById = async (req) => {
   }
 }
 
+// get seller profile 
+exports.getSellerProfile = async (req) => {
+  try {
+
+    const user = await sellers.findOne({ _id: req.headers.id }).select("_id serviceName email img phone decs short_des country isSeller city road houseNo")
+    if (!user) {
+      return { status: 0, code: 200, data: "user not found" }
+    }
+
+    return { status: 1, code: 200, data: user }
+  } catch (error) {
+    return { status: 0, code: 200, data: "something went wrong" }
+  }
+}
