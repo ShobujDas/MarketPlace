@@ -13,6 +13,7 @@ const SellerDashBoard = () => {
       <BuyerProfileSideBar showPanel={setPanel}>
 
         {panel == 1 && <SellerInfo />}
+        {panel == 2 && <SellerInfo />}
 
       </BuyerProfileSideBar>
     </MasterLayout>

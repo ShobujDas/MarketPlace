@@ -7,8 +7,7 @@ import { quillModule } from "../../helpers/helpers";
 
 const SellerInfo = () => {
 
-  const [loader, setLoader] = useState(true)
-
+  
   const [profile, setProfile] = useState({
     serviceName: "",
     email: "",
@@ -27,34 +26,30 @@ const SellerInfo = () => {
   }
 
   useEffect(() => {
-    getSellerInfo()
-    setLoader(false)
-  }, [loader])
-
-  // get seller info
-  let getSellerInfo = async () => {
-    let result = await fetchSellerProfile()
-    if(result) {
-      setProfile({
-        serviceName: result?.serviceName ?? "",
-        email: result?.email ?? "",
-        img: result?.img ?? "",
-        country: result?.country ?? "",
-        phone: result?.phone ?? "",
-        decs: result?.decs ?? "",
-        short_des: result?.short_des ?? "",
-        city: result?.city ?? "",
-        road: result?.road ?? "",
-        houseNo: result?.houseNo ?? "",
-      })
-    }
-  }
+    (async () => {
+      let result = await fetchSellerProfile()
+      if (result) {
+        setProfile({
+          serviceName: result?.serviceName ?? "",
+          email: result?.email ?? "",
+          img: result?.img ?? "",
+          country: result?.country ?? "",
+          phone: result?.phone ?? "",
+          decs: result?.decs ?? "",
+          short_des: result?.short_des ?? "",
+          city: result?.city ?? "",
+          road: result?.road ?? "",
+          houseNo: result?.houseNo ?? "",
+        });
+      }
+    })()
+  }, [])
+  
 
   // update info
   let updateInfo = async (e) => {
     e.preventDefault()
     let result = await updateSellerProfile(profile)
-    setLoader(true)
   }
 
 
@@ -105,16 +100,25 @@ const SellerInfo = () => {
               </div>
             </div>
 
-            <div className="mb-3">
-              <p className="mt-5 fw-medium fs-4 border-bottom border-1 pb-3 border-danger-subtle">Description about profile</p>
-              <ReactQuill theme="snow" modules={quillModule()} value={profile.decs} onChange={(e) => setProfile({ ...profile, ['decs']: e })} />
-            </div>
-
             <div className="mt-4">
               <button className="bg-btns btn-lg"> save account </button>
             </div>
 
           </form>
+
+          {
+            profile.decs != "" && 
+            <>
+              <div className="mb-3">
+                <p className="mt-5 fw-medium fs-4 border-bottom border-1 pb-3 border-danger-subtle">Description about profile</p>
+                <ReactQuill theme="snow" modules={quillModule()} value={profile.decs} onChange={(e) => setProfile({ ...profile, ['decs']: e })} />
+              </div>
+
+              <div className="mt-4">
+                <button className="bg-btns btn-lg" onClick={updateInfo}> save description </button>
+              </div>
+            </>
+          }
         </div>
 
 

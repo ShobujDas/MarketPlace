@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {FaHeadphonesSimple, FaRegAddressCard, FaUserCheck} from "react-icons/fa6";
 import {RiMoneyDollarCircleFill} from "react-icons/ri";
 import {sellerRegistraion} from "../helpers/api.js";
+import NeedsSection from "./NeedsSection.jsx";
 
 const SellerRegistration = () => {
 
@@ -158,46 +159,10 @@ const SellerRegistration = () => {
 
                     </div>
                 </div>
-                <div className="howitWorks mb-5" id="needs">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <h3>How It <span>Works</span></h3>
-                                <p>Most viewed and all-time top-selling services</p>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                                <div className="text-content">
-                                    <p className="icon fs-1"><FaRegAddressCard /></p>
-                                    <h5>Post a job</h5>
-                                    <p>It&apos;s free and easy to post a job. Simply fill
-                                        in a title, description.</p>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                                <div className="text-content">
-                                    <p className="icon fs-1"><FaUserCheck /></p>
-                                    <h5>Choose Providers</h5>
-                                    <p>Find all kinds of provides needed for your home</p>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                                <div className="text-content">
-                                    <p className="icon fs-1"><RiMoneyDollarCircleFill /></p>
-                                    <h5>Pay safely</h5>
-                                    <p>Pay any time with no fear with the best security</p>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
-                                <div className="text-content">
-                                    <p className="icon fs-1"><FaHeadphonesSimple /></p>
-                                    <h5>We&apos;re here to help</h5>
-                                    <p>Any problem for your home or about services, we are here</p>
-                                </div>
-                            </div>
+                
+                {/* needs section */}
+                <NeedsSection bg_class={"bg-body-tertiary"} />
 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     );

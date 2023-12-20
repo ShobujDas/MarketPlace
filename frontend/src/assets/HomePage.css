@@ -47,6 +47,7 @@
 .needs .text-content{
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   padding: 20px 15px;
+  background: var(--alt-color);
 }
 .needs .text-content p{
   font-size: 15px;

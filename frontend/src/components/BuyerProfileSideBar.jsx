@@ -3,9 +3,9 @@ import { useLocation } from "react-router-dom";
 
 const BuyerProfileSideBar = ({children, showPanel}) => {
 
+  const location = useLocation()
   const [active, setActive] = useState(1)
 
-  const location = useLocation()
   
   let panelChange = (e) => {
     showPanel(e.target.value)
