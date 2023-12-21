@@ -32,23 +32,21 @@ const providerSchema = new Schema({
     type: String,
   },
   short_des: {
-    type: String
+    type: String,
+    required: true
   },
   isSeller: {
     type: Boolean,
     default: true
   },
   city: {
-    type: String,
-    required: false
+    type: String
   },
   road: {
-    type: String,
-    required: false
+    type: String
   },
   houseNo: {
-    type: String,
-    required: false
+    type: String
   }
 },
   {
