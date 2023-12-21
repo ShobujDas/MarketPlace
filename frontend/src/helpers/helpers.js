@@ -51,6 +51,12 @@ export const buyerRegValidate = (data) => {
 }
 
 
+// seller registration validate
+export const sellerRegistrationValidate = (data) => {
+  
+}
+
+
 // react quill toolbar modules
 export const quillModule = () => {
   return {

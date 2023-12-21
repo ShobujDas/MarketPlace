@@ -5,7 +5,6 @@ import "./Accordion.css";
 
 const Accordion = ({ data }) => {
     const [curOpen, setCurOpen] = useState(null);
-    console.log(data)
 
   return (
     <div className="accordion">

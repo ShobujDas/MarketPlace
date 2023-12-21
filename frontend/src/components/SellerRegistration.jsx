@@ -1,29 +1,39 @@
 import Accordion from "./Accordion/Accordion.jsx";
 import faqs from "../helpers/data.js";
 import "../assets/SellerBuyer.css"
-import {useForm} from "react-hook-form";
+
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css'
 
 import {Link} from "react-router-dom";
-import {FaHeadphonesSimple, FaRegAddressCard, FaUserCheck} from "react-icons/fa6";
-import {RiMoneyDollarCircleFill} from "react-icons/ri";
 import {sellerRegistraion} from "../helpers/api.js";
 import NeedsSection from "./NeedsSection.jsx";
+import { useState } from "react";
+import SectionTitle from './SectionTitle';
 
 const SellerRegistration = () => {
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm()
-    const onSignUp=async(data)=>{
-        try {
-            await sellerRegistraion(data);
+    const [sellerData, setSellerData] = useState({
+        serviceName: "",
+        email: "",
+        password: "",
+        img: "",
+        phone: "",
+        country: "",
+        city: "",
+        road: "",
+        houseNo: "",
+        short_des: "",
+        isSeller: true,
+    })
 
-        } catch (error) {
-            console.log(error)
-        }
+    console.log(sellerData)
+    // handle data
+    let handleData = (e) => {
+        setSellerData({...sellerData, [e.target.name]: e.target.value})
     }
+
+
     return (
         <div>
             <div className='sectionbody'>
@@ -37,124 +47,64 @@ const SellerRegistration = () => {
                     <div className='row'>
                         <div className='col-md-6 col-12'>
                             <div className='cardSection card border border-0 shadow my-5 ml-5 p-4'> {/*position-absolute top-50 start-50 translate-end p-4*/}
-                                <div className='card-title'>
-                                    <h3 className='text-center mt-2 text-uppercase '>Tell us about yourself</h3>
-                                    <p className='text-center'>Whether you have questions or you would just like to say hello, contact us.</p>
-                                    <hr />
+                                <SectionTitle title={"Provider"} titleHighlight={"registration"} text={"Become a service provider here at TrustHome"} />
+
+                                
+                                <div className="mt-4">
+                                    <form action="">
+                                        
+                                        <label htmlFor="serviceName" className="fw-medium">Provider name <span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="serviceName" value={sellerData.serviceName} placeholder="Name of service provider" onChange={handleData} />
+
+                                        <label htmlFor="email" className="fw-medium">Provider email<span className="text-danger">*</span></label>
+                                        <input type="email" className="form-control mt-2 mb-4" name="email" id="email" value={sellerData.email} placeholder="provider email" onChange={handleData} />
+
+                                        <label htmlFor="password" className="fw-medium">Password<span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="password" id="password" value={sellerData.password} placeholder="password" onChange={handleData} />
+
+                                        <label htmlFor="img" className="fw-medium">Profile Image<span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="img" id="img" value={sellerData.img} placeholder="profile image" onChange={handleData} />
+
+                                        <label htmlFor="phone" className="fw-medium mb-2">Phone<span className="text-danger">*</span></label>
+                                        <PhoneInput
+                                            inputProps={{
+                                                name: "phone",
+                                                required: true,
+                                                className: "form-control w-100 form-control-lg"
+                                            }}
+                                            enableSearch={true}
+                                            autoFormat={false}
+                                            value={sellerData.phone}
+                                            onChange={(phone) => setSellerData({ ...sellerData, "phone": phone })}
+                                        />
+
+                                        <label htmlFor="country" className="fw-medium mt-4">Country<span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="country" id="country" value={sellerData.country} placeholder="Country" onChange={handleData} />
+
+                                        <label htmlFor="city" className="fw-medium">City<span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="city" id="city" value={sellerData.city} placeholder="city" onChange={handleData} />
+
+                                        <label htmlFor="road" className="fw-medium">Road<span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="road" id="road" value={sellerData.road} placeholder="road" onChange={handleData} />
+
+                                        <label htmlFor="houseNo" className="fw-medium">House No<span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control mt-2 mb-4" name="houseNo" value={sellerData.houseNo} id="houseNo" placeholder="Country" onChange={handleData} />
+
+                                        <label htmlFor="short_des" className="fw-medium">Short description<span className="text-danger">*</span></label>
+                                        <textarea type="text" className="form-control mt-2 mb-4" name="short_des" value={sellerData.short_des} id="short_des" placeholder="short description about your company" onChange={handleData} />
+
+                                        <button className="bg-btns btn-lg">create account</button>
+
+                                    </form>
                                 </div>
-                                <form onSubmit={handleSubmit(onSignUp)}>
-                                    <div className='card-body'>
-                                        <div className='d-flex gap-2 justify-content-center'>
-                                            <div className="mb-3 w-50">
-                                                <label className="form-label">Service Name</label>
-                                                <input type="text" className="form-control"  placeholder="Service Name"
-                                                       {...register("serviceName", {
-                                                           required: true
 
-                                                       })}
-                                                />
-                                                {errors.serviceName && <p className='text-danger'>{errors.serviceName.message}</p>}
-                                            </div>
-                                            <div className="mb-3 w-50">
-                                                <label className="form-label">Phone Number</label>
-                                                <input type="text" className="form-control"  placeholder="Phone Number"
-                                                       {...register("phone", {
-                                                           required: true
-                                                       })}
-                                                />
-                                                {errors.phone && <p className='text-danger'>{errors.phone.message}</p>}
-                                            </div>
-                                        </div>
-                                        <div className="mb-3">
-                                            <label className="form-label">Email</label>
-                                            <input type="email" className="form-control"  placeholder="name@example.com"
-                                                   {...register("email", {
-                                                       required: true
-                                                   })}
-                                            />
-                                            {errors.email && <p className='text-danger'>{errors.email.message}</p>}
-                                        </div>
-                                        <div className="mb-3">
-                                            <label className="form-label">Profile</label>
-                                            <input type="text" className="form-control"  placeholder="Profile Link"
-                                                   {...register("img", {
-                                                       required: true
-                                                   })}
-                                            />
-                                            {errors.img && <p className='text-danger'>{errors.img.message}</p>}
-                                        </div>
-
-                                        <div className="mb-3">
-                                            <label className="form-label">Password</label>
-                                            <input type="password" className="form-control"  placeholder="********"
-                                                   {...register("password", {
-                                                       required: true
-                                                   })}
-                                            />
-                                            {errors.password && <p className='text-danger'>{errors.password.message}</p>}
-                                        </div>
-                                        <div className='d-flex gap-2 justify-content-center'>
-                                            <div className="mb-3 w-50">
-                                                <label className="form-label">Road NO.</label>
-                                                <input type="text" className="form-control"  placeholder="Road NO."
-                                                       {...register("road", {
-                                                           required: false
-                                                       })}
-                                                />
-
-                                            </div>
-                                            <div className="mb-3 w-50">
-                                                <label className="form-label">House No</label>
-                                                <input type="text" className="form-control"  placeholder="House No"
-                                                       {...register("houseNo", {
-                                                           required: false
-                                                       })}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className='d-flex gap-2 justify-content-center'>
-                                            <div className="mb-3 w-50">
-                                                <label className="form-label">City Name</label>
-                                                <input type="text" className="form-control"  placeholder="City Name"
-                                                       {...register("city", {
-                                                           required: false
-                                                       })}
-                                                />
-
-                                            </div>
-                                            <div className="mb-3 w-50">
-                                                <label className="form-label">Country Name</label>
-                                                <input type="text" className="form-control"  placeholder="Country Name"
-                                                       {...register("country", {
-                                                           required: false
-                                                       })}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className='mb-3'>
-                                        <textarea className="form-control" cols="30" rows="6" aria-label="With textarea"  placeholder='Your Message'
-                                                  {...register("decs", {
-                                                      required: false
-                                                  })}
-                                        ></textarea>
-                                        </div>
-
-                                        <div className='d-flex gap-2 justify-content-center'>
-                                            <span></span>
-                                            <div className="mb-3">
-                                                <button type="submit" className="userRegister">Register</button>
-                                            </div>
-                                        </div>
-                                        <div className=''>
-                                            <span>Already have an account? <Link className="redirectLogin" to="/login">Log In!</Link></span>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                         <div className='col-md-6'>
-                            <h3 className='text-center mt-2'>Frequently Asked Questions</h3>
-                            <Accordion data={faqs}/>
+                            <div className="faq-box">
+                                <h3 className='text-center mt-2'>Frequently Asked Questions</h3>
+                                <Accordion data={faqs} />
+                            </div>
                         </div>
 
                     </div>

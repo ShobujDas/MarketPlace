@@ -28,3 +28,8 @@
 .card-title h3{
     color: var(--primary);
 }
+
+.faq-box{
+    position: sticky;
+    top: 0;
+}
