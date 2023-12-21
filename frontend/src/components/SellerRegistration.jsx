@@ -10,6 +10,7 @@ import {sellerRegistraion} from "../helpers/api.js";
 import NeedsSection from "./NeedsSection.jsx";
 import { useState } from "react";
 import SectionTitle from './SectionTitle';
+import { sellerRegistrationValidate } from "../helpers/helpers.js";
 
 const SellerRegistration = () => {
 
@@ -27,12 +28,40 @@ const SellerRegistration = () => {
         isSeller: true,
     })
 
-    console.log(sellerData)
     // handle data
     let handleData = (e) => {
         setSellerData({...sellerData, [e.target.name]: e.target.value})
     }
 
+    // register a seller
+    const registerSeller = async (e) => {
+        e.preventDefault()
+        let validate = sellerRegistrationValidate(sellerData)
+        console.log(validate)
+
+        if(validate){
+            let result = await sellerRegistraion(sellerData)
+            if(result){
+                setTimeout(() => {
+                    window.location.replace('/login')
+                }, 500)
+
+                setSellerData({
+                    serviceName: "",
+                    email: "",
+                    password: "",
+                    img: "",
+                    phone: "",
+                    country: "",
+                    city: "",
+                    road: "",
+                    houseNo: "",
+                    short_des: "",
+                    isSeller: true,
+                })
+            }
+        }
+    }
 
     return (
         <div>
@@ -51,7 +80,7 @@ const SellerRegistration = () => {
 
                                 
                                 <div className="mt-4">
-                                    <form action="">
+                                    <form action="" onSubmit={registerSeller} noValidate>
                                         
                                         <label htmlFor="serviceName" className="fw-medium">Provider name <span className="text-danger">*</span></label>
                                         <input type="text" className="form-control mt-2 mb-4" name="serviceName" value={sellerData.serviceName} placeholder="Name of service provider" onChange={handleData} />

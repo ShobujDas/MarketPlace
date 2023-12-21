@@ -107,10 +107,11 @@ export const sellerRegistraion = async (data) => {
     try {
         let result = await axios.post(`${BASEURL}/seller-register`, data, headers.headers);
         if (result.data['status'] === 0) {
-            successToast(result.data['data']);
+            errorToast(result.data['data']);
             return;
         } else {
-            return result.data
+            successToast(result.data['data']);
+            return true
         }
     } catch (error) {
         errorToast("Something went wrong");

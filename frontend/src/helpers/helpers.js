@@ -53,7 +53,37 @@ export const buyerRegValidate = (data) => {
 
 // seller registration validate
 export const sellerRegistrationValidate = (data) => {
-  
+  if (data.serviceName.trim().length <= 8 || data.serviceName.trim().length >= 20) {
+    errorToast("provider name length 8 - 20")
+    return false
+  }
+  else if (validateEmail(data.email)) {
+    errorToast("give valid email")
+    return false
+  }
+  else if (data.password.length <= 7) {
+    errorToast("pass can't be less than 8 characters")
+    return false
+  }
+  else if (data.img.trim().length <= 10) {
+    errorToast("type the link properly")
+    return false
+  }
+  else if (data.phone.length < 11) {
+    errorToast("phone can't be less than 13 characters")
+    return false
+  }
+  else if (data.country.trim().length <= 3 || data.city.trim().length <= 3 || data.road.trim().length < 1 || data.houseNo.trim().length < 1) {
+    errorToast("address can't be empty")
+    return false
+  }
+  else if (data.short_des == "" || data.short_des.trim().length <= 10){
+    errorToast("too small short description")
+    return false
+  }
+  else {
+    return true
+  }
 }
 
 
