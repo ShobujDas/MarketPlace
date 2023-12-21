@@ -11,6 +11,7 @@ import SellerProfile from "./pages/SellerProfile.jsx";
 import MessagePage from "./pages/MessagePage.jsx";
 import SellerDashBoard from "./pages/SellerDashBoard.jsx";
 import MailVerification from "./pages/MailVerification.jsx";
+import AllCategories from "./pages/AllCategories.jsx";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/profile/:id" element={<SellerProfile />} />
             <Route path="/message" element={<MessagePage />} />
             <Route path="/verify" element={<MailVerification />} />
+            <Route path="/all-category" element={<AllCategories />} />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

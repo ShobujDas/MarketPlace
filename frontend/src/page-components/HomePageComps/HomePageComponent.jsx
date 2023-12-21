@@ -155,10 +155,16 @@ const HomePageComponent = () => {
 
           <div className="row">
             {
-              category.length >= 0 && category.map((e, index) => (
-                <CategoryCards data={e} key={index} />
-              ))
+              category.length >= 0 && category.map((e, index) => {
+                return(
+                  index < 8 ? (<CategoryCards data={e} key={index} />) : ""
+                )
+              })
             }
+          </div>
+
+          <div className="text-center mt-5">
+            <NavLink className="btn btn-lg" to={"/all-category"}>all categories</NavLink>
           </div>
         </div>
       </section>
