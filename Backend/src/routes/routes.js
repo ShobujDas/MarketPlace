@@ -38,7 +38,8 @@ router.get('/seller/:id', authController.getSeller)
 router.get('/seller-profile', authVerification, authController.sellerProfile)
 
 router.get('/logout', authVerification, authController.logout)
-
+router.post('/send-otp/:email', authController.sendOtp)
+router.post('/verify-otp/:email/:otp', authController.verify_otp)
 
 // gig routes
 router.post("/create-gig", authVerification, gigController.gigCreate)
