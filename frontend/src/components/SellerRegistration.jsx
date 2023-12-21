@@ -5,7 +5,7 @@ import "../assets/SellerBuyer.css"
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 
-import {Link} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {sellerRegistraion} from "../helpers/api.js";
 import NeedsSection from "./NeedsSection.jsx";
 import { useState } from "react";
@@ -14,6 +14,7 @@ import { sellerRegistrationValidate } from "../helpers/helpers.js";
 
 const SellerRegistration = () => {
 
+    const navigate = useNavigate()
     const [sellerData, setSellerData] = useState({
         serviceName: "",
         email: "",
@@ -37,29 +38,9 @@ const SellerRegistration = () => {
     const registerSeller = async (e) => {
         e.preventDefault()
         let validate = sellerRegistrationValidate(sellerData)
-        console.log(validate)
 
         if(validate){
             let result = await sellerRegistraion(sellerData)
-            if(result){
-                setTimeout(() => {
-                    window.location.replace('/login')
-                }, 500)
-
-                setSellerData({
-                    serviceName: "",
-                    email: "",
-                    password: "",
-                    img: "",
-                    phone: "",
-                    country: "",
-                    city: "",
-                    road: "",
-                    houseNo: "",
-                    short_des: "",
-                    isSeller: true,
-                })
-            }
         }
     }
 
@@ -80,7 +61,7 @@ const SellerRegistration = () => {
 
                                 
                                 <div className="mt-4">
-                                    <form action="" onSubmit={registerSeller} noValidate>
+                                    <form onSubmit={registerSeller} noValidate>
                                         
                                         <label htmlFor="serviceName" className="fw-medium">Provider name <span className="text-danger">*</span></label>
                                         <input type="text" className="form-control mt-2 mb-4" name="serviceName" value={sellerData.serviceName} placeholder="Name of service provider" onChange={handleData} />
@@ -89,7 +70,7 @@ const SellerRegistration = () => {
                                         <input type="email" className="form-control mt-2 mb-4" name="email" id="email" value={sellerData.email} placeholder="provider email" onChange={handleData} />
 
                                         <label htmlFor="password" className="fw-medium">Password<span className="text-danger">*</span></label>
-                                        <input type="text" className="form-control mt-2 mb-4" name="password" id="password" value={sellerData.password} placeholder="password" onChange={handleData} />
+                                        <input type="password" className="form-control mt-2 mb-4" name="password" id="password" value={sellerData.password} placeholder="password" onChange={handleData} />
 
                                         <label htmlFor="img" className="fw-medium">Profile Image<span className="text-danger">*</span></label>
                                         <input type="text" className="form-control mt-2 mb-4" name="img" id="img" value={sellerData.img} placeholder="profile image" onChange={handleData} />

@@ -102,15 +102,50 @@ export const sellerById = async (id) => {
     }
 }
 
+// verify otp
+export const verifyOtp = async (data) => {
+    try {
+        let mail = sessionStorage.getItem('mail')
+        let result = await axios.post(`${BASEURL}/verify-otp/${mail}/${data}`, data, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return false;
+        } else {
+            successToast(result.data['data']);
+            return true
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
+// send otp
+export const sendOtp = async (mail) => {
+    try {
+        let result = await axios.post(`${BASEURL}/send-otp/${mail}`, headers.headers);
+        if (result.data['status'] === 0) {
+            errorToast(result.data['data']);
+            return false;
+        } else {
+            successToast(result.data['data']);
+            return true
+        }
+    } catch (error) {
+        errorToast("Something went wrong");
+    }
+}
+
 // seller registration
 export const sellerRegistraion = async (data) => {
     try {
         let result = await axios.post(`${BASEURL}/seller-register`, data, headers.headers);
         if (result.data['status'] === 0) {
             errorToast(result.data['data']);
-            return;
+            return false;
         } else {
-            successToast(result.data['data']);
+            let otp = await sendOtp(data.email)
+            sessionStorage.setItem('mail', data.email)
+            window.location.replace('/verify')
             return true
         }
     } catch (error) {
